@@ -29,25 +29,22 @@ resource "aws_security_group" "rds" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-variable "username" {
-  type = string
-}
 
-variable "password" {
-  type = string
-  sensitive = true
-}
-
-resource "aws_db_instance" "default" {
-  allocated_storage      = 20
-  instance_class         = "db.t3.micro"
-  identifier             = "spyderware"
-  db_name                = "spyderdb"
-  engine                 = "postgres"
-  db_subnet_group_name = module.vpc.database_subnet_group_name
-  publicly_accessible    = true
-  skip_final_snapshot    = true
-  vpc_security_group_ids = [aws_security_group.rds.id]
-  username               = var.username
-  password               = var.password
+module "rds" {
+  source                      = "terraform-aws-modules/rds/aws"
+  identifier                  = "spyderware"
+  family                      = "postgres16" # DB parameter group
+  db_name                     = "spyderdb"
+  engine                      = "postgres"
+  instance_class              = "db.t3.micro"
+  create_db_instance          = true
+  allocated_storage           = 20
+  deletion_protection         = false
+  skip_final_snapshot         = true
+  db_subnet_group_name        = module.vpc.database_subnet_group_name
+  vpc_security_group_ids      = [aws_security_group.rds.id]
+  publicly_accessible         = true
+  username                    = "dbuser"
+  port                        = 5432
+  manage_master_user_password = true
 }
