@@ -23,10 +23,8 @@ jobs:
           aws-region: eu-west-1
           role-session-name: API_CD_GitHub_to_AWS_via_FederatedOIDC
 
-      - name: Set working directory to 'api'
-        run: cd api
-
       - name: Generate deployment package
+        working-directory: ./api
         run: |
           npm i
           zip -r deploy.zip . -x '*.git*'
