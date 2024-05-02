@@ -40,7 +40,7 @@ data "tls_certificate" "githubActions" {
 resource "aws_iam_openid_connect_provider" "githubActions" {
   url             = "https://token.actions.githubusercontent.com"
   client_id_list  = ["sts.amazonaws.com"]
-  thumbprint_list = distinct(concat(data.tls_certificate.githubActions.certificates[*].sha1_fingerprint, ["1b511abead59c6ce207077c0bf0e0043b1382612", "959cb2b52b4ad201a593847abca32ff48f838c2e", "6938fd4d98bab03faadb97b34396831e3780aea1"]))
+  thumbprint_list = distinct(concat(data.tls_certificate.githubActions.certificates[*].sha1_fingerprint, ["6938fd4d98bab03faadb97b34396831e3780aea1", "1c58a3a8518e8759bf075b76b750d4f2df264fcd", "1b511abead59c6ce207077c0bf0e0043b1382612"]))
 }
 
 resource "aws_iam_role" "githubActions" {
