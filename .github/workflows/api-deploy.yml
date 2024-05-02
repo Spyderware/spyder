@@ -27,7 +27,7 @@ jobs:
         working-directory: ./api
         run: |
           npm i
-          zip -r deploy.zip . -x '*.git*'
+          zip -r ../deploy.zip . -x '*.git*'
 
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v22
