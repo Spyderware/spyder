@@ -1,30 +1,36 @@
 name: Deploy API to aws
- 
+
 on:
   push:
- 
+
+permissions:
+  checks: write
+  id-token: write
+  contents: write
+  security-events: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
-        
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@main
         with:
           role-to-assume: ${{ secrets.AWS_ASSUME_ROLE }}
           aws-region: eu-west-1
-          role-session-name: Server_CD_GitHub_to_AWS_via_FederatedOIDC
+          role-session-name: API_CD_GitHub_to_AWS_via_FederatedOIDC
 
       - name: Set working directory to 'api'
         run: cd api
 
       - name: Generate deployment package
-        run: | 
+        run: |
           npm i
           zip -r deploy.zip . -x '*.git*'
- 
+
       - name: Deploy to Elastic Beanstalk
         uses: einaregilsson/beanstalk-deploy@v22
         with:
