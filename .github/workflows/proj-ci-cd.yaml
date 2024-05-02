@@ -16,11 +16,11 @@ jobs:
     uses: ./.github/workflows/proj-ci.yaml
     secrets: inherit
 
-  # terraform-cd:
-  #   name: Terraform CD
-  #   needs: proj-ci
-  #   secrets: inherit
-  #   uses: ./.github/workflows/terraform-cd.yaml
+  terraform-cd:
+    name: Terraform CD
+    needs: proj-ci
+    secrets: inherit
+    uses: ./.github/workflows/terraform-cd.yaml
 
   db-cd:
     name: "Flyway Migration"
