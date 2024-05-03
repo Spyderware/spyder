@@ -13,61 +13,46 @@
         <link rel="stylesheet" href="HomePage.css">
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
     </head>
-    <body id="OverallContainer">
+    <body class="OverallContainer">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <Nav id="NavFlex">
+        <Nav class="NavFlex">
             <img src="/Screen Templates\Images\SpyderwareLogo.png" alt="" Class="WebsiteLogo">
-            <div id="SearchBar">
-                <input type="text" id="SearchInput" placeholder="Search">
+            <div class="SearchBar">
+                <input type="text" class="SearchInputClass" id="SearchInput" placeholder="Search">
                 <span class="material-symbols-outlined">search</span>
             </div>
             
-            <select name="fcategories" id="Categories">
+            <select name="fcategories" Class="Categories" id="Categories">
                 <option value=""  selected>Select your Category</option>
                 <option value="1">Programming Language</option>
-                <option value="1">Application</option>                
+                <option value="2">Application</option>                
               </select>
-              <button type="submit" id="PostButton">
+              <button type="submit" class="PostButton" id="PostButton">
                 Create Post
             </button>
-            <div id="ViewProfile">
+            <div class="ViewProfile" id="ViewProfile">
                 <img src="/Screen Templates\Images\DefaultUserLogo.png" alt="" Class="UserLogo">
                 <p>View Profile</p>
             </div>       
         </Nav>
         <main class="MainView">
-            <article id="NoPosts">               
+            <article class="NoPosts">               
                 <p>No Posts Found </p>  
             </article>
             <article class="PostCard">
-                <div id="PostHeadder">
+                <div class="PostHeadder">
                     <h1>Post Title</h1>
-                    <div id="PostUserdetails">
-                        <img src="/Screen Templates\Images\DefaultUserLogo.png" alt="" Class="UserLogo" id="PostUserLogo">
+                    <div class="PostUserdetails" id="PostUserdetails">
+                        <img src="/Screen Templates\Images\DefaultUserLogo.png" alt="" Class="PostUserLogo">
                         <p>User Name</p>
                     </div>
                 </div>
-                <div id="CardBody">
+                <div class="CardBody">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Convallis tellus id interdum velit laoreet id. Blandit massa enim nec dui nunc. Urna nunc id cursus metus aliquam eleifend mi in. Dui id ornare arcu odio ut sem.</p>      
                     <div class="heart Full">
                         <span class="material-symbols-outlined">favorite</span>
-                    </div>
-                </div>
-            </article>
-            <article class="PostCard">
-                <div id="PostHeadder">
-                    <h1>Post Title</h1>
-                    <div id="PostUserdetails">
-                        <img src="/Screen Templates\Images\DefaultUserLogo.png" alt="" Class="UserLogo" id="PostUserLogo">
-                        <p>User Name</p>
-                    </div>
-                </div>
-                <div id="CardBody">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Convallis tellus id interdum velit laoreet id. Blandit massa enim nec dui nunc. Urna nunc id cursus metus aliquam eleifend mi in. Dui id ornare arcu odio ut sem.</p>      
-                    <div id="heart">
-                        <span class="material-symbols-outlined LikeComment">favorite</span>
                     </div>
                 </div>
             </article>

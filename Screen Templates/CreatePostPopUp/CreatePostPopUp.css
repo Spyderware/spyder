@@ -12,7 +12,7 @@ html, body{
     font-size: 0.6rem;
     color: red;
 }
-#CreatePostContainer{
+.CreatePostContainer{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,7 @@ html, body{
     padding: 1vh;
 }
 
-#CreatePostPopUp{
+.CreatePostPopUp{
     outline: solid black 1px;    
     display: flex;
     background-color: #D9D9D9 ;
@@ -35,7 +35,7 @@ html, body{
     min-width: 60%;
     min-height: 30%;
 }
-#NewPostForm{
+.NewPostFormClass{
     display: flex;
     flex-direction: column;
     gap: 1vh;
@@ -43,18 +43,18 @@ html, body{
     width: 100%;
 }
 
-#CreatePostHeadder{
+.CreatePostHeadder{
     margin-right: auto;
     margin-bottom: 1rem;
 }
 
-#fPostBody{
+.fPostBody{
     max-block-size: 85%;
     resize: vertical;
     min-height: 5em;
 }
 
-#PostButton{
+.PostButtonClass{
     align-self: flex-end;
     max-width: 80%;
     padding: 0.3em;

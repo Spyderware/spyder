@@ -62,13 +62,13 @@ input,textarea:focus{
     outline: none;
     }
 
-#OverallContainer{
+.OverallContainer{
     display: flex;
     flex-direction: column;
     gap: 1vh;
 }
 
-#NavFlex{
+.NavFlex{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -78,14 +78,14 @@ input,textarea:focus{
     background-color: #D9D9D9;
 }
 
-#ViewProfile{
+.ViewProfile{
     display: flex;
     flex-direction: column;
     margin-left: auto;
     align-items: center;
 }
 
-#PostButton{
+.PostButtonClass{
     margin-left: auto;
     padding: 1vh;
     border-radius:1em;
@@ -97,7 +97,7 @@ input,textarea:focus{
     border-style:none;
 }
 
-#HomeButton{
+.HomeButton{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,12 +112,12 @@ input,textarea:focus{
     border-style:none;
 }
 
-#PostHeadder{
+.PostHeadder{
     display: flex;
     flex-direction: row;   
 }
 
-#PostUserdetails{
+.PostUserdetails{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,19 +126,19 @@ input,textarea:focus{
     gap: 0.5vh;   
 }
 
-#PostUserLogo{
+.PostUserLogo{
     max-width: 2vh;
     max-height: auto;
     margin-bottom: 0em;
 }
 
-#CardBody{
+.CardBody{
     display: flex;
     align-items: center;
     gap: 10vh;
 }
 
-#AddComment{
+.NewComment{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,7 +147,7 @@ input,textarea:focus{
     border-radius: 0.5em;  
 }
 
-#CommentInput{
+.CommentInputClass{
     max-block-size: 85%;
     resize: vertical;
     min-height: 3em;
@@ -156,7 +156,7 @@ input,textarea:focus{
     
 }
 
-#PlacedComment{
+.PlacedComment{
     display: flex;
     gap: 1vh;
     padding: 1vh;
@@ -164,7 +164,7 @@ input,textarea:focus{
     border-radius: 0.5em;  
 }
 
-#NoComments{
+.NoComments{
     display: flex;
     gap: 1vh;
     align-items: center;

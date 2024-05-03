@@ -48,13 +48,13 @@ input:focus{
 }
 
 
-#OverallContainer{
+.OverallContainer{
     display: flex;
     flex-direction: column;
     gap: 1vh;
 }
 
-#NavFlex{
+.NavFlex{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -64,13 +64,13 @@ input:focus{
     background-color: #D9D9D9;
 }
 
-#ViewProfile{
+.ViewProfile{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#PostButton{
+.PostButton{
     margin-left: auto;
     padding: 1vh;
     border-radius:1em;
@@ -79,11 +79,11 @@ input:focus{
 
 }
 
-#SearchInput{
+.SearchInputClass{
     border-style:none;
 }
 
-#SearchBar{
+.SearchBar{
     display: flex;
     outline: solid black 1px;
     border-radius: 0.5em;  
@@ -91,20 +91,20 @@ input:focus{
     padding: 0.5vh;
 }
 
-#Categories{
+.Categories{
     outline: solid black 1px;
     border-radius: 0.5em;  
     padding: 1vh;
     border-style:none;
 }
 
-#PostHeadder{
+.PostHeadder{
     display: flex;
     flex-direction: row;
     
 }
 
-#PostUserdetails{
+.PostUserdetails{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,19 +113,19 @@ input:focus{
     gap: 0.5vh;   
 }
 
-#PostUserLogo{
+.PostUserLogo{
     max-width: 2vh;
     max-height: auto;
     margin-bottom: 0em;
 }
 
-#CardBody{
+.CardBody{
     display: flex;
     align-items: center;
     gap: 10vh;
 }
 
-#NoPosts{
+.NoPosts{
     display: flex;
     gap: 1vh;
     align-items: center;
