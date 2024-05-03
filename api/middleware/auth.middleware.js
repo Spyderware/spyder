@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import {HttpStatusCodes} from '../utils'
+import {HttpStatusCodes} from '../utils/index.js'
 
 export const verifyToken = async (req, res, next) => {
     try {

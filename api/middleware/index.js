@@ -1,4 +1,4 @@
-import * as Cors from './cors.middleware';
-import * as Auth from './auth.middleware';
+import * as Cors from './cors.middleware.js';
+import * as Auth from './auth.middleware.js';
 
 export {Cors, Auth};

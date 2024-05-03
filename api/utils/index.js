@@ -1,3 +1,3 @@
-import * as HttpStatusCodes from './http-status-codes';
+import * as HttpStatusCodes from './http-status-codes.js';
 
 export { HttpStatusCodes }; 
