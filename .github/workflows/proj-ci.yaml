@@ -13,16 +13,16 @@ permissions:
 
 jobs:
   terraform-ci:
-    name: "Terraform CI"
+    name: Terraform CI
     secrets: inherit
     uses: ./.github/workflows/terraform-ci.yaml
 
   test-database-migration:
-    name: "DB CI"
+    name: DB CI
     secrets: inherit
     uses: ./.github/workflows/db-ci.yaml
 
   # app-ci:
-  #   name: "App CI"
+  #   name: App CI
   #   secrets: inherit
   #   uses: ./.github/workflows/app-ci.yaml
