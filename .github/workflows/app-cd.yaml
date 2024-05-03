@@ -1,4 +1,4 @@
-name: Deploy API to aws
+name: Application CD
 
 on:
   workflow_call:
@@ -10,8 +10,13 @@ permissions:
   security-events: write
 
 jobs:
-  build:
+  api-cd:
+    name: API CD
     runs-on: ubuntu-latest
+
+    env:
+      api_directory: ./api
+
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
@@ -24,7 +29,7 @@ jobs:
           role-session-name: API_CD_GitHub_to_AWS_via_FederatedOIDC
 
       - name: Generate deployment package
-        working-directory: ./api
+        working-directory: ${{ env.api_directory }}
         run: |
           npm i
           zip -r ../deploy.zip . -x '*.git*'
