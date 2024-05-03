@@ -28,8 +28,8 @@ jobs:
     secrets: inherit
     uses: ./.github/workflows/db-cd.yaml
 
-  api-cd:
-    name: API CD
+  app-cd:
+    name: APP CD
     needs: db-cd
     secrets: inherit
-    uses: ./.github/workflows/api-cd.yaml
+    uses: ./.github/workflows/app-cd.yaml
