@@ -1,7 +1,10 @@
-var express = require("express");
-const app = express();
+import {Cors} from 'middleware';
 
+const express = require("express");
+const app = express();
 const PORT = process.env.PORT | 8080;
+
+app.use(Cors.corsMiddleware);
 
 app.use("/", (req, res) => {
   res.send(JSON.stringify({ message: "hello world 2" }));
