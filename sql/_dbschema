@@ -1,5 +1,6 @@
 Table account {
-  account_id char(20) pk 
+  account_id serial pk
+  uid varchar(20) unique
   username varchar(25) unique
 }
 
