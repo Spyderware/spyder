@@ -1,0 +1,68 @@
+* { 
+    margin:0; 
+    padding:0; 
+    box-sizing:border-box;
+    font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica, sans-serif; 
+
+}
+html, body{
+    height: 100%;
+}
+.GoogleLogo{
+    border-radius: 50%;
+    max-width: 3em;
+    max-height: auto; 
+}
+.WebsiteLogo{
+    border-radius: 50%;
+    max-width: 8em;
+    max-height: auto;
+    margin-bottom: 0.5em;
+    
+}
+
+#LoginFlex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#LoginCard{
+    outline: solid black 1px;    
+    display: flex;
+    background-color: #D9D9D9 ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    border-radius: 2em;
+    gap: 2em;
+}
+.ButtonWithIcon{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 1em;
+    flex-shrink: 0;
+}
+
+#LoginHeadder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 3;
+}
+
+
+
+
+
+
+
+
+
+
