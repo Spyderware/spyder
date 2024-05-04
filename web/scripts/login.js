@@ -1,5 +1,4 @@
-import { Routes } from "./utils.js";
-import { changeRoute } from "./router.js";
+import { login } from "./auth.js";
 
 /**
  * This adds a reference to the window so that it knows about the exported
@@ -20,11 +19,7 @@ function handleCredentialResponse(response) {
     console.log("Image URL: " + responsePayload.picture);
     console.log("Email: " + responsePayload.email);
 
-    // make request to server
-    // wait for response
-    // if authenticated then load homepage
-    console.log('Bypassing auth -- remove in prod');
-    changeRoute(Routes.Homepage, true);
+    login(responsePayload);
 }
 
 function decodeJwtResponse(token) {

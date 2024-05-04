@@ -1,10 +1,10 @@
 import { changeRoute } from "./router.js";
-import { Routes } from "./utils.js";
+import { AUTH_TOKEN_NAME, Routes } from "./utils.js";
 
 // =================== Functions ===================
 
 function isLoggedIn() {
-    return false;
+    return localStorage.getItem(AUTH_TOKEN_NAME) !== null;
 }
 
 function initAuth() {
@@ -12,4 +12,9 @@ function initAuth() {
     changeRoute(Routes.Login, true);
 }
 
-export { isLoggedIn, initAuth };
+function login(authProviderResponse) {
+    localStorage.setItem(AUTH_TOKEN_NAME, authProviderResponse.sub);
+    changeRoute(Routes.ORIGIN);
+}
+
+export { isLoggedIn, initAuth, login };

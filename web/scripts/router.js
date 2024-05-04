@@ -1,5 +1,5 @@
 import { loadPage } from "./page-loader.js";
-import { LANDING_PATH, PATH_CHANGE_EVENT_NAME, Routes } from "./utils.js";
+import { PATH_CHANGE_EVENT_NAME, Routes } from "./utils.js";
 
 // ===================== Init ======================
 
@@ -15,7 +15,7 @@ async function handlePathChange() {
     const newPath = window.location.pathname.substring(1);
 
     if (!isValidPath(newPath)) {
-        changeRoute(LANDING_PATH, true);
+        changeRoute(Routes.ORIGIN, true);
     } else {
         await loadPage(newPath);
     }

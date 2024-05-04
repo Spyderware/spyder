@@ -2,6 +2,7 @@
  * An enum listing the configured routes that can be used to load content.
  */
 const Routes = Object.freeze({
+    ORIGIN: 'home',
     Login: 'login',
     Homepage: 'home',
 });
@@ -23,8 +24,8 @@ const PATH_CHANGE_EVENT_NAME = 'pathchanged';
 const APP_NAME = 'Spyder';
 
 /**
- * The name of the website application
+ * The name of the localStorage item for Auth Token
  */
-const LANDING_PATH = Routes.Homepage;
+const AUTH_TOKEN_NAME = 'userid';
 
-export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, LANDING_PATH }
+export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME }
