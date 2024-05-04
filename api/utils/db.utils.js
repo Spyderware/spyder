@@ -1,14 +1,15 @@
-import pkg from 'pg';
-import dotenv from 'dotenv';
-const {Pool} = pkg;
+import pgPromise from 'pg-promise';
 
-dotenv.config();
-export const pool = new Pool({
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
+const cn = {
     host: process.env.DB_HOST,
     port: process.env.BD_PORT,
     database: process.env.DB_NAME,
-    max: 20,
-    idleTimeoutMillis: 30000,
-});
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    ssl: {
+        rejectUnauthorized: false
+    },
+};
+
+const pgp = pgPromise();
+export const db = pgp(cn);
