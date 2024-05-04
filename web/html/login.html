@@ -1,0 +1,38 @@
+<head>
+  <link rel="stylesheet" href="../css/login.css" />
+  <script src="https://accounts.google.com/gsi/client" defer async></script>
+  <script type="module" src="../scripts/login.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <div class="login-container">
+      <div class="login-image">
+        <img
+          src="../resources/SpyderwareLogo.png"
+          alt="spyder logo"
+          id="loginlogo"
+        />
+      </div>
+      <div class="login-button">
+        <div
+          id="g_id_onload"
+          data-client_id="271058509023-c7uprprd3a28gpnldg42nor518g12kpu.apps.googleusercontent.com"
+          data-context="signin"
+          data-ux_mode="popup"
+          data-callback="handleCredentialResponse"
+          data-auto_prompt="false"
+        ></div>
+
+        <div
+          class="g_id_signin"
+          data-type="standard"
+          data-shape="rectangular"
+          data-theme="outline"
+          data-text="signin_with"
+          data-size="large"
+          data-logo_alignment="left"
+        ></div>
+      </div>
+    </div>
+  </div>
+</body>
