@@ -1,4 +1,4 @@
-import {accountRouter} from './accout.route.js';
+import {accountRouter} from './account.route.js';
 import {Router} from "express";
 
 export const router = Router();

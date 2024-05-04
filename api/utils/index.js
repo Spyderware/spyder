@@ -1,4 +1,4 @@
 import * as HttpStatusCodes from './http-status-codes.js';
-import * as Db from './db.utils.js';
+import * as DbUtils from './db.utils.js';
 
-export {HttpStatusCodes, Db};
+export {HttpStatusCodes, DbUtils};

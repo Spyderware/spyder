@@ -12,4 +12,4 @@ const cn = {
 };
 
 const pgp = pgPromise();
-export const db = pgp(cn);
+export const spyderdb = pgp(cn);
