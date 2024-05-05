@@ -15,7 +15,7 @@ export const createPost = async (req, res) => {
             } else if (!categoryExists) {
                 res.status(HttpStatusCodes.NotFound).send({message: "Category does not exist"});
             } else {
-                await DbUtils.spyderdb.none('INSERT INTO post(account_id, title, body, category_id) VALUES(${category})', {
+                await DbUtils.spyderdb.none('INSERT INTO post(account_id, title, body, category_id) VALUES(${account_id}, ${title}, ${body}, ${category_id})', {
                     account_id: account_id,
                     title: title,
                     body: body,
@@ -77,8 +77,6 @@ export const deleteByPostId = async (req, res) => {
                             rows: rows
                         });
                     });
-                res.status(HttpStatusCodes.OK).send({message: "Post deleted successfully."});
-
             }
         }
     } catch (err) {
@@ -94,17 +92,21 @@ export const updatePost = async (req, res) => {
             res.status(HttpStatusCodes.NotFound).send({message: "Invalid payload"});
         } else {
             const existingPost = await checkIfPostExists(post_id);
+            const accountExists = await AccountController.checkIfAccountExists(account_id);
+            const categoryExists = await CategoryController.checkIfCategoryExists(category_id);
             if (!existingPost) {
                 res.status(HttpStatusCodes.NotFound).send({message: "Post does not exist"});
+            } else if (!accountExists) {
+                res.status(HttpStatusCodes.NotFound).send({message: "Account does not exist"});
+            } else if (!categoryExists) {
+                res.status(HttpStatusCodes.NotFound).send({message: "Category does not exist"});
             } else {
-
-
-                await DbUtils.spyderdb.none('UPDATE post SET account_id = ${account_id}, title = ${title}, body = ${body}, category_id = ${category_id} WHERE post_id = ${post_id}', {
-                    account_id: account_id,
-                    title: title,
-                    body: body,
-                    category_id: category_id,
-                });
+                await DbUtils.spyderdb.none('UPDATE post SET ' +
+                    'account_id = $1, ' +
+                    'title = $2, ' +
+                    'body = $3, ' +
+                    'category_id = $4 ' +
+                    'WHERE post_id = $5', [account_id, title, body, category_id, post_id]);
                 res.status(HttpStatusCodes.OK).send({message: "Post updated successfully."});
             }
         }
