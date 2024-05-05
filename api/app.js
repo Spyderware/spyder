@@ -1,7 +1,6 @@
 import {Cors, Auth} from './middleware/index.js';
 import express from 'express';
 import {router} from "./routes/index.js";
-import {AccountController} from './controllers/index.js';
 
 const app = express();
 const PORT = process.env.PORT | 8080;
@@ -9,9 +8,9 @@ const PORT = process.env.PORT | 8080;
 
 app.use(Cors.corsMiddleware);
 app.use(express.json());
-// app.get("/", (req, res) => {
-//     res.send(JSON.stringify({message: "hello world 2"}));
-// });
+app.get("/", (req, res) => {
+    res.send(JSON.stringify({message: "hello world 2"}));
+});
 
 // app.use(Auth.verifyToken);
 app.use('/api/v1', router);
