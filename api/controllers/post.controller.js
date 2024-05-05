@@ -1,0 +1,130 @@
+import {HttpStatusCodes, DbUtils} from '../utils/index.js';
+import {AccountController, CategoryController} from './index.js'
+
+export const createPost = async (req, res) => {
+    try {
+        const {account_id, title, body, category_id} = req.body;
+        if (!account_id || !title || !body || !category_id) {
+            res.status(HttpStatusCodes.BadRequest).send({message: "Invalid payload"});
+        } else {
+
+            const accountExists = await AccountController.checkIfAccountExists(account_id);
+            const categoryExists = await CategoryController.checkIfCategoryExists(category_id);
+            if (!accountExists) {
+                res.status(HttpStatusCodes.NotFound).send({message: "Account does not exist"});
+            } else if (!categoryExists) {
+                res.status(HttpStatusCodes.NotFound).send({message: "Category does not exist"});
+            } else {
+                await DbUtils.spyderdb.none('INSERT INTO post(account_id, title, body, category_id) VALUES(${category})', {
+                    account_id: account_id,
+                    title: title,
+                    body: body,
+                    category_id: category_id,
+                });
+                res.status(HttpStatusCodes.OK).send({message: 'Post created successfully.'});
+            }
+
+        }
+    } catch (err) {
+        res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
+    }
+};
+
+export const getAllPosts = async (req, res) => {
+    try {
+        const posts = await DbUtils.spyderdb.any('SELECT * FROM post');
+        res.status(HttpStatusCodes.OK).send(posts);
+    } catch (err) {
+        res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
+    }
+};
+
+export const getPostByPostId = async (req, res) => {
+    try {
+        const {post_id} = req.params;
+        if (!post_id) {
+            res.status(HttpStatusCodes.NotFound).send({message: "Invalid payload"});
+        } else {
+            await DbUtils.spyderdb.oneOrNone('SELECT * FROM post WHERE post_id = $1', [post_id])
+                .then(data => {
+                    if (!data) {
+                        res.status(HttpStatusCodes.NotFound).send({message: "Post does not exist"});
+                    } else {
+                        res.status(HttpStatusCodes.OK).send(data);
+                    }
+                });
+
+        }
+    } catch (err) {
+        res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
+    }
+};
+
+export const deleteByPostId = async (req, res) => {
+    try {
+        const {post_id} = req.params;
+        if (!post_id) {
+            res.status(HttpStatusCodes.NotFound).send({message: "Invalid payload"});
+        } else {
+            const existingPost = await checkIfPostExists(post_id);
+            if (!existingPost) {
+                res.status(HttpStatusCodes.NotFound).send({message: "Post does not exist"});
+            } else {
+                await DbUtils.spyderdb.result('DELETE FROM post WHERE post_id = $1', [post_id], r => r.rowCount)
+                    .then(rows => {
+                        res.status(HttpStatusCodes.OK).send({
+                            message: "Post deleted successfully.",
+                            rows: rows
+                        });
+                    });
+                res.status(HttpStatusCodes.OK).send({message: "Post deleted successfully."});
+
+            }
+        }
+    } catch (err) {
+        res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
+    }
+};
+
+export const updatePost = async (req, res) => {
+    try {
+        const {post_id} = req.params;
+        const {account_id, title, body, category_id} = req.body;
+        if (!account_id || !title || !body || !category_id) {
+            res.status(HttpStatusCodes.NotFound).send({message: "Invalid payload"});
+        } else {
+            const existingPost = await checkIfPostExists(post_id);
+            if (!existingPost) {
+                res.status(HttpStatusCodes.NotFound).send({message: "Post does not exist"});
+            } else {
+
+
+                await DbUtils.spyderdb.none('UPDATE post SET account_id = ${account_id}, title = ${title}, body = ${body}, category_id = ${category_id} WHERE post_id = ${post_id}', {
+                    account_id: account_id,
+                    title: title,
+                    body: body,
+                    category_id: category_id,
+                });
+                res.status(HttpStatusCodes.OK).send({message: "Post updated successfully."});
+            }
+        }
+    } catch (err) {
+        res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
+    }
+};
+
+
+export const checkIfPostExists = (post_id) => {
+    return DbUtils.spyderdb.oneOrNone('SELECT EXISTS(SELECT 1 FROM post WHERE post_id = $1)', [post_id])
+        .then(data => {
+            return data.exists;
+        })
+        .catch(error => {
+            throw error;
+        });
+}
+
+
+
+
+
