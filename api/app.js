@@ -1,13 +1,15 @@
-import {Cors, Auth} from './middleware/index.js';
-import express from 'express';
+import {Auth} from './middleware/index.js';
 import {router} from "./routes/index.js";
+import cors from "cors";
+import bodyParser from "body-parser";
+import express from 'express';
 
 const app = express();
 const PORT = process.env.PORT | 8080;
 
 
-app.use(Cors.corsMiddleware);
-app.use(express.json());
+app.use(cors());
+app.use(bodyParser.json());
 app.get("/", (req, res) => {
     res.send(JSON.stringify({message: "hello world 2"}));
 });
