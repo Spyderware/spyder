@@ -8,6 +8,9 @@ permissions:
   contents: read
   id-token: write
 
+env:
+  db_directory: ./sql
+
 jobs:
   migrate_db:
     name: Migrate DB
@@ -38,5 +41,5 @@ jobs:
         run: |
           wget -qO- https://download.red-gate.com/maven/release/com/redgate/flyway/flyway-commandline/10.11.0/flyway-commandline-10.11.0-linux-x64.tar.gz | tar -xvz && sudo ln -s `pwd`/flyway-10.11.0/flyway /usr/local/bin
           export DB_URL="jdbc:postgresql://${{ env.DB_ENDPOINT }}:5432/spyderdb?user=${{ env.DB_DETAILS_USERNAME }}&password=${{ env.DB_DETAILS_PASSWORD }}"
-          flyway -url=$DB_URL info
-          flyway -url=$DB_URL migrate
+          flyway -locations="filesystem:${{ env.db_directory }}" -url=$DB_URL info
+          flyway -locations="filesystem:${{ env.db_directory }}" -url=$DB_URL migrate

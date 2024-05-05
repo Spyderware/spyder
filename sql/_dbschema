@@ -1,0 +1,38 @@
+Table account {
+  account_id serial pk
+  uid varchar(20) unique
+  username varchar(25) unique
+}
+
+Table category {
+  category_id serial pk
+  category varchar(15) unique
+}
+
+Table post {
+  post_id serial pk
+  account_id int
+  title varchar(35)
+  body varchar(255)
+  category_id int
+}
+
+Table comment {
+  comment_id serial pk
+  account_id int
+  post_id int
+  comment varchar(50)
+}
+
+Table post_upvote {
+  post_interaction_id serial pk
+  account_id int
+  post_id int
+}
+
+Ref: post_upvote.post_id > post.post_id
+Ref: post_upvote.account_id > account.account_id
+Ref: post.category_id > category.category_id
+Ref: post.account_id > account.account_id
+Ref: comment.account_id > account.account_id
+Ref: comment.post_id > post.post_id
