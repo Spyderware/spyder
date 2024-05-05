@@ -62,20 +62,18 @@ export const deleteByAccountId = async (req, res) => {
         if (!account_id) {
             res.status(HttpStatusCodes.NotFound).send({message: "Invalid payload"});
         } else {
-            await DbUtils.spyderdb.oneOrNone('SELECT * FROM account WHERE account_id = $1', [account_id])
-                .then(async data => {
-                    if (!data) {
-                        res.status(HttpStatusCodes.NotFound).send({message: "Account does not exist"});
-                    } else {
-                        await DbUtils.spyderdb.result('DELETE FROM account WHERE account_id = $1', [account_id], r => r.rowCount)
-                            .then(rows => {
-                                res.status(HttpStatusCodes.OK).send({
-                                    message: "Account deleted successfully.",
-                                    rows: rows
-                                });
-                            });
-                    }
-                })
+            const accountExists = await checkIfAccountExists(account_id);
+            if (!accountExists) {
+                res.status(HttpStatusCodes.NotFound).send({message: "Account does not exist"});
+            } else {
+                await DbUtils.spyderdb.result('DELETE FROM account WHERE account_id = $1', [account_id], r => r.rowCount)
+                    .then(rows => {
+                        res.status(HttpStatusCodes.OK).send({
+                            message: "Account deleted successfully.",
+                            rows: rows
+                        });
+                    });
+            }
         }
     } catch (err) {
         res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
@@ -89,18 +87,26 @@ export const updateAccount = async (req, res) => {
         if (!uid || !username) {
             res.status(HttpStatusCodes.NotFound).send({message: "Invalid payload"});
         } else {
-            await DbUtils.spyderdb.oneOrNone('SELECT * FROM account WHERE account_id = $1', [account_id])
-                .then(async data => {
-                    if (!data) {
-                        res.status(HttpStatusCodes.NotFound).send({message: "Account does not exist"});
-                    } else {
-                        await DbUtils.spyderdb.none('UPDATE account SET uid = $1, username = $2 WHERE account_id = $3', [uid, username, account_id])
+            const accountExists = await checkIfAccountExists(account_id);
+            if (!accountExists) {
+                res.status(HttpStatusCodes.NotFound).send({message: "Account does not exist"});
+            } else {
+                await DbUtils.spyderdb.none('UPDATE account SET uid = $1, username = $2 WHERE account_id = $3', [uid, username, account_id])
 
-                        res.status(HttpStatusCodes.OK).send({message: "Account updated successfully."});
-                    }
-                });
+                res.status(HttpStatusCodes.OK).send({message: "Account updated successfully."});
+            }
         }
     } catch (err) {
         res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
     }
+}
+
+export const checkIfAccountExists = (account_id) => {
+    return DbUtils.spyderdb.oneOrNone('SELECT EXISTS(SELECT 1 FROM account WHERE account_id = $1)', [account_id])
+        .then(data => {
+            return data.exists;
+        })
+        .catch(error => {
+            throw error;
+        });
 }

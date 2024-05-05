@@ -104,3 +104,12 @@ export const updateCategory = async (req, res) => {
         res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
     }
 };
+export const checkIfCategoryExists = (category_id) => {
+    return DbUtils.spyderdb.oneOrNone('SELECT EXISTS(SELECT 1 FROM category WHERE category_id = $1)', [category_id])
+        .then(data => {
+            return data.exists;
+        })
+        .catch(error => {
+            throw error;
+        });
+}

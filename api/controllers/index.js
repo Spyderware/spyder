@@ -1,4 +1,4 @@
 import * as AccountController from "./account.controller.js";
 import * as CategoryController from "./category.controller.js";
-
-export {AccountController, CategoryController};
+import * as PostController from "./post.controller.js";
+export {AccountController, CategoryController, PostController};
