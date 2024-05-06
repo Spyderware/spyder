@@ -73,8 +73,7 @@ export const deleteByPostId = async (req, res) => {
                 await DbUtils.spyderdb.result('DELETE FROM post WHERE post_id = $1', [post_id], r => r.rowCount)
                     .then(rows => {
                         res.status(HttpStatusCodes.OK).send({
-                            message: "Post deleted successfully.",
-                            rows: rows
+                            message: "Post deleted successfully."
                         });
                     });
             }

@@ -68,8 +68,7 @@ export const deleteByCategoryId = async (req, res) => {
                         await DbUtils.spyderdb.result('DELETE FROM category WHERE category_id = $1', [category_id], r => r.rowCount)
                             .then(rows => {
                                 res.status(HttpStatusCodes.OK).send({
-                                    message: "Category deleted successfully.",
-                                    rows: rows
+                                    message: "Category deleted successfully."
                                 });
                             });
                     }

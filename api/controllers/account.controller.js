@@ -69,8 +69,7 @@ export const deleteByAccountId = async (req, res) => {
                 await DbUtils.spyderdb.result('DELETE FROM account WHERE account_id = $1', [account_id], r => r.rowCount)
                     .then(rows => {
                         res.status(HttpStatusCodes.OK).send({
-                            message: "Account deleted successfully.",
-                            rows: rows
+                            message: "Account deleted successfully."
                         });
                     });
             }
