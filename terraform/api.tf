@@ -137,6 +137,6 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "DB_NAME"
-    value     = "spyderdb"
+    value     = module.rds.db_instance_name
   }
 }
