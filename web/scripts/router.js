@@ -5,6 +5,10 @@ import { PATH_CHANGE_EVENT_NAME, PLACEHOLDER_ROUTE, Routes } from "./utils.js";
 
 addEventListener(PATH_CHANGE_EVENT_NAME, handlePathChange);
 
+// @ryan - was this removed on purpose? Handles loading page content when moving back and forwards
+// in history
+addEventListener('popstate', handlePathChange);
+
 // =================== Functions ===================
 
 /**
@@ -16,7 +20,7 @@ async function handlePathChange() {
     const subPathBeginIndex = newPath.indexOf('/');
 
     var pageLoc = newPath;
-    if(subPathBeginIndex !== -1) {
+    if (subPathBeginIndex !== -1) {
         pageLoc = newPath.substring(0, subPathBeginIndex);
         newPath = `${pageLoc}/${PLACEHOLDER_ROUTE}`;
     }

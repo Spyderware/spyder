@@ -103,13 +103,13 @@ async function fetchContent(path) {
  */
 function changePageTitle(container) {
     const titleTags = container.querySelectorAll('title');
-    
+
     var title = APP_NAME;
     if (titleTags.length > 0) {
         title = titleTags[0].innerHTML;
         titleTags[0].parentNode.removeChild(titleTags[0]);
     }
-    
+
     document.title = title;
 }
 
@@ -122,10 +122,10 @@ async function loadPage(page) {
     const contentContainer = document.getElementById(CONTENT_CONTAINER_ID);
 
     try {
-        console.log(`${HTML_DIR}${page}`)
+        // console.log(`${HTML_DIR}${page}`)
 
         const htmlText = await fetchContent(`${HTML_DIR}${page}`);
-        console.log(htmlText)
+        // console.log(htmlText)
         contentContainer.innerHTML = htmlText;
 
         removeHoistedElements(hoistedElements);
@@ -138,4 +138,4 @@ async function loadPage(page) {
     }
 }
 
-export { loadPage };
+export { fetchContent, loadPage };

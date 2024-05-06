@@ -1,132 +1,127 @@
-* { 
-    margin:0; 
-    padding:0; 
-    box-sizing:border-box;
-    font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica, sans-serif; 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica,
+    sans-serif;
 }
-html, body{
-    height: 100%;
-}
-
-.WebsiteLogo{
-    border-radius: 50%;
-    max-width: 9vh;
-    max-height: auto;
-    margin-bottom: 0.5em;
-    
+html,
+body {
+  height: 100%;
 }
 
-input:focus{
-    outline: none;
-    }
-
-.UserLogo{
-    border-radius: 50%;
-    max-width: 7vh;
-    max-height: auto;
-    margin-bottom: 0.5em;
-    
-}
-.PostCard{
-    padding: 1vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #D9D9D9;
-    border-radius: 1vh;
-}
-.MainView{
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-    padding-left: 2% ;
-    padding-right: 2% ;
-    
-}
-.heart.Full{
-    font-variation-settings: 'FILL' 1, 'wght' 100, 'GRAD' 0, 'opsz' 48;
+.WebsiteLogo {
+  border-radius: 50%;
+  max-width: 9vh;
+  max-height: auto;
+  margin-bottom: 0.5em;
 }
 
-
-.OverallContainer{
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
+input:focus {
+  outline: none;
 }
 
-.NavFlex{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 3vh 1vh 1vh 3vh;
-    gap: 1vh;
-    background-color: #D9D9D9;
+.UserLogo {
+  border-radius: 50%;
+  max-width: 7vh;
+  max-height: auto;
+  margin-bottom: 0.5em;
+}
+.PostCard {
+  padding: 1vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #d9d9d9;
+  border-radius: 1vh;
+}
+.MainView {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  padding: 1%;
+}
+.heart.Full {
+  font-variation-settings: "FILL" 1, "wght" 100, "GRAD" 0, "opsz" 48;
 }
 
-.ViewProfile{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.OverallContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
 }
 
-.PostButton{
-    margin-left: auto;
-    padding: 1vh;
-    border-radius:1em;
-    margin-right: 10%;
-    cursor: pointer;
-
+.NavFlex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 3vh 1vh 1vh 3vh;
+  gap: 1vh;
+  background-color: #d9d9d9;
 }
 
-.SearchInputClass{
-    border-style:none;
+.ViewProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.SearchBar{
-    display: flex;
-    outline: solid black 1px;
-    border-radius: 0.5em;  
-    background-color: #FFFFFF;
-    padding: 0.5vh;
+.PostButton {
+  margin-left: auto;
+  padding: 1vh;
+  border-radius: 1em;
+  margin-right: 10%;
+  cursor: pointer;
 }
 
-.Categories{
-    outline: solid black 1px;
-    border-radius: 0.5em;  
-    padding: 1vh;
-    border-style:none;
+.SearchInputClass {
+  border-style: none;
 }
 
-.PostHeadder{
-    display: flex;
-    flex-direction: row;
-    
+.SearchBar {
+  display: flex;
+  outline: solid black 1px;
+  border-radius: 0.5em;
+  background-color: #ffffff;
+  padding: 0.5vh;
 }
 
-.PostUserdetails{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row-reverse;
-    margin-left: auto;
-    gap: 0.5vh;   
+.Categories {
+  outline: solid black 1px;
+  border-radius: 0.5em;
+  padding: 1vh;
+  border-style: none;
 }
 
-.PostUserLogo{
-    max-width: 2vh;
-    max-height: auto;
-    margin-bottom: 0em;
+.PostHeadder {
+  display: flex;
+  flex-direction: row;
 }
 
-.CardBody{
-    display: flex;
-    align-items: center;
-    gap: 10vh;
+.PostUserdetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin-left: auto;
+  gap: 0.5vh;
 }
 
-.NoPosts{
-    display: flex;
-    gap: 1vh;
-    align-items: center;
-    justify-content: center;
+.PostUserLogo {
+  max-width: 2vh;
+  max-height: auto;
+  margin-bottom: 0em;
+}
+
+.CardBody {
+  display: flex;
+  align-items: center;
+  gap: 10vh;
+}
+
+.NoPosts {
+  display: none;
+  gap: 1vh;
+  align-items: center;
+  justify-content: center;
 }

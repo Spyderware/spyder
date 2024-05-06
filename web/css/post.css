@@ -1,173 +1,168 @@
-* { 
-    margin:0; 
-    padding:0; 
-    box-sizing:border-box;
-    font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica, sans-serif; 
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica,
+    sans-serif;
 }
-html, body{
-    height: 100%;
-}
-
-.WebsiteLogo{
-    border-radius: 50%;
-    max-width: 9vh;
-    max-height: auto;
-    margin-bottom: 0.5em;
-    
+html,
+body {
+  height: 100%;
 }
 
-input:focus{
-    outline: none;
-    }
-
-.UserLogo{
-    border-radius: 50%;
-    max-width: 7vh;
-    max-height: auto;
-    margin-bottom: 0.5em;
-    
-}
-.PostCard{
-    padding: 1vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #D9D9D9;
-    border-radius: 1vh;
-}
-.MainView{
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-    padding-left: 2% ;
-    padding-right: 2% ;
-    
+.WebsiteLogo {
+  border-radius: 50%;
+  max-width: 9vh;
+  max-height: auto;
+  margin-bottom: 0.5em;
 }
 
-span.material-symbols-outlined.HomeButton{
-    font-size: 6.5vh;
-    font-variation-settings: 'OPSZ' 48;
+input:focus {
+  outline: none;
 }
 
-span.material-symbols-outlined.AddComment{
-    margin-left: auto;
-    cursor: pointer;
+.UserLogo {
+  border-radius: 50%;
+  max-width: 7vh;
+  max-height: auto;
+  margin-bottom: 0.5em;
+}
+.PostCard {
+  padding: 1vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #d9d9d9;
+  border-radius: 1vh;
+}
+.MainView {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  padding: 1%;
 }
 
-span.material-symbols-outlined.LikeComment{
-    cursor: pointer;
+span.material-symbols-outlined.HomeButton {
+  font-size: 6.5vh;
+  font-variation-settings: "OPSZ" 48;
 }
 
-input,textarea:focus{
-    outline: none;
-    }
-
-.OverallContainer{
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
+span.material-symbols-outlined.AddComment {
+  margin-left: auto;
+  cursor: pointer;
 }
 
-.NavFlex{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 3vh 1vh 1vh 3vh;
-    gap: 1vh;
-    background-color: #D9D9D9;
+span.material-symbols-outlined.LikeComment {
+  cursor: pointer;
 }
 
-.ViewProfile{
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    align-items: center;
+input,
+textarea:focus {
+  outline: none;
 }
 
-.PostButtonClass{
-    margin-left: auto;
-    padding: 1vh;
-    border-radius:1em;
-    cursor: pointer;
-
+.OverallContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
 }
 
-#SearchInput{
-    border-style:none;
+.NavFlex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 3vh 1vh 1vh 3vh;
+  gap: 1vh;
+  background-color: #d9d9d9;
 }
 
-.HomeButton{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5vh;
-    cursor: pointer;
+.ViewProfile {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  align-items: center;
 }
 
-#Categories{
-    outline: solid black 1px;
-    border-radius: 0.5em;  
-    padding: 0.5vh;
-    border-style:none;
+.PostButtonClass {
+  margin-left: auto;
+  padding: 1vh;
+  border-radius: 1em;
+  cursor: pointer;
 }
 
-.PostHeadder{
-    display: flex;
-    flex-direction: row;   
+#SearchInput {
+  border-style: none;
 }
 
-.PostUserdetails{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row-reverse;
-    margin-left: auto;
-    gap: 0.5vh;   
+.HomeButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5vh;
+  cursor: pointer;
 }
 
-.PostUserLogo{
-    max-width: 2vh;
-    max-height: auto;
-    margin-bottom: 0em;
+#Categories {
+  outline: solid black 1px;
+  border-radius: 0.5em;
+  padding: 0.5vh;
+  border-style: none;
 }
 
-.CardBody{
-    display: flex;
-    align-items: center;
-    gap: 10vh;
+.PostHeadder {
+  display: flex;
+  flex-direction: row;
 }
 
-.NewComment{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1vh;
-    outline: solid black 1px; 
-    border-radius: 0.5em;  
+.PostUserdetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin-left: auto;
+  gap: 0.5vh;
 }
 
-.CommentInputClass{
-    max-block-size: 85%;
-    resize: vertical;
-    min-height: 3em;
-    width:95%;
-    border-style: none;
-    
+.PostUserLogo {
+  max-width: 2vh;
+  max-height: auto;
+  margin-bottom: 0em;
 }
 
-.PlacedComment{
-    display: flex;
-    gap: 1vh;
-    padding: 1vh;
-    outline: solid black 1px; 
-    border-radius: 0.5em;  
+.CardBody {
+  display: flex;
+  align-items: center;
+  gap: 10vh;
 }
 
-.NoComments{
-    display: flex;
-    gap: 1vh;
-    align-items: center;
-    justify-content: center;
+.NewComment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1vh;
+  outline: solid black 1px;
+  border-radius: 0.5em;
 }
 
+.CommentInputClass {
+  max-block-size: 85%;
+  resize: vertical;
+  min-height: 3em;
+  width: 95%;
+  border-style: none;
+}
+
+.PlacedComment {
+  display: flex;
+  gap: 1vh;
+  padding: 1vh;
+  outline: solid black 1px;
+  border-radius: 0.5em;
+}
+
+.NoComments {
+  display: flex;
+  gap: 1vh;
+  align-items: center;
+  justify-content: center;
+}
