@@ -1,6 +1,8 @@
-export const OK = 200;
-export const InternalServerError = 500;
-export const NotFound = 404;
-export const Conflict = 409;
-export const Unauthorized = 401;
-export const BadRequest = 403;
+export const HttpStatusCodes = Object.freeze({
+    OK: 200,
+    InternalServerError: 500,
+    NotFound: 404,
+    Conflict: 409,
+    Unauthorized: 401,
+    BadRequest: 403
+});
