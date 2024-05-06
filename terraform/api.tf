@@ -127,7 +127,7 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "DB_HOST"
-    value     = module.rds.db_instance_endpoint
+    value     = module.rds.db_instance_address
   }
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
