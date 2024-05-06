@@ -74,12 +74,12 @@ function hoistCss(container) {
  * for a specific page.
  */
 function removeHoistedElements(elements) {
-    while (elements.length > 0) {
-        const element = elements.pop();
+    elements.forEach(element => {
         if (element.parentNode) {
             element.parentNode.removeChild(element);
         }
-    }
+    });
+    elements = []
 }
 
 /**
@@ -113,6 +113,16 @@ function changePageTitle(container) {
     document.title = title;
 }
 
+function fixScriptLocations() {
+    const currentDomain = window.location.pathname;
+
+    document.head.querySelectorAll('script').forEach(script => {
+        console.log("INIT" + script.src);
+        script.src = "../".repeat((currentDomain.match(/\//g) || []).length) + script.src;
+        console.log("AFTER" + script.src);
+    });
+}
+
 /**
  * This function fetches and prepares the html content to be loaded into the
  * main document.
@@ -130,6 +140,8 @@ async function loadPage(page) {
         hoistScripts(contentContainer);
         hoistCss(contentContainer);
         changePageTitle(contentContainer);
+
+        fixScriptLocations();
     } catch (error) {
         console.error('Error loading HTML content:', error);
     }
