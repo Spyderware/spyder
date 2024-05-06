@@ -54,6 +54,10 @@ resource "aws_elastic_beanstalk_application" "beanstalk_app" {
   description = "Spyder Api"
 }
 
+data "aws_secretsmanager_secret_version" "spyderdb-details" {
+  secret_id = module.rds.db_instance_master_user_secret_arn
+}
+
 resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
   name                = "spyder-api-env"
   application         = aws_elastic_beanstalk_application.beanstalk_app.name
@@ -109,5 +113,30 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
     namespace = "aws:elasticbeanstalk:managedactions"
     name      = "ManagedActionsEnabled"
     value     = "false"
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "DB_USER"
+    value     = module.rds.db_instance_username
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "DB_PASSWORD"
+    value     = jsondecode(data.aws_secretsmanager_secret_version.spyderdb-details.secret_string)["password"]
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "DB_HOST"
+    value     = module.rds.db_instance_endpoint
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "BD_PORT"
+    value     = module.rds.db_instance_port
+  }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "DB_NAME"
+    value     = module.rds.db_instance_name
   }
 }
