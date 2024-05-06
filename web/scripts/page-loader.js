@@ -89,7 +89,7 @@ function removeHoistedElements(elements) {
  * @returns the html content.
  */
 async function fetchContent(path) {
-    const response = await fetch(`${path}.html`);
+    const response = await fetch(`${window.location.origin}/${path}.html`);
     if (!response.ok) {
         throw new Error(`Failed to fetch ${path}.html`);
     }
@@ -113,16 +113,6 @@ function changePageTitle(container) {
     document.title = title;
 }
 
-function fixScriptLocations() {
-    const currentDomain = window.location.pathname;
-
-    document.head.querySelectorAll('script').forEach(script => {
-        console.log("INIT" + script.src);
-        script.src = "../".repeat((currentDomain.match(/\//g) || []).length) + script.src;
-        console.log("AFTER" + script.src);
-    });
-}
-
 /**
  * This function fetches and prepares the html content to be loaded into the
  * main document.
@@ -132,7 +122,10 @@ async function loadPage(page) {
     const contentContainer = document.getElementById(CONTENT_CONTAINER_ID);
 
     try {
+        console.log(`${HTML_DIR}${page}`)
+
         const htmlText = await fetchContent(`${HTML_DIR}${page}`);
+        console.log(htmlText)
         contentContainer.innerHTML = htmlText;
 
         removeHoistedElements(hoistedElements);
@@ -140,8 +133,6 @@ async function loadPage(page) {
         hoistScripts(contentContainer);
         hoistCss(contentContainer);
         changePageTitle(contentContainer);
-
-        fixScriptLocations();
     } catch (error) {
         console.error('Error loading HTML content:', error);
     }

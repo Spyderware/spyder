@@ -15,15 +15,16 @@ async function handlePathChange() {
     var newPath = window.location.pathname.substring(1);
     const subPathBeginIndex = newPath.indexOf('/');
 
-    // If '.' exists in the pathname
+    var pageLoc = newPath;
     if(subPathBeginIndex !== -1) {
-        newPath = newPath.substring(0, subPathBeginIndex) + `/${PLACEHOLDER_ROUTE}`;
+        pageLoc = newPath.substring(0, subPathBeginIndex);
+        newPath = `${pageLoc}/${PLACEHOLDER_ROUTE}`;
     }
 
     if (!isValidPath(newPath)) {
         changeRoute(Routes.ORIGIN, true);
     } else {
-        await loadPage(newPath);
+        await loadPage(pageLoc);
     }
 }
 
