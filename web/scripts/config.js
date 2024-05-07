@@ -1,10 +1,16 @@
 /**
+ * Placeholder for dynamic routing values
+ */
+const PLACEHOLDER_ROUTE = '{val}';
+
+/**
  * An enum listing the configured routes that can be used to load content.
  */
 const Routes = Object.freeze({
     ORIGIN: 'home',
     Login: 'login',
     Homepage: 'home',
+    Post: `post/${PLACEHOLDER_ROUTE}`,
 });
 
 /**
@@ -28,4 +34,4 @@ const APP_NAME = 'Spyder';
  */
 const AUTH_TOKEN_NAME = 'userid';
 
-export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME }
+export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME, PLACEHOLDER_ROUTE }

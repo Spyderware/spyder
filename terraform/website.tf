@@ -1,3 +1,7 @@
+resource "aws_secretsmanager_secret" "web-config" {
+  name = "web-config-secret"
+}
+
 resource "aws_s3_bucket" "website" {
   bucket        = "spyder-frontend"
   force_destroy = true

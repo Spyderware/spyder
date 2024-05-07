@@ -1,8 +1,9 @@
-import { Routes } from "./utils.js";
+import { Routes } from "./config.js";
 import { changeRoute } from "./router.js";
 
 // =================== Functions ===================
 
-document.getElementById('hpgBtn1').addEventListener('click', function () {
-    changeRoute(Routes.Login, false);
+document.getElementById('post-1').addEventListener('click', function(event) {
+    event.preventDefault();
+    changeRoute(event.currentTarget.getAttribute('href'), true);
 });

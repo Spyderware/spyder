@@ -9,14 +9,6 @@ html, body{
     height: 100%;
 }
 
-.WebsiteLogo{
-    border-radius: 50%;
-    max-width: 9vh;
-    max-height: auto;
-    margin-bottom: 0.5em;
-    
-}
-
 input:focus{
     outline: none;
     }

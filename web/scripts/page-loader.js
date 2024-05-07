@@ -1,4 +1,4 @@
-import { APP_NAME, HTML_DIR } from './utils.js'
+import { APP_NAME, HTML_DIR } from './config.js'
 
 // =================== Constants ===================
 
@@ -55,10 +55,12 @@ function hoistScripts(container) {
 function hoistCss(container) {
     const linkTags = container.querySelectorAll('link');
     linkTags.forEach(linkTag => {
-        if (linkTag.getAttribute('rel') === 'stylesheet') {
+        const href = linkTag.getAttribute('href');
+        if (href && linkTag.getAttribute('rel') === 'stylesheet') {
+
             const cssElement = document.createElement('link');
             cssElement.rel = 'stylesheet';
-            cssElement.href = linkTag.getAttribute('href');
+            cssElement.href = href;
             document.head.appendChild(cssElement);
 
             hoistedElements.push(cssElement);
@@ -74,12 +76,12 @@ function hoistCss(container) {
  * for a specific page.
  */
 function removeHoistedElements(elements) {
-    while (elements.length > 0) {
-        const element = elements.pop();
+    elements.forEach(element => {
         if (element.parentNode) {
             element.parentNode.removeChild(element);
         }
-    }
+    });
+    elements = []
 }
 
 /**
@@ -89,7 +91,7 @@ function removeHoistedElements(elements) {
  * @returns the html content.
  */
 async function fetchContent(path) {
-    const response = await fetch(`${path}.html`);
+    const response = await fetch(`${window.location.origin}/${path}.html`);
     if (!response.ok) {
         throw new Error(`Failed to fetch ${path}.html`);
     }

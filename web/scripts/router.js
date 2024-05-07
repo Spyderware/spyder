@@ -1,5 +1,5 @@
 import { loadPage } from "./page-loader.js";
-import { PATH_CHANGE_EVENT_NAME, Routes } from "./utils.js";
+import { PATH_CHANGE_EVENT_NAME, PLACEHOLDER_ROUTE, Routes } from "./config.js";
 
 // ===================== Init ======================
 
@@ -12,12 +12,19 @@ addEventListener(PATH_CHANGE_EVENT_NAME, handlePathChange);
  * manually edited with `pushState` or when the `popState` event is fired.
  */
 async function handlePathChange() {
-    const newPath = window.location.pathname.substring(1);
+    var newPath = window.location.pathname.substring(1);
+    const subPathBeginIndex = newPath.indexOf('/');
+
+    var pageLoc = newPath;
+    if(subPathBeginIndex !== -1) {
+        pageLoc = newPath.substring(0, subPathBeginIndex);
+        newPath = `${pageLoc}/${PLACEHOLDER_ROUTE}`;
+    }
 
     if (!isValidPath(newPath)) {
         changeRoute(Routes.ORIGIN, true);
     } else {
-        await loadPage(newPath);
+        await loadPage(pageLoc);
     }
 }
 
