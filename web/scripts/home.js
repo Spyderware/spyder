@@ -1,4 +1,4 @@
-import { Routes } from "./utils.js";
+import { Routes } from "./config.js";
 import { changeRoute } from "./router.js";
 
 // =================== Functions ===================

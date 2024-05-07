@@ -1,4 +1,4 @@
-import { Routes, PATH_CHANGE_EVENT_NAME } from "./utils.js";
+import { Routes, PATH_CHANGE_EVENT_NAME } from "./config.js";
 import { changeRoute } from "./router.js";
 import { initAuth, isLoggedIn } from "./auth.js";
 

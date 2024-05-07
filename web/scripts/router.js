@@ -1,5 +1,5 @@
 import { loadPage } from "./page-loader.js";
-import { PATH_CHANGE_EVENT_NAME, PLACEHOLDER_ROUTE, Routes } from "./utils.js";
+import { PATH_CHANGE_EVENT_NAME, PLACEHOLDER_ROUTE, Routes } from "./config.js";
 
 // ===================== Init ======================
 

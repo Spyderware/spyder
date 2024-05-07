@@ -1,5 +1,5 @@
 import { changeRoute } from "./router.js";
-import { AUTH_TOKEN_NAME, Routes } from "./utils.js";
+import { AUTH_TOKEN_NAME, Routes } from "./config.js";
 
 // =================== Functions ===================
 

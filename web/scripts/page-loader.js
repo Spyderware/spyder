@@ -1,4 +1,4 @@
-import { APP_NAME, HTML_DIR } from './utils.js'
+import { APP_NAME, HTML_DIR } from './config.js'
 
 // =================== Constants ===================
 
