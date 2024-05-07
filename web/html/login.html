@@ -5,8 +5,8 @@
   <title>Spyder Login</title>
 </head>
 <body>
-  <div class="container">
-    <div class="login-container">
+  <section class="container">
+    <article class="login-container">
       <div class="login-image">
         <img
           src="../resources/SpyderwareLogo.png"
@@ -14,6 +14,7 @@
           id="loginlogo"
         />
       </div>
+      <h1>Welcome User</h1>
       <div class="login-button">
         <div
           id="g_id_onload"
@@ -34,6 +35,33 @@
           data-logo_alignment="left"
         ></div>
       </div>
-    </div>
-  </div>
+    </article>
+  </section>
+
+  <section class="NewUserNameFlex">
+    <article class="NewUserCard">
+      <div class="LoginHeadder">
+        <img
+          src="../resources/SpyderwareLogo.png"
+          alt=""
+          class="WebsiteLogo"
+        />
+        <h1>Please enter a username</h1>
+      </div>
+      <form action="" method="" class="UserNameForm">
+        <span class="ErrorMessage">Username is required</span>
+        <input
+          type="text"
+          id="fUsername"
+          class="fUsername"
+          placeholder="Username"
+          maxlength="25"
+        />
+        <button type="submit" class="CreateUsernameButton">
+          Continue
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+      </form>
+    </article>
+  </section>
 </body>

@@ -28,17 +28,21 @@ input:focus {
   margin-bottom: 0.5em;
 }
 .PostCard {
-  padding: 1vh;
+  padding: 3vh 1vh 3vh 3vh;
   display: flex;
   flex-direction: column;
-  background-color: #d9d9d9;
+  background-color: #203246;
+  color: white;
   border-radius: 1vh;
 }
 .MainView {
   display: flex;
   flex-direction: column;
   gap: 1vh;
-  padding: 1%;
+  flex-grow: 5;
+  overflow: auto;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 span.material-symbols-outlined.HomeButton {
@@ -73,13 +77,12 @@ textarea:focus {
   align-items: center;
   padding: 3vh 1vh 1vh 3vh;
   gap: 1vh;
-  background-color: #d9d9d9;
+  box-shadow: 0 0.125em 0.25em 0 rgba(0, 0, 0, 0.2);
 }
 
 .ViewProfile {
   display: flex;
   flex-direction: column;
-  margin-left: auto;
   align-items: center;
 }
 
@@ -87,6 +90,7 @@ textarea:focus {
   margin-left: auto;
   padding: 1vh;
   border-radius: 1em;
+  margin-right: 10%;
   cursor: pointer;
 }
 
@@ -107,6 +111,11 @@ textarea:focus {
   border-radius: 0.5em;
   padding: 0.5vh;
   border-style: none;
+#Categories{
+    border: 0.09em solid black;
+    border-radius: 0.5em;  
+    padding: 0.5vh;
+    border-style:none;
 }
 
 .PostHeadder {
@@ -142,6 +151,13 @@ textarea:focus {
   padding: 1vh;
   outline: solid black 1px;
   border-radius: 0.5em;
+.NewComment{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vh;
+    border: 0.09em solid black;
+    border-radius: 0.5em;  
 }
 
 .CommentInputClass {
@@ -150,6 +166,12 @@ textarea:focus {
   min-height: 3em;
   width: 95%;
   border-style: none;
+.CommentInputClass{
+    max-block-size: 85%;
+    resize: vertical;
+    min-height: 3em;
+    width:95%;
+    border-style: none;
 }
 
 .PlacedComment {
@@ -158,6 +180,12 @@ textarea:focus {
   padding: 1vh;
   outline: solid black 1px;
   border-radius: 0.5em;
+.PlacedComment{
+    display: flex;
+    gap: 1vh;
+    padding: 1vh;
+    border: 0.09em solid black;
+    border-radius: 0.5em;  
 }
 
 .NoComments {
