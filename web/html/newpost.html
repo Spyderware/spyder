@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/newpost.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="OverallContainer">
+    <nav class="NavFlex">
+      <img src="../resources/SpyderwareLogo.png" alt="" class="WebsiteLogo" />
+      <div class="HomeButton">
+        <span class="material-symbols-outlined HomeButton">home</span>
+        <p>Home</p>
+      </div>
+      <button type="submit" class="PostButtonClass" id="PostButton">
+        Create Post
+      </button>
+      <div class="ViewProfile">
+        <span class="material-symbols-outlined UserLogoIcon Headder">
+          account_circle
+          </span>
+        <!-- 
+         Use for User Images from Google oAuth  
+        <img src="../resources/DefaultUserLogo.png" alt="" class="UserLogo" /> -->
+        <p>View Profile</p>
+      </div>
+    </nav>
+    <main class="MainView">
+     
+      <section class="CreatePostContainer">
+        <article class="CreatePostPopUp">
+          <h1 class="CreatePostHeadder">Create Post</h1>
+          <form action="" method="" id="NewPostForm" class="NewPostFormClass">
+            <span class="ErrorMessage">Category is Required</span>
+            <select name="fcategories" id="fcategories" class="InputStyling">
+              <option value="" disabled selected>Select your Category*</option>
+              <option value="1">Programming Language</option>
+              <option value="1">Application</option>
+            </select>
+            <span class="ErrorMessage">Title is Required</span>
+            <input
+              type="text"
+              id="fPostTitle"
+              placeholder="Title*"
+              class="InputStyling"
+              maxlength="35"
+            />
+            <span class="ErrorMessage">Body is Required</span>
+            <textarea
+              type="text"
+              id="fPostBody"
+              placeholder="Body*"
+              class="fPostBody InputStyling"
+              maxlength="255"
+            ></textarea>
+            <button type="submit" id="PostButton" class="PostButtonSubmitClass">
+              Post
+            </button>
+          </form>
+        </article>
+      </section>
+
+    </main>
+    <script src="" async defer></script>
+  </body>
+</html>

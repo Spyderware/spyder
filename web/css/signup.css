@@ -3,7 +3,10 @@
     padding:0; 
     box-sizing:border-box;
     font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica, sans-serif; 
+}
 
+html, body{
+    height: 100%;
 }
 
 .ErrorMessage{
@@ -44,17 +47,12 @@
 }
 
 .NewUserCard{
-    outline: solid black 1px;    
+    outline: solid black 0.0625em;    
     display: flex;
-    background-color: #D9D9D9 ;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2em;
-    border-radius: 2em;
-    outline: solid black 1px;    
-    display: flex;
-    background-color: #D9D9D9 ;
+    max-width: 20em;
+    max-height: 70em;
+    background-color: #203246;
+    color: white;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -85,7 +83,7 @@
 }
 
 #CreatePostPopUp{
-    outline: solid black 1px;    
+    outline: solid black 0.0625em;    
     display: flex;
     background-color: #D9D9D9 ;
     flex-direction: column;
