@@ -73,7 +73,9 @@ jobs:
 
       - name: Rewrite Config
         working-directory: ${{ env.web_directory }}
-        run: echo ${{ env.WEB_CONFIG }} > scripts/config.js
+        run: |
+          echo ${{ env.WEB_CONFIG }} > scripts/config.js
+          cat scripts/config.js
 
       - name: Deploy Website Files
         working-directory: ${{ env.web_directory }}
