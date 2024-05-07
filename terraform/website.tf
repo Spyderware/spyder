@@ -1,5 +1,7 @@
 resource "aws_secretsmanager_secret" "web-config" {
-  name = "web-config-secret"
+  name                    = "web-config"
+  description             = "Configuration for Prod Website"
+  recovery_window_in_days = 7
 }
 
 resource "aws_s3_bucket" "website" {
