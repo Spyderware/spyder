@@ -109,3 +109,24 @@ export const checkIfAccountExists = (account_id) => {
             throw error;
         });
 }
+
+export const checkIfUIDExists = async (uid) => {
+    let username = null;
+    await DbUtils.spyderdb.oneOrNone('SELECT * FROM account WHERE uid = $1', [uid])
+        .then(async data => {
+            if (data) {
+                username = data.username;
+            } else {
+                await addUser(uid, null);
+            }
+        })
+    return username;
+}
+
+export const addUser = async (uid, username) => {
+    await DbUtils.spyderdb.none('INSERT INTO account(uid, username) VALUES(${uid}, ${username})', {
+        uid: uid,
+        username: username
+    });
+}
+
