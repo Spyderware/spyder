@@ -1,31 +1,31 @@
 CREATE TABLE account (
   account_id serial PRIMARY KEY,
-  uid varchar(20) UNIQUE,
-  username varchar(25) UNIQUE
+  uid varchar(20) UNIQUE NOT NULL,
+  username varchar(25) NULL
 );
 
 CREATE TABLE category (
   category_id serial PRIMARY KEY,
-  category varchar(15) UNIQUE
+  category varchar(15) UNIQUE NOT NULL
 );
 
 CREATE TABLE post (
   post_id serial PRIMARY KEY,
-  account_id int,
-  title varchar(35),
-  body varchar(255),
-  category_id int
+  account_id int NOT NULL,
+  title varchar(50) NOT NULL,
+  body varchar(1000) NOT NULL,
+  category_id int NOT NULL
 );
 
 CREATE TABLE comment (
   comment_id serial PRIMARY KEY,
-  account_id int,
-  post_id int,
-  comment varchar(50)
+  account_id int NOT NULL,
+  post_id int NOT NULL,
+  comment varchar(255) NOT NULL
 );
 
 CREATE TABLE post_upvote (
   post_interaction_id serial PRIMARY KEY,
-  account_id int,
-  post_id int
+  account_id int NOT NULL,
+  post_id int NOT NULL
 );
