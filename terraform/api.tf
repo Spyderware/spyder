@@ -3,11 +3,6 @@ resource "aws_s3_bucket" "beanstalk_file_bucket" {
   force_destroy = true
 }
 
-# resource "aws_acm_certificate" "https_cert" {
-#   domain_name       = "spyder-api-env.eba-zuxdcz8g.eu-west-1.elasticbeanstalk.com"
-#   validation_method = "DNS"
-# }
-
 resource "aws_iam_role" "beanstalk_ec2" {
   assume_role_policy    = jsonencode(
     {
@@ -133,24 +128,24 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
     value     = "HTTP"
     resource  = ""
   }
-  # setting {
-  #   namespace = "aws:elbv2:listener:443"
-  #   name      = "ListenerEnabled"
-  #   value     = "true"
-  #   resource  = ""
-  # }
-  # setting {
-  #   namespace = "aws:elbv2:listener:443"
-  #   name      = "Protocol"
-  #   value     = "HTTPS"
-  #   resource  = ""
-  # }
-  # setting {
-  #   namespace = "aws:elbv2:listener:443"
-  #   name      = "SSLCertificateArns"
-  #   value     = "arn:aws:acm:eu-west-1:574836245203:certificate/0695baa7-6cd3-4fc2-a6a5-960ee3dc9e91"
-  #   resource  = ""
-  # }
+  setting {
+    namespace = "aws:elbv2:listener:443"
+    name      = "ListenerEnabled"
+    value     = "true"
+    resource  = ""
+  }
+  setting {
+    namespace = "aws:elbv2:listener:443"
+    name      = "Protocol"
+    value     = "HTTPS"
+    resource  = ""
+  }
+  setting {
+    namespace = "aws:elbv2:listener:443"
+    name      = "SSLCertificateArns"
+    value     = local.elbCertArn
+    resource  = ""
+  }
   setting {
     namespace = "aws:ec2:vpc"
     name      = "AssociatePublicIpAddress"

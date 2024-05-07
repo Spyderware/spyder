@@ -9,4 +9,10 @@ terraform {
 
 provider "aws" {
   region = "eu-west-1"
+  default_tags {
+    tags = {
+      "owner"         = "jesse.naidoo@bbd.co.za"
+      "created-using" = "terraform"
+    }
+  }
 }
