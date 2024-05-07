@@ -5,5 +5,5 @@ import { changeRoute } from "./router.js";
 
 document.getElementById('post-1').addEventListener('click', function(event) {
     event.preventDefault();
-    changeRoute(event.currentTarget.getAttribute('href'), false);
+    changeRoute(event.currentTarget.getAttribute('href'), true);
 });

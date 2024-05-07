@@ -12,3 +12,10 @@ a {
 body {
   background-color: #646464;
 }
+
+.WebsiteLogo{
+  border-radius: 50%;
+  max-width: 9vh;
+  max-height: auto;
+  margin-bottom: 0.5em;
+}
