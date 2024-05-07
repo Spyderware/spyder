@@ -32,6 +32,6 @@ const APP_NAME = 'Spyder';
 /**
  * The name of the localStorage item for Auth Token
  */
-const AUTH_TOKEN_NAME = 'userid';
+const AUTH_TOKEN_NAME = 'jwt';
 
 export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME, PLACEHOLDER_ROUTE }
