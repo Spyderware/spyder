@@ -28,11 +28,12 @@ input:focus{
     
 }
 .PostCard{
-    padding: 1vh;
+    padding: 1em 2em 2em 1em;
     display: flex;
     flex-direction: column;
-    background-color: #D9D9D9;
+    background-color: #203246;
     border-radius: 1vh;
+    color: #FFFFFF;
 }
 .MainView{
     display: flex;
@@ -46,6 +47,14 @@ input:focus{
     font-variation-settings: 'FILL' 1, 'wght' 100, 'GRAD' 0, 'opsz' 48;
 }
 
+.UserLogoIcon.Headder{
+    font-variation-settings: 'FILL' 1, 'wght' 1000, 'GRAD' 0, 'opsz' 48;
+}
+
+.material-symbols-outlined.UserLogoIcon.PostUser{
+    font-variation-settings: 'FILL' 1, 'wght' 200, 'GRAD' 0, 'opsz' 48;
+}
+
 
 .OverallContainer{
     display: flex;
@@ -54,14 +63,25 @@ input:focus{
 }
 
 .NavFlex{
+    container-type: inline-size;
+    container-name: Navbar;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     padding: 3vh 1vh 1vh 3vh;
     gap: 1vh;
-    background-color: #D9D9D9;
+    box-shadow: 0 0.063em 0.25em;
 }
+.SearchBar{
+    display: flex;
+    border: 0.09em solid black;
+    border-radius: 0.5em;  
+    background-color: #FFFFFF;
+    padding: 0.5vh;
+}
+
+
 
 .ViewProfile{
     display: flex;
@@ -72,7 +92,7 @@ input:focus{
 .PostButton{
     margin-left: auto;
     padding: 1vh;
-    border-radius:1em;
+    border-radius:0.5em;
     margin-right: 10%;
     cursor: pointer;
 
@@ -82,24 +102,18 @@ input:focus{
     border-style:none;
 }
 
-.SearchBar{
-    display: flex;
-    outline: solid black 1px;
-    border-radius: 0.5em;  
-    background-color: #FFFFFF;
-    padding: 0.5vh;
-}
+
 
 .Categories{
-    outline: solid black 1px;
+    border: 0.09em solid black;
     border-radius: 0.5em;  
     padding: 1vh;
-    border-style:none;
 }
 
 .PostHeadder{
     display: flex;
     flex-direction: row;
+    padding-bottom: 1em;
     
 }
 
@@ -129,4 +143,21 @@ input:focus{
     gap: 1vh;
     align-items: center;
     justify-content: center;
+}
+
+.material-symbols-outlined.ExpandNavButton{
+    display: none;
+    cursor: pointer;
+}
+
+@container Navbar (max-width: 31.25em) {
+    .SearchBar{
+        display: none;
+    }
+    .Categories{
+        display: none;
+    }
+    .material-symbols-outlined.ExpandNavButton{
+        display:block;
+    } 
 }

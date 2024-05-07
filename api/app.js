@@ -1,15 +1,27 @@
-var express = require("express");
-const app = express();
+import {Auth} from './middleware/index.js';
+import {router} from "./routes/index.js";
+import cors from "cors";
+import bodyParser from "body-parser";
+import express from 'express';
 
+const app = express();
 const PORT = process.env.PORT | 8080;
 
-app.use("/", (req, res) => {
-  res.send(JSON.stringify({ message: "hello world 2" }));
+
+app.use(cors());
+app.use(bodyParser.json());
+app.get("/", (req, res) => {
+    res.send(JSON.stringify({message: "hello world 2"}));
 });
+
+// app.use(Auth.verifyToken);
+app.use('/api/v1', router);
+
+
 app.listen(PORT, (error) => {
-  if (!error) {
-    console.log(`Server is running, and App is listening on port ${PORT}`);
-  } else {
-    console.log("Error occurred, server can't start", error);
-  }
+    if (!error) {
+        console.log(`Server is running, and App is listening on port ${PORT}`);
+    } else {
+        console.log("Error occurred, server can't start", error);
+    }
 });
