@@ -45,4 +45,4 @@ jobs:
           version_label: "spyder-api-${{ github.sha }}"
           region: eu-west-1
           deployment_package: deploy.zip
-          existing_bucket_name: spyder-file-storage
+          existing_bucket_name: spyder-deployment-bucket

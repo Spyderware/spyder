@@ -1,19 +1,6 @@
-resource "aws_iam_policy" "bucket_access_policy" {
-  name = "spyder-file-storage-policy"
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action   = "s3:*"
-        Effect   = "Allow"
-        Resource = [
-          "arn:aws:s3:::spyder-file-storage",
-          "arn:aws:s3:::spyder-file-storage/*"
-        ]
-      },
-    ]
-  })
+resource "aws_s3_bucket" "beanstalk_file_bucket" {
+  bucket        = "spyder-deployment-bucket"
+  force_destroy = true
 }
 
 resource "aws_iam_role" "beanstalk_ec2" {
@@ -34,7 +21,6 @@ resource "aws_iam_role" "beanstalk_ec2" {
   description           = "Allows EC2 instances to call AWS services on your behalf."
   force_detach_policies = false
   managed_policy_arns   = [
-    aws_iam_policy.bucket_access_policy.arn, 
     "arn:aws:iam::aws:policy/AWSElasticBeanstalkMulticontainerDocker", 
     "arn:aws:iam::aws:policy/AWSElasticBeanstalkWebTier", 
     "arn:aws:iam::aws:policy/AWSElasticBeanstalkWorkerTier"
