@@ -41,6 +41,7 @@ input:focus {
   gap: 1vh;
   padding-left: 2%;
   padding-right: 2%;
+  padding-top: 1%;
 }
 .heart.Full {
   font-variation-settings: "FILL" 1, "wght" 100, "GRAD" 0, "opsz" 48;

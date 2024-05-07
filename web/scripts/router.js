@@ -7,7 +7,7 @@ addEventListener(PATH_CHANGE_EVENT_NAME, handlePathChange);
 
 // @ryan - was this removed on purpose? Handles loading page content when moving back and forwards
 // in history
-addEventListener('popstate', handlePathChange);
+// addEventListener('popstate', handlePathChange);
 
 // =================== Functions ===================
 

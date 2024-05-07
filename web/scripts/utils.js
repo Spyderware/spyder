@@ -34,8 +34,4 @@ const APP_NAME = 'Spyder';
  */
 const AUTH_TOKEN_NAME = 'userid';
 
-const ContentTemplates = Object.freeze({
-    PostTemplate: `${HTML_DIR}postTemplate`,
-});
-
-export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME, PLACEHOLDER_ROUTE, ContentTemplates }
+export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME, PLACEHOLDER_ROUTE }

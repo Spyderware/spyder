@@ -1,36 +1,10 @@
-import { ContentTemplates, Routes } from "./utils.js";
 import { changeRoute } from "./router.js";
-import { fetchContent } from "./page-loader.js";
+import { createPostFromTemplate } from "./template-loader.js";
 
 // =================== Constants ===================
 const HOMEPAGE_MAIN_VIEW_ID = 'homepage-main-view';
 
 // =================== Functions ===================
-
-/**
- * This function loads a generic `post` template and injects the post data into its respective field.
- * @param {{
- * postId,
- * username,
- * title,
- * body
- * }} postData - the data / content for a specific post.
- * @returns a post template populated with the provided data.
- */
-async function createPostFromTemplate(postData) {
-    if (!('postId' in postData && 'username' in postData && 'title' in postData && 'body' in postData)) {
-        throw new Error("postData must contain 'postId', 'username', 'title', and 'body' fields.");
-    }
-
-    let postTemplate = await fetchContent(ContentTemplates.PostTemplate);
-
-    postTemplate = postTemplate.replace(/##POST_ID##/g, postData.postId)
-        .replace(/##POST_USERNAME##/g, postData.username)
-        .replace(/##POST_TITLE##/g, postData.title)
-        .replace(/##POST_BODY##/g, postData.body);
-
-    return postTemplate;
-}
 
 /**
  * This function takes a list of post data objects, and dynamically creates the post `cards`
@@ -61,6 +35,7 @@ async function populatePostsList(posts) {
 }
 
 // ------------------------------- TESTING CODE -------------------------------
+
 const testPosts = [
     {
         postId: 1,
@@ -90,8 +65,3 @@ const testPosts = [
 populatePostsList(testPosts);
 
 // ------------------------------- END TESTING CODE -------------------------------
-
-/**
- * When home page loads:
- *  - get a 'page' of posts -- paginate
- */
