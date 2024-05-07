@@ -68,7 +68,7 @@ jobs:
         uses: aws-actions/aws-secretsmanager-get-secrets@v2.0.1
         with:
           secret-ids: |
-            WEB_, web*
+            WEB_CONFIG, web-config
           parse-json-secrets: true
 
       - name: Rewrite Config
