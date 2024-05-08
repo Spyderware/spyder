@@ -1,10 +1,10 @@
+import { getPostContent } from "./api.js";
 import { createPostFromTemplate, createCommentFromTemplate } from "./template-loader.js";
 
 
 // =================== Constants ===================
 const POST_VIEW_CONTAINER_ID = 'post-view-container';
 const COMMENT_CONTAINER_ID = 'comment-container';
-
 // =================== Functions ===================
 
 async function preparePostView() {
@@ -20,12 +20,7 @@ async function preparePostView() {
     // TODO : get post data for postId
     // TODO : get comment data for postId
 
-    const postData = {
-        postId: postId,
-        username: 'testUsername1',
-        title: `Post ${postId} Title`,
-        body: `Body of post ${postId}`
-    }
+    const postData = await getPostContent(postId);
 
     const comments = [
         {
