@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 
 app.get("/login", AuthController.login);
 app.post("/signup", AuthController.signup);
-app.use('/api/v1', router);
+app.use('/api/v1', Auth.validateGoogleToken2 ,router);
 
 
 app.listen(PORT, (error) => {
