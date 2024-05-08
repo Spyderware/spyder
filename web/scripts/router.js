@@ -18,7 +18,7 @@ async function handlePathChange() {
     var pageLoc = newPath;
     if(subPathBeginIndex !== -1) {
         pageLoc = newPath.substring(0, subPathBeginIndex);
-        newPath = `${pageLoc}/${PLACEHOLDER_ROUTE}`;
+        newPath = pageLoc + `/${PLACEHOLDER_ROUTE}`.repeat(newPath.split('/').length - 1);
     }
 
     if (!isValidPath(newPath)) {
@@ -37,6 +37,10 @@ async function handlePathChange() {
  * @param {boolean} replaceState 
  */
 function changeRoute(page, replaceState) {
+    if(isCurrentPath(page)) {
+        return;
+    }
+
     if (replaceState) {
         window.history.replaceState({}, '', page);
     } else {
@@ -47,12 +51,16 @@ function changeRoute(page, replaceState) {
 }
 
 /**
- * This is the function called to initiate a page / route change.
- * Specifying `replaceState` to `true` will change the current browser state
- * without adding to its state history. Setting it to `false` will change the
- * state and add it to the window's state history.
- * @param {string} page 
- * @param {boolean} replaceState 
+ * This is the function called to check if a path is the current path.
+ * @param {string} path 
+ */
+function isCurrentPath(path) {
+    return `${window.location.origin}/${path}` === window.location.href || path === window.location.href
+}
+
+/**
+ * This is the function called to validate that a path is in the routes defined.
+ * @param {string} path 
  */
 function isValidPath(path) {
     return Object.values(Routes).includes(path);
