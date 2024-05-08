@@ -19,6 +19,7 @@ function login(authProviderResponse) {
 
 function logout() {
     localStorage.clear();
+    changeRoute(Routes.Login, false);
 }
 
 export { isLoggedIn, initAuth, login, logout };

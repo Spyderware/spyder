@@ -26,6 +26,11 @@ const HTML_DIR = 'html/';
 const PATH_CHANGE_EVENT_NAME = 'pathchanged';
 
 /**
+ * The name of the search invocation event
+ */
+const SEARCH_EVENT_NAME = 'searched';
+
+/**
  * The name of the website application
  */
 const APP_NAME = 'Spyder';
@@ -35,4 +40,4 @@ const APP_NAME = 'Spyder';
  */
 const AUTH_TOKEN_NAME = 'jwt';
 
-export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME, PLACEHOLDER_ROUTE }
+export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME, PLACEHOLDER_ROUTE, SEARCH_EVENT_NAME }
