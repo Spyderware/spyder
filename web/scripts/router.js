@@ -21,7 +21,7 @@ async function handlePathChange() {
         newPath = pageLoc + `/${PLACEHOLDER_ROUTE}`.repeat(newPath.split('/').length - 1);
     }
 
-    if (!isValidPath(newPath)) {
+    if (!isValidPath(`/${newPath}`)) {
         changeRoute(Routes.ORIGIN, true);
     } else {
         await loadPage(pageLoc);
@@ -37,7 +37,7 @@ async function handlePathChange() {
  * @param {boolean} replaceState 
  */
 function changeRoute(page, replaceState) {
-    if(isCurrentPath(page)) {
+    if(isCurrentPath(page.substring(1))) {
         return;
     }
 

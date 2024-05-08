@@ -5,6 +5,7 @@ import { initAuth, isLoggedIn } from "./auth.js";
 // ===================== Init ======================
 
 window.addEventListener('DOMContentLoaded', init);
+window.addEventListener('popstate', init);
 
 // =================== Functions ===================
 

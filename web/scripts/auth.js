@@ -9,12 +9,16 @@ function isLoggedIn() {
 
 function initAuth() {
     localStorage.clear();
-    changeRoute(Routes.Login, true);
+    changeRoute(`/${Routes.Login}`, true);
 }
 
 function login(authProviderResponse) {
-    localStorage.setItem(AUTH_TOKEN_NAME, authProviderResponse.sub);
+    localStorage.setItem(AUTH_TOKEN_NAME, authProviderResponse);
     changeRoute(Routes.ORIGIN);
 }
 
-export { isLoggedIn, initAuth, login };
+function logout() {
+    localStorage.clear();
+}
+
+export { isLoggedIn, initAuth, login, logout };

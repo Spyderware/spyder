@@ -9,12 +9,47 @@
       rel="stylesheet"
     />
 
-    <script type="module" src="/scripts/index.js" defer></script>
+    <script type="module" src="/scripts/index.js"></script>
+    <script type="module" src="/scripts/navbar.js"></script>
 
     <link rel="icon" type="image/x-icon" href="/resources/SpyderwareLogo.png" />
     <title>Spyder</title>
   </head>
   <body>
+    <nav class="NavFlex" id="navbar">
+      <img src="/resources/SpyderwareLogo.png" alt="" class="WebsiteLogo" />
+      <div class="HomeButton" id="GoHome">
+        <span class="material-symbols-outlined HomeButton">home</span>
+        <p>Home</p>
+      </div>
+      <div class="SearchBar">
+        <input
+          type="text"
+          class="SearchInputClass"
+          id="SearchInput"
+          placeholder="Search"
+        />
+        <span class="material-symbols-outlined">search</span>
+      </div>
+
+      <select name="fcategories" class="Categories" id="Categories">
+        <option value="" selected>Select your Category</option>
+        <option value="1">Programming Language</option>
+        <option value="2">Application</option>
+      </select>
+      <button type="submit" class="PostButton" id="CreatePost">
+        Create Post
+      </button>
+      <div class="ViewProfile" id="LogOut">
+        <span class="material-symbols-outlined UserLogoIcon Headder">
+          account_circle
+          </span>
+        <p>Log Out</p>
+      </div>
+      <span class="material-symbols-outlined ExpandNavButton">
+        expand_more
+        </span>
+    </nav>
     <div id="content-container"></div>
   </body>
 </html>

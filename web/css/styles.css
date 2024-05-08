@@ -19,3 +19,47 @@ body {
   max-height: auto;
   margin-bottom: 0.5em;
 }
+
+.NavFlex{
+  container-type: inline-size;
+  container-name: Navbar;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 3vh 1vh 1vh 3vh;
+  gap: 1vh;
+  box-shadow: 0 0.063em 0.25em;
+}
+
+.SearchBar{
+  display: flex;
+  border: 0.09em solid black;
+  border-radius: 0.5em;  
+  background-color: #FFFFFF;
+  padding: 0.5vh;
+}
+
+.Categories{
+  border: 0.09em solid black;
+  border-radius: 0.5em;  
+  padding: 1vh;
+}
+
+.PostButton{
+  margin-left: auto;
+  padding: 1vh;
+  border-radius:0.5em;
+  margin-right: 10%;
+  cursor: pointer;
+}
+
+.ViewProfile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
