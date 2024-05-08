@@ -114,3 +114,11 @@ input,textarea:focus{
 .UserLogoIcon.CardIcon {
     height: 2em;
 }
+
+.CommentUser {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 1vh;
+}

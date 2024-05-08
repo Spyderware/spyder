@@ -3,6 +3,7 @@ import { PATH_CHANGE_EVENT_NAME, PLACEHOLDER_ROUTE, Routes } from "./config.js";
 
 // ===================== Init ======================
 
+var currentPath = "";
 addEventListener(PATH_CHANGE_EVENT_NAME, handlePathChange);
 
 // =================== Functions ===================
@@ -48,6 +49,8 @@ function changeRoute(page, replaceState) {
         return;
     }
 
+    currentPath = path;
+
     if (replaceState) {
         window.history.replaceState({}, '', page);
     } else {
@@ -62,7 +65,7 @@ function changeRoute(page, replaceState) {
  * @param {string} path 
  */
 function isCurrentPath(path) {
-    return `${window.location.origin}${window.location.pathname}` === `${window.location.origin}${path}`
+    return path === currentPath
 }
 
 /**

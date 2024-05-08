@@ -75,7 +75,7 @@ input:focus{
   align-self: flex-end;
 }
 
-*.hide {
+.hide {
   display: none;
 }
 

@@ -40,4 +40,14 @@ const APP_NAME = 'Spyder';
  */
 const AUTH_TOKEN_NAME = 'jwt';
 
-export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME, PLACEHOLDER_ROUTE, SEARCH_EVENT_NAME }
+/**
+ * The name of the localStorage item for Auth Token
+ */
+const USERNAME_TOKEN_NAME = 'username';
+
+/**
+ * The name of the localStorage item for Auth Token
+ */
+const USER_LOGO_TOKEN_NAME = 'user-logo';
+
+export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME, PLACEHOLDER_ROUTE, SEARCH_EVENT_NAME, USERNAME_TOKEN_NAME, USER_LOGO_TOKEN_NAME }

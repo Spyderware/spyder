@@ -30,7 +30,7 @@ function hoistScripts(container) {
         const src = scriptTag.getAttribute('src');
         if (src) {
             const scriptElement = document.createElement('script');
-            scriptElement.src = src;
+            scriptElement.src = src + '?timestamp=' + new Date().getTime();
             if (scriptTag.getAttribute('type') === 'module') {
                 scriptElement.type = 'module';
             }
