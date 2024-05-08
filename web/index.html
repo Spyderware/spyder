@@ -17,11 +17,11 @@
   </head>
   <body>
     <nav class="NavFlex" id="navbar">
-      <img src="/resources/SpyderwareLogo.png" alt="" class="WebsiteLogo" />
-      <div class="HomeButton" id="GoHome">
+      <img src="/resources/SpyderwareLogo.png" alt="Spyder Logo" class="WebsiteLogo" id="NavbarLogo"/>
+      <!-- <div class="HomeButton" id="GoHome">
         <span class="material-symbols-outlined HomeButton">home</span>
         <p>Home</p>
-      </div>
+      </div> -->
       <div class="SearchBar">
         <input
           type="text"
@@ -37,18 +37,20 @@
         <option value="1">Programming Language</option>
         <option value="2">Application</option>
       </select>
-      <button type="submit" class="PostButton" id="CreatePost">
+      <button class="SearchButton" id="Search">
+        Search
+      </button>
+      <button class="PostButton" id="CreatePost">
         Create Post
       </button>
       <div class="ViewProfile" id="LogOut">
-        <span class="material-symbols-outlined UserLogoIcon Headder">
-          account_circle
-          </span>
+        <img 
+          class="UserLogoIcon" 
+          src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" 
+          alt="User Logo"
+        />
         <p>Log Out</p>
       </div>
-      <span class="material-symbols-outlined ExpandNavButton">
-        expand_more
-        </span>
     </nav>
     <div id="content-container"></div>
   </body>

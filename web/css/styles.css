@@ -13,11 +13,15 @@ body {
   background-color: #F8F8F8;
 }
 
+input:focus{
+  outline: none;
+}
+
 .WebsiteLogo{
   border-radius: 50%;
-  max-width: 9vh;
-  max-height: auto;
-  margin-bottom: 0.5em;
+  max-width: auto;
+  height: 4em;
+  cursor: pointer;
 }
 
 .NavFlex{
@@ -27,9 +31,10 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  padding: 3vh 1vh 1vh 3vh;
+  padding: 1em 1em 1em 1em;
   gap: 1vh;
   box-shadow: 0 0.063em 0.25em;
+  align-items: center;
 }
 
 .SearchBar{
@@ -46,11 +51,18 @@ body {
   padding: 1vh;
 }
 
+.SearchButton{
+  padding: 1vh;
+  border-radius:0.5em;
+  margin-right: 10%;
+  cursor: pointer;
+}
+
 .PostButton{
   margin-left: auto;
   padding: 1vh;
   border-radius:0.5em;
-  margin-right: 10%;
+  margin-right: 1.5em;
   cursor: pointer;
 }
 
@@ -58,8 +70,45 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+  height: 100%;
+  align-self: flex-end;
 }
 
-.hide {
+*.hide {
   display: none;
+}
+
+.SearchInputClass{
+  border-style:none;
+}
+
+.UserLogoIcon {
+  height: 3em;
+  border-radius: 100%;
+  border: 2px solid black;
+}
+
+@container Navbar (max-width: 44em) {
+  .PostButton {
+    display: none;
+  }
+  .ViewProfile {
+    margin-left: auto;
+  }
+}
+
+@container Navbar (max-width: 37em) {
+  .Categories{
+    display: none;
+  }
+  .SearchButton{
+    display: none;
+  }
+  .SearchBar {
+    margin: auto;
+  }
+  .ViewProfile {
+    margin-left: 0;
+  }
 }

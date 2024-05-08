@@ -1,24 +1,16 @@
 * { 
     margin:0; 
     padding:0; 
-    box-sizing:border-box;
+    box-sizing: border-box;
     font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica, sans-serif; 
 }
 html, body{
     height: 100%;
 }
 
-.WebsiteLogo{
-    border-radius: 50%;
-    max-width: 9vh;
-    max-height: auto;
-    margin-bottom: 0.5em;
-    
-}
-
 input:focus{
     outline: none;
-    }
+}
 
 .UserLogo{
     border-radius: 50%;
@@ -27,6 +19,7 @@ input:focus{
     margin-bottom: 0.5em;
     
 }
+
 .PostCard{
     padding: 1em 2em 2em 1em;
     display: flex;
@@ -47,23 +40,11 @@ input:focus{
     font-variation-settings: 'FILL' 1, 'wght' 100, 'GRAD' 0, 'opsz' 48;
 }
 
-.UserLogoIcon.Headder{
-    font-variation-settings: 'FILL' 1, 'wght' 1000, 'GRAD' 0, 'opsz' 48;
-}
-
-.material-symbols-outlined.UserLogoIcon.PostUser{
-    font-variation-settings: 'FILL' 1, 'wght' 200, 'GRAD' 0, 'opsz' 48;
-}
-
 
 .OverallContainer{
     display: flex;
     flex-direction: column;
     gap: 1vh;
-}
-
-.SearchInputClass{
-    border-style:none;
 }
 
 .PostHeadder{
@@ -104,16 +85,4 @@ input:focus{
 .material-symbols-outlined.ExpandNavButton{
     display: none;
     cursor: pointer;
-}
-
-@container Navbar (max-width: 31.25em) {
-    .SearchBar{
-        display: none;
-    }
-    .Categories{
-        display: none;
-    }
-    .material-symbols-outlined.ExpandNavButton{
-        display:block;
-    } 
 }

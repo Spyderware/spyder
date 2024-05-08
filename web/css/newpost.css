@@ -9,18 +9,6 @@ html, body{
     height: 100%;
 }
 
-.WebsiteLogo{
-    border-radius: 50%;
-    max-width: 9vh;
-    max-height: auto;
-    margin-bottom: 0.5em;
-    
-}
-
-input:focus{
-    outline: none;
-    }
-
 .UserLogo{
     border-radius: 50%;
     max-width: 7vh;
@@ -39,23 +27,9 @@ input:focus{
     
 }
 
-span.material-symbols-outlined.HomeButton{
-    font-size: 6.5vh;
-    font-variation-settings: 'OPSZ' 48;
-}
-
-span.material-symbols-outlined.AddComment{
-    margin-left: auto;
-    cursor: pointer;
-}
-
-span.material-symbols-outlined.LikeComment{
-    cursor: pointer;
-}
-
 input,textarea:focus{
     outline: none;
-    }
+}
 
 .OverallContainer{
     display: flex;
@@ -63,49 +37,18 @@ input,textarea:focus{
     gap: 1vh;
 }
 
-.NavFlex{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 3vh 1vh 1vh 3vh;
-    gap: 1vh;
-    box-shadow: 0 0.125em 0.25em 0 rgba(0,0,0,.2);
-}
-
-.ViewProfile{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.PostButtonClass{
-    margin-left: auto;
-    padding: 1vh;
-    border-radius:0.5em;
-    margin-right: 10%;
-    cursor: pointer;
-
-}
-
-.HomeButton{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5vh;
-    cursor: pointer;
-}
-
 .ErrorMessage{
     font-size: 0.6rem;
     color: red;
 }
+
 .CreatePostContainer{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80%;
 }
+
 .InputStyling{
     padding: 1vh;
 }

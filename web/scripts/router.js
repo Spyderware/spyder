@@ -37,7 +37,14 @@ async function handlePathChange() {
  * @param {boolean} replaceState 
  */
 function changeRoute(page, replaceState) {
-    if(isCurrentPath(page.substring(1))) {
+    const [path, search] = page.split('?');
+    
+    if(isCurrentPath(path)) {
+
+        if (search) {
+            window.history.pushState({}, '', page);
+        }
+
         return;
     }
 
@@ -55,7 +62,7 @@ function changeRoute(page, replaceState) {
  * @param {string} path 
  */
 function isCurrentPath(path) {
-    return `${window.location.origin}/${path}` === window.location.href || path === window.location.href
+    return `${window.location.origin}${window.location.pathname}` === `${window.location.origin}${path}`
 }
 
 /**
