@@ -8,8 +8,8 @@ export const login = async (req, res) => {
         if (!uid) {
             res.status(HttpStatusCodes.BadRequest).send({message: "Invalid payload"});
         } else {
-            const username = await AccountController.checkIfUIDExists(uid);
-            res.status(HttpStatusCodes.OK).send({username: username});
+            const accountObject = await AccountController.checkIfUIDExists(uid);
+            res.status(HttpStatusCodes.OK).send(accountObject);
         }
     } catch (err) {
         res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
