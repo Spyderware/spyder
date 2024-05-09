@@ -3,7 +3,6 @@
     max-width: 7vh;
     max-height: auto;
     margin-bottom: 0.5em;
-    
 }
 
 .MainView{
@@ -15,7 +14,6 @@
     padding-left: 2% ;
     padding-right: 2% ;
     height: 100%;
-    
 }
 
 input,textarea:focus{
@@ -34,6 +32,8 @@ input,textarea:focus{
 }
 
 .CreatePostContainer{
+    container-type: inline-size;
+    container-name: Create;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,6 +58,7 @@ input,textarea:focus{
     box-shadow: 0 0.063em 0.25em;
     background-color: #F8F8F8;
 }
+
 .NewPostFormClass{
     display: flex;
     flex-direction: column;
@@ -69,10 +70,12 @@ input,textarea:focus{
 .CreatePostHeadder{
     margin-right: auto;
     margin-bottom: 1rem;
+    font-size: x-large;
 }
 
-.fPostBody{
+.fPostBody {
     max-block-size: 85%;
+    height: 18em;
     resize: vertical;
     min-height: 5em;
     max-height: 20em;
@@ -99,4 +102,3 @@ input,textarea:focus{
   background-color: #16437E;
   color: #ffffff;
 }
-
