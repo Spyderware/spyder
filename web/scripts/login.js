@@ -11,9 +11,14 @@ import { changeRoute } from "./router.js";
  * @see login.html
  */
 window.handleCredentialResponse = handleCredentialResponse;
-document.getElementById('UsernameForm').addEventListener('submit', signupHandler);
+addEventListener('login-init', initPage);
+initPage();
 
 // =================== Functions ===================
+
+function initPage() {
+    document.getElementById('UsernameForm').addEventListener('submit', signupHandler);
+}
 
 function handleCredentialResponse(response) {
     // response.credential is the JWT

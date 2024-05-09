@@ -26,6 +26,7 @@ async function handlePathChange() {
         changeRoute(Routes.ORIGIN, true);
     } else {
         await loadPage(pageLoc);
+        window.dispatchEvent(new Event(`${pageLoc}-init`));
     }
 }
 
