@@ -78,4 +78,4 @@ export async function verifyUser(req, res, next) {
         res.status(HttpStatusCodes.Unauthorized).json({ error: 'No Authorization Token provided' });
     }
 
-};
+}

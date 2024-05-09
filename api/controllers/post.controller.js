@@ -32,7 +32,7 @@ export const createPost = async (req, res) => {
 
 export const getAllPosts = async (req, res) => {
     try {
-        const posts = await DbUtils.spyderdb.any('SELECT * FROM post');
+        const posts = await DbUtils.spyderdb.any('SELECT * FROM PostAccountView');
         res.status(HttpStatusCodes.OK).send(posts);
     } catch (err) {
         res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
@@ -45,7 +45,7 @@ export const getPostByPostId = async (req, res) => {
         if (!post_id) {
             res.status(HttpStatusCodes.NotFound).send({message: "Invalid payload"});
         } else {
-            await DbUtils.spyderdb.oneOrNone('SELECT * FROM post WHERE post_id = $1', [post_id])
+            await DbUtils.spyderdb.oneOrNone('SELECT * FROM PostAccountView WHERE post_id = $1', [post_id])
                 .then(data => {
                     if (!data) {
                         res.status(HttpStatusCodes.NotFound).send({message: "Post does not exist"});
