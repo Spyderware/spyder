@@ -6,30 +6,31 @@
     <script src="/scripts/newpost.js" type="module"></script>
   </head>
   <body class="OverallContainer">
-    <main class="MainView">
       <section class="CreatePostContainer">
         <article class="CreatePostPopUp">
           <h1 class="CreatePostHeadder">Create Post</h1>
           <form id="NewPostForm" class="NewPostFormClass">
-            <span class="ErrorMessage">Title is Required</span>
+            <span>Title*</span>
             <input
               type="text"
               id="fPostTitle"
-              placeholder="Title*"
+              placeholder="Quite an interesting title"
               class="InputStyling"
               maxlength="35"
+              required
             />
-            <span class="ErrorMessage">Category is Required</span>
-            <select name="fcategories" id="fcategories" class="InputStyling">
+            <span>Category*</span>
+            <select name="fcategories" id="fcategories" class="InputStyling" required>
               <option value="" disabled selected>Select your Category*</option>
             </select>
-            <span class="ErrorMessage">Body is Required</span>
+            <span>Body*</span>
             <textarea
               type="text"
               id="fPostBody"
-              placeholder="Body*"
+              placeholder="The Body of a true champion's post"
               class="fPostBody InputStyling"
               maxlength="1000"
+              required
             ></textarea>
             <button type="submit" id="PostButton" class="PostButtonSubmitClass">
               Post
@@ -37,8 +38,6 @@
           </form>
         </article>
       </section>
-
-    </main>
     <script src="" async defer></script>
   </body>
 </html>

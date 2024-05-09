@@ -196,7 +196,7 @@ input:focus{
 @media (max-width: 50em) {
   .PostButtonMobile{
     display: block;
-    background-color: #203246;
+    background-color: #F03836;
     bottom: 1vh;
     color: white;
     position: fixed;
