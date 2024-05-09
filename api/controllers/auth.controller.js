@@ -19,11 +19,11 @@ export const login = async (req, res) => {
 
 export const signup = async (req, res) => {
     try {
-        const {uid, username} = req.body;
-        if (!uid || !username) {
+        const {uid, username, img_url} = req.body;
+        if (!uid || !username || !img_url) {
             res.status(HttpStatusCodes.BadRequest).send({message: "Invalid payload"});
         } else {
-            await AccountController.addUser(uid, username);
+            await AccountController.addUser(uid, username, img_url);
         }
     } catch (err) {
         res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
