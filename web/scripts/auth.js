@@ -1,5 +1,5 @@
 import { changeRoute } from "./router.js";
-import { AUTH_TOKEN_NAME, Routes, USERNAME_TOKEN_NAME, USER_LOGO_TOKEN_NAME } from "./config.js";
+import { AUTH_TOKEN_NAME, LOGGEDIN_EVENT_NAME, Routes, USERNAME_TOKEN_NAME, USER_LOGO_TOKEN_NAME } from "./config.js";
 import { postData } from "./api.js";
 
 // =================== Functions ===================
@@ -24,6 +24,8 @@ async function checkLogin(jwt) {
     if (username) {
         localStorage.setItem(USERNAME_TOKEN_NAME, username);
         localStorage.setItem(USER_LOGO_TOKEN_NAME, img_url);
+        document.getElementById('nav-user-img').setAttribute('src', img_url);
+        window.dispatchEvent(new Event(LOGGEDIN_EVENT_NAME));
         return true;
     } else {
         return false;
@@ -50,7 +52,7 @@ async function getUserDetails(jwt) {
         return userNotFoundObj;
     }
 
-    return loginData.json();
+    return await loginData.json();
 }
 
 function logout() {
@@ -79,23 +81,26 @@ function decodeJWT(jwt) {
     }
 }
 
-function signup(username) {
+async function signup(username) {
     var jwt = retrieveJWT();
     if (jwt) {
         const decodedJWT = decodeJWT(jwt);
-        console.log(decodedJWT);
         const signupBody = {
             uid: decodedJWT.sub,
             username: username,
             img_url: decodedJWT.picture
         }
-        console.log(signupBody)
-        postData('auth/signup', signupBody, jwt);
-        localStorage.setItem(USERNAME_TOKEN_NAME, username);
-        localStorage.setItem(USER_LOGO_TOKEN_NAME, decodedJWT.picture);
-    } 
+        var signupData = await postData('auth/signup', signupBody, jwt);
+
+        if (signupData.ok) {
+            localStorage.setItem(USERNAME_TOKEN_NAME, username);
+            localStorage.setItem(USER_LOGO_TOKEN_NAME, decodedJWT.picture);
     
-    changeRoute(Routes.ORIGIN, false);
+            changeRoute(Routes.ORIGIN, false);
+        } else {
+            return await signupData.json();
+        }
+    } 
 }
 
 export { isLoggedIn, initAuth, login, logout, retrieveUsername, retrieveUserLogo, retrieveJWT, signup, decodeJWT };

@@ -1,13 +1,16 @@
 import { getData } from "./api.js";
 import { retrieveJWT } from "./auth.js";
+import { SEARCH_EVENT_NAME, getSearchPath } from "./config.js";
 import { changeRoute } from "./router.js";
 import { createPostFromTemplate } from "./template-loader.js";
 
 // =================== Init ===================
-addEventListener('home-init', initPage);
+
+addEventListener(SEARCH_EVENT_NAME, initPage);
 initPage();
 
 // =================== Constants ===================
+
 const HOMEPAGE_MAIN_VIEW_ID = 'homepage-main-view';
 const HOMEPAGE_NO_POSTS_ID = 'home-no-posts';
 
@@ -15,7 +18,8 @@ const HOMEPAGE_NO_POSTS_ID = 'home-no-posts';
 
 async function initPage() {
     const jwt = retrieveJWT();
-    const response = await getData('post', jwt);
+    const response = await getData(`post${getSearchPath()}`, jwt);
+
     let posts = [];
     try {
         posts = await response.json();
@@ -25,6 +29,7 @@ async function initPage() {
 
     if (posts.length > 0) {
         populatePostsList(posts);
+        document.getElementById(HOMEPAGE_NO_POSTS_ID).style.display = 'none';
     } else {
         document.getElementById(HOMEPAGE_NO_POSTS_ID).style.display = 'flex';
     }
@@ -51,10 +56,12 @@ async function populatePostsList(posts) {
             const postHtmlElement = await createPostFromTemplate(post);
             postContainer.insertAdjacentHTML('beforeend', postHtmlElement);
 
-            document.getElementById(`post-${post.post_id}`).addEventListener('click', function (event) {
-                event.preventDefault();
-                changeRoute(event.currentTarget.getAttribute('href'), false);
-            });
+            document.getElementById(`post-${post.post_id}`).addEventListener('click', handlePostClick);
         }
     }
+}
+
+function handlePostClick(event) {
+    event.preventDefault();
+    changeRoute(event.currentTarget.getAttribute('href'), false);
 }

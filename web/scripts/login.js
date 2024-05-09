@@ -1,5 +1,5 @@
 import { login, signup } from "./auth.js";
-import { Routes } from "./config.js";
+import { Routes, SEARCH_EVENT_NAME } from "./config.js";
 import { changeRoute } from "./router.js";
 
 // ===================== Init ======================
@@ -18,25 +18,35 @@ initPage();
 
 function initPage() {
     document.getElementById('UsernameForm').addEventListener('submit', signupHandler);
+
+    var googleScript = document.createElement('script');
+    googleScript.src = "https://accounts.google.com/gsi/client";
+    googleScript.defer = true;
+
+    document.head.appendChild(googleScript);
 }
 
-function handleCredentialResponse(response) {
+async function handleCredentialResponse(response) {
     // response.credential is the JWT
     const responsePayload = response.credential;
-    var loginSuccessful = login(responsePayload);
+    var loginSuccessful = await login(responsePayload);
 
     if (!loginSuccessful) {
         document.getElementById('LoginButton').classList.add('hide')
         document.getElementById('UsernameForm').classList.remove('hide');
     } else {
         changeRoute(Routes.ORIGIN, false);
+        window.dispatchEvent(new Event(SEARCH_EVENT_NAME));
     }
 }
 
-function signupHandler(event) {
+async function signupHandler(event) {
     event.preventDefault();
 
     const username = document.getElementById('fUsername').value;
 
-    signup(username);
+    const response = await signup(username);
+    if (response) {
+        document.getElementById('ErrorMessage').innerText = message;
+    }
 }

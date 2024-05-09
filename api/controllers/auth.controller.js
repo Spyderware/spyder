@@ -23,8 +23,12 @@ export const signup = async (req, res) => {
         if (!uid || !username || !img_url) {
             res.status(HttpStatusCodes.BadRequest).send({message: "Invalid payload"});
         } else {
-            await AccountController.addUser(uid, username, img_url);
-            res.status(HttpStatusCodes.OK).send({message: "Account added successfully"});
+            if (await AccountController.usernameExists()) {
+                res.status(HttpStatusCodes.BadRequest).send({message: "Username already exists"})
+            } else {
+                await AccountController.updateUser(uid, username, img_url);
+                res.status(HttpStatusCodes.OK).send({message: "Account added successfully"});
+            }
         }
     } catch (err) {
         res.status(HttpStatusCodes.InternalServerError).send({message: err.message});

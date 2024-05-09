@@ -1,18 +1,26 @@
 import { logout } from "./auth.js";
-import { PATH_CHANGE_EVENT_NAME, Routes, SEARCH_EVENT_NAME } from "./config.js";
+import { populateCategoryDropdown } from "./category-loader.js";
+import { LOGGEDIN_EVENT_NAME, PATH_CHANGE_EVENT_NAME, Routes, SEARCH_EVENT_NAME, setSearchPath } from "./config.js";
 import { changeRoute } from "./router.js";
 
 // ===================== Init ======================
 
-var searchVal = "";
-var categoryVal = "";
+const NAVBAR_SELECT_ID = 'Categories';
 
 addEventListener(PATH_CHANGE_EVENT_NAME, handlePathChange);
+addEventListener(LOGGEDIN_EVENT_NAME, loginInit);
 addEventListener('DOMContentLoaded', initNavbar);
 
 document.getElementById('NavbarLogo').addEventListener('click', homeHandler);
 document.getElementById('CreatePost').addEventListener('click', createPost);
 document.getElementById('Search').addEventListener('click', search);
+
+document.getElementById('SearchInput').addEventListener('keyup', function (event) {
+    if (event.code === "Enter") {
+        search();
+    }
+});
+
 document.getElementById('CreatePostMobile').addEventListener('click', createPost);
 
 document.getElementById('LogOut').addEventListener('click', logoutHandler);
@@ -37,10 +45,14 @@ function initNavbar() {
     const selectElement = document.getElementById('Categories');
 
     const category = params.get('category');
-    
+
     if (category) {
         const optionToSelect = selectElement.querySelector(`option[value="${category}"]`);
         optionToSelect.selected = true;
+    }
+
+    if (window.location.pathname === Routes.Homepage) {
+        search();
     }
 }
 
@@ -50,7 +62,13 @@ function logoutHandler() {
 
 function homeHandler(event) {
     event.preventDefault();
+
+    setSearchPath('');
+    document.getElementById(NAVBAR_SELECT_ID).value = '';
+    document.getElementById('SearchInput').value = '';
+
     changeRoute(Routes.ORIGIN, false);
+    window.dispatchEvent(new Event(SEARCH_EVENT_NAME));
 }
 
 function createPost(event) {
@@ -59,19 +77,23 @@ function createPost(event) {
 }
 
 function search() {
-    const newSearchVal = document.getElementById('SearchInput').value;
-    const newCategoryVal = document.getElementById('Categories').value;
+    const searchVal = document.getElementById('SearchInput').value;
+    const categoryVal = document.getElementById('Categories').value;
 
-    if (newCategoryVal === categoryVal && newSearchVal === searchVal) {
-        return;
-    } else {
-        searchVal = newSearchVal;
-        categoryVal = newCategoryVal;
+    if (searchVal === "" && categoryVal === "") {
+        setSearchPath("");
     }
 
+    if (categoryVal === "") {
+        setSearchPath(`?title=${searchVal}`);
+    } else {
+        setSearchPath(`?title=${searchVal}&category=${categoryVal}`);
+    }
     changeRoute(`${Routes.Homepage}?search=${searchVal}&category=${categoryVal}`, false);
 
-    var searchEvent = new Event(SEARCH_EVENT_NAME);
-    searchEvent.payload = { search: searchVal, category: categoryVal};
-    window.dispatchEvent(searchEvent);
+    window.dispatchEvent(new Event(SEARCH_EVENT_NAME));
+}
+
+async function loginInit() {
+    await populateCategoryDropdown(NAVBAR_SELECT_ID);
 }

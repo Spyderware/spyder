@@ -1,36 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica,
-    sans-serif;
-}
-
 .UserLogo {
   border-radius: 50%;
   max-width: 7vh;
   max-height: auto;
   margin-bottom: 0.5em;
-}
-
-.PostCard{
-    padding: 3vh 1vh 3vh 3vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #203246;
-    color: white;
-    border-radius: 1vh;
-}
-
-.MainView{
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-    flex-grow: 5;
-    overflow: auto;
-    padding-left: 2% ;
-    padding-right: 2% ;
-    
 }
 
 span.material-symbols-outlined.AddComment {
@@ -42,40 +14,15 @@ span.material-symbols-outlined.LikeComment {
   cursor: pointer;
 }
 
-input,textarea:focus{
-    outline: none;
+input,
+textarea:focus {
+  outline: none;
 }
 
 .OverallContainer {
   display: flex;
   flex-direction: column;
   gap: 1vh;
-}
-
-.PostHeadder {
-  display: flex;
-  flex-direction: row;
-}
-
-.PostUserdetails {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row-reverse;
-  margin-left: auto;
-  gap: 0.5vh;
-}
-
-.PostUserLogo {
-  max-width: 2vh;
-  max-height: auto;
-  margin-bottom: 0em;
-}
-
-.CardBody {
-  display: flex;
-  align-items: center;
-  gap: 10vh;
 }
 
 .NewComment {
@@ -85,23 +32,51 @@ input,textarea:focus{
   padding: 1vh;
   border: 0.09em solid black;
   border-radius: 0.5em;
+  background-color: #f8f8f8;
 }
 
-.CommentInputClass{
-    max-block-size: 85%;
-    resize: vertical;
-    min-height: 3em;
-    width:95%;
-    border-style: none;
-    max-height: 10em;
+.CommentContainer {
+  display: flex;
+  background-color: #f8f8f8;
+  margin-top: 1em;
+  padding: 1em;
+  border-radius: 3vh;
+  flex-direction: column;
+  gap: 1vh;
+  animation: fade-in 1s ease;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.CommentInputClass {
+  max-block-size: 85%;
+  resize: vertical;
+  min-height: 3em;
+  width: 95%;
+  border-style: none;
+  max-height: 10em;
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  /* font-size: large; */
 }
 
 .PlacedComment {
   display: flex;
+  flex-direction: column;
   gap: 1vh;
   padding: 1vh;
   border: 0.09em solid black;
   border-radius: 0.5em;
+  margin-bottom: 0.35em;
+  background-color: #f8f8f8;
 }
 
 .NoComments {
@@ -109,16 +84,26 @@ input,textarea:focus{
   gap: 1vh;
   align-items: center;
   justify-content: center;
+  color: black;
 }
 
 .UserLogoIcon.CardIcon {
-    height: 2em;
+  height: 2em;
 }
 
-.CommentUser {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5em;
-    margin-bottom: 1vh;
+.UserLogoIcon.CardIcon.Comment {
+  margin-left: 0;
+  margin-right: 0.5em;
+}
+
+.CommentHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 1em;
+}
+
+.UserLogoIcon.CardIcon {
+  height: 2.5em;
 }

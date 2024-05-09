@@ -1,6 +1,5 @@
 <head>
   <link rel="stylesheet" href="/css/login.css" />
-  <script src="https://accounts.google.com/gsi/client" defer async></script>
   <script type="module" src="/scripts/login.js" defer></script>
   <title>Spyder Login</title>
 </head>
@@ -36,7 +35,7 @@
         ></div>
       </div>
       <form class="UserNameForm hide" id="UsernameForm">
-        <span class="ErrorMessage">Username is required</span>
+        <span class="ErrorMessage" id="ErrorMessage">Username is required</span>
         <input
           type="text"
           id="fUsername"

@@ -31,6 +31,11 @@ const PATH_CHANGE_EVENT_NAME = 'pathchanged';
 const SEARCH_EVENT_NAME = 'searched';
 
 /**
+ * The name of the successful login invocation event
+ */
+const LOGGEDIN_EVENT_NAME = 'loggedin';
+
+/**
  * The name of the website application
  */
 const APP_NAME = 'Spyder';
@@ -55,4 +60,17 @@ const USER_LOGO_TOKEN_NAME = 'user-logo';
  */
 const BASE_API_URL = 'http://localhost:8080/api/v1';
 
-export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME, PLACEHOLDER_ROUTE, SEARCH_EVENT_NAME, USERNAME_TOKEN_NAME, USER_LOGO_TOKEN_NAME, BASE_API_URL }
+/**
+ * The search path for posts
+ */
+var SEARCH_PATH = "";
+
+function setSearchPath(val) {
+    SEARCH_PATH = val;
+}
+
+function getSearchPath() {
+    return SEARCH_PATH;
+}
+
+export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME, PLACEHOLDER_ROUTE, SEARCH_EVENT_NAME, USERNAME_TOKEN_NAME, USER_LOGO_TOKEN_NAME, BASE_API_URL, setSearchPath, getSearchPath, LOGGEDIN_EVENT_NAME }

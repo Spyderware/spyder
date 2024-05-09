@@ -1,17 +1,14 @@
-* { 
-  margin:0; 
-  padding:0; 
-  box-sizing:border-box;
-  font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica, sans-serif; 
-
-}
-
 .container {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#content-container {
+  background-color: #f8f8f8;
+  width: 100%;
+  padding-top: 0;
 }
 
 .login-container {
@@ -22,21 +19,21 @@
   flex-direction: column;
   border: 0.1rem solid black;
   border-radius: 0.5em;
-  color: #ffffff;
-  padding: 1em;
+  color: #f8f8f8;
+  padding: 1em 2em;
   gap: 2em;
-  /* width: 40%;
-    height: 50%; */
-  max-width: 20em;
-  max-height: 70em;
+  width: 85%;
+  height: 50vh;
+  flex-shrink: 1;
+  max-width: 60vh;
 }
 
 .login-image {
   display: flex;
   justify-content: center;
-  width: 50%;
   height: 50%;
   img {
+    border: 0.2rem solid #f8f8f8;
     object-fit: contain;
     width: 100%;
     height: 100%;
@@ -45,28 +42,26 @@
 }
 
 .login-button {
+  border-radius: 1em;
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
 }
 
-
-.ErrorMessage{
-  font-size: 0.6rem;
+.ErrorMessage {
+  font-size: 1rem;
   color: red;
   margin-right: auto;
 }
 
-.WebsiteLogo{
+.WebsiteLogo {
   border-radius: 50%;
   max-width: 8em;
   max-height: auto;
   margin-bottom: 0.5em;
-  
 }
 
-.LoginHeadder{
+.LoginHeadder {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,23 +69,22 @@
   flex-shrink: 3;
 }
 
-.NewUserNameFlex{
+.NewUserNameFlex {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
-.UserNameForm{
+.UserNameForm {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 0.5rem;
+  width: 100%;
 }
 
-.NewUserCard{
-  outline: solid black 0.0625em;    
+.NewUserCard {
+  outline: solid black 0.0625em;
   display: flex;
   max-width: 20em;
   max-height: 70em;
@@ -104,11 +98,11 @@
   gap: 0.5em;
 }
 
-.fUsername{
+.fUsername {
   padding: 1vh;
 }
 
-.CreateUsernameButton{
+.CreateUsernameButton {
   display: flex;
   align-items: center;
   padding-left: 1em;
@@ -116,19 +110,21 @@
   border-radius: 1em;
   flex-shrink: 0;
   gap: 1em;
+  justify-content: center;
+  align-items: center;
 }
 
-#CreatePostContainer{
+#CreatePostContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
-#CreatePostPopUp{
-  outline: solid black 0.0625em;    
+#CreatePostPopUp {
+  outline: solid black 0.0625em;
   display: flex;
-  background-color: #D9D9D9 ;
+  background-color: #d9d9d9;
   flex-direction: column;
   justify-content: center;
   align-items: center;
