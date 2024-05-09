@@ -112,3 +112,13 @@ export const checkIfCategoryExists = (category_id) => {
             throw error;
         });
 }
+
+export const checkIfCategoryExistsByName = (category) => {
+    return DbUtils.spyderdb.oneOrNone('SELECT EXISTS(SELECT 1 FROM category WHERE category = $1)', [category])
+        .then(data => {
+            return data.exists;
+        })
+        .catch(error => {
+            throw error;
+        });
+}
