@@ -16,42 +16,47 @@
     <title>Spyder</title>
   </head>
   <body>
-    <nav class="NavFlex" id="navbar">
-      <img src="/resources/SpyderwareLogo.png" alt="Spyder Logo" class="WebsiteLogo" id="NavbarLogo"/>
-      <!-- <div class="HomeButton" id="GoHome">
-        <span class="material-symbols-outlined HomeButton">home</span>
-        <p>Home</p>
-      </div> -->
-      <div class="SearchBar">
-        <input
-          type="text"
-          class="SearchInputClass"
-          id="SearchInput"
-          placeholder="Search"
-        />
-        <span class="material-symbols-outlined">search</span>
+      <nav class="NavFlex" id="navbar">
+        <img src="./resources/SpyderwareLogo.png" alt="Spyder Logo" class="WebsiteLogo" id="NavbarLogo"/>
+        <!-- <div class="HomeButton" id="GoHome">
+          <span class="material-symbols-outlined HomeButton">home</span>
+          <p>Home</p>
+        </div> -->
+        <div class="SearchBar">
+          <input
+            type="text"
+            class="SearchInputClass"
+            id="SearchInput"
+            placeholder="Search"
+          />
+          <span class="material-symbols-outlined">search</span>
+        </div>
+        <select name="fcategories" class="Categories" id="Categories">
+          <option value="" selected>Select your Category</option>
+          <option value="1">Programming Language</option>
+          <option value="2">Application</option>
+        </select>
+        <button class="SearchButton" id="Search">
+          Search
+        </button>
+        <button class="PostButtonNav" id="CreatePost">
+          Create Post
+        </button>
+        <div class="ViewProfile" id="LogOut">
+          <img 
+            class="UserLogoIcon" 
+            src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" 
+            alt="User Logo"
+          />
+          <p>Log Out</p>
+        </div>
+      </nav>
+      <div id="content-container">
       </div>
-
-      <select name="fcategories" class="Categories" id="Categories">
-        <option value="" selected>Select your Category</option>
-        <option value="1">Programming Language</option>
-        <option value="2">Application</option>
-      </select>
-      <button class="SearchButton" id="Search">
-        Search
-      </button>
-      <button class="PostButton" id="CreatePost">
-        Create Post
-      </button>
-      <div class="ViewProfile" id="LogOut">
-        <img 
-          class="UserLogoIcon" 
-          src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" 
-          alt="User Logo"
-        />
-        <p>Log Out</p>
-      </div>
-    </nav>
-    <div id="content-container"></div>
+      <a class="PostButtonMobile" id="CreatePost">
+        <span class="material-symbols-outlined">
+          add
+          </span>
+        </a>
   </body>
 </html>

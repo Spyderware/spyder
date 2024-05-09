@@ -83,6 +83,7 @@ input,textarea:focus{
     max-block-size: 85%;
     resize: vertical;
     min-height: 5em;
+    max-height: 10em;
 }
 
 .PostButtonSubmitClass{

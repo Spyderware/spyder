@@ -29,7 +29,7 @@ input:focus{
   container-name: Navbar;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   padding: 1em 1em 1em 1em;
   gap: 1vh;
@@ -58,11 +58,24 @@ input:focus{
   cursor: pointer;
 }
 
-.PostButton{
+.PostButtonNav{
   margin-left: auto;
   padding: 1vh;
   border-radius:0.5em;
   margin-right: 1.5em;
+  cursor: pointer;
+}
+
+.PostButtonMobile{
+  display: none;
+  margin-left: auto;
+  padding: 3%;
+  border-radius:0.5em;
+  margin-right: 1.5em;
+  margin-top: auto;
+  margin-bottom: 5vh;
+  margin-right: 10vw;
+  border-radius: 50%;
   cursor: pointer;
 }
 
@@ -81,6 +94,7 @@ input:focus{
 
 .SearchInputClass{
   border-style:none;
+  width: inherit;
 }
 
 .UserLogoIcon {
@@ -96,6 +110,9 @@ input:focus{
   .ViewProfile {
     margin-left: auto;
   }
+  .PostButtonNav{
+    display: none;
+  }
 }
 
 @container Navbar (max-width: 37em) {
@@ -106,9 +123,32 @@ input:focus{
     display: none;
   }
   .SearchBar {
-    margin: auto;
+    margin: 1em;
+    width: 100%;
+  }
+  .SearchBar {
+    margin: 1em;
+    width: 100%;
   }
   .ViewProfile {
     margin-left: 0;
+  }
+  .PostButtonNav{
+    display: none;
+  }
+  .material-symbols-outlined{
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 44em) {
+  .PostButtonMobile{
+    display: block;
+    background-color: #203246;
+    bottom: 1vh;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    right: 0; 
   }
 }
