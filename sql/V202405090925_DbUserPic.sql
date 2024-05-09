@@ -1,1 +1,0 @@
-ALTER TABLE account ADD COLUMN img_url VARCHAR(255);
