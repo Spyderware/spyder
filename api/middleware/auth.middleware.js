@@ -55,22 +55,27 @@ async function verifyGoogleToken(token, clientId) {
 
 export async function verifyUser(req, res, next) {
     // Extract token from the request (assuming it's in the Authorization header)
-    const token = req.headers.authorization.split(' ')[1]; // Assuming Bearer token
-    const decodedToken = jwt.decode(token, {complete: true});
-    const {header, payload, signature} = decodedToken;
-    const verificationResponse = await verifyGoogleToken(token, GOOGLE_CLIENT_ID);
+    if(req.headers.authorization) {
+        const token = req.headers.authorization.split(' ')[1]; // Assuming Bearer token
+        const decodedToken = jwt.decode(token, {complete: true});
+        const {header, payload, signature} = decodedToken;
+        const verificationResponse = await verifyGoogleToken(token, GOOGLE_CLIENT_ID);
 
-    if (verificationResponse.verified) {
-        // Token signature is valid, further validate token claims if needed
-        // Check expiration, audience, issuer, etc.
-        if (payload.aud === GOOGLE_CLIENT_ID && payload.iss === 'https://accounts.google.com') {
-            // Token is valid, proceed to the next middleware
-            next();
+        if (verificationResponse.verified) {
+            // Token signature is valid, further validate token claims if needed
+            // Check expiration, audience, issuer, etc.
+            if (payload.aud === GOOGLE_CLIENT_ID && payload.iss === 'https://accounts.google.com') {
+                // Token is valid, proceed to the next middleware
+                next();
+            } else {
+                res.status(HttpStatusCodes.Unauthorized).json({ error: 'Invalid token audience or issuer' });
+            }
         } else {
-            res.status(401).json({ error: 'Invalid token audience or issuer' });
+            // Token signature verification failed
+            res.status(HttpStatusCodes.Unauthorized).json({ error: verificationResponse.error });
         }
-    } else {
-        // Token signature verification failed
-        res.status(401).json({ error: verificationResponse.error });
+    }else{
+        res.status(HttpStatusCodes.Unauthorized).json({ error: 'No Authorization Token provided' });
     }
+
 };
