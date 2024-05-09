@@ -13,30 +13,6 @@
   margin-bottom: 0.5em;
 }
 
-.PostCard {
-    padding: 4vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #203246;
-    border-radius: 3vh;
-    max-width: 120vh;
-    margin: auto;
-    color: #FFFFFF;
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-}
-
-
-.MainView{
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-    flex-grow: 5;
-    overflow: auto;
-    padding-left: 2% ;
-    padding-right: 2% ;
-    
-}
-
 span.material-symbols-outlined.AddComment {
   margin-left: auto;
   cursor: pointer;
