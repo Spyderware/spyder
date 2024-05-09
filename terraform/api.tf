@@ -201,4 +201,9 @@ resource "aws_elastic_beanstalk_environment" "beanstalk_env" {
     name      = "DB_NAME"
     value     = module.rds.db_instance_name
   }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "GOOGLE_CLIENT_ID"
+    value     = "271058509023-c7uprprd3a28gpnldg42nor518g12kpu.apps.googleusercontent.com"
+  }
 }
