@@ -59,6 +59,8 @@ input:focus {
   padding-right: 2%;
   max-width: 130vh;
   padding-bottom: 2%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .PostHeadder {
