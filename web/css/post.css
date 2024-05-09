@@ -55,6 +55,8 @@ input,textarea:focus{
 .PostHeadder {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  margin-bottom: 1em;
 }
 
 .PostUserdetails {
@@ -98,10 +100,12 @@ input,textarea:focus{
 
 .PlacedComment {
   display: flex;
+  flex-direction: column;
   gap: 1vh;
   padding: 1vh;
   border: 0.09em solid black;
   border-radius: 0.5em;
+  margin-bottom: 0.35em;
 }
 
 .NoComments {
@@ -115,10 +119,14 @@ input,textarea:focus{
     height: 2em;
 }
 
-.CommentUser {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5em;
-    margin-bottom: 1vh;
+.CommentHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 1em;
+}
+
+.UserLogoIcon.CardIcon {
+  height: 2.5em;
 }

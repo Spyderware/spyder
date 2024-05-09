@@ -35,6 +35,7 @@ input:focus{
   gap: 1vh;
   box-shadow: 0 0.063em 0.25em;
   align-items: center;
+  margin-bottom: 2em;
 }
 
 .SearchBar{
@@ -105,6 +106,10 @@ input:focus{
 
 .PostButtonMobile.hide {
   display: none;
+}
+
+#content-container {
+  height: 100vh;
 }
 
 @container Navbar (max-width: 44em) {
