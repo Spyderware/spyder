@@ -53,7 +53,7 @@ input:focus{
 
 .NavFlex button{
   cursor: pointer;
-  background-color: #0A66C2;
+  background-color: #203246;
   border: 0;
   border-radius: 6.25em;
   color: #ffffff;
@@ -67,7 +67,7 @@ input:focus{
 
 .NavFlex button:hover,
 .NavFlex button:focus {
-  background-color: #16437E;
+  background-color: #203246;
   color: #ffffff;
 }
 
