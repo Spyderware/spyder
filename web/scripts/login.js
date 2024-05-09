@@ -18,6 +18,12 @@ initPage();
 
 function initPage() {
     document.getElementById('UsernameForm').addEventListener('submit', signupHandler);
+
+    var googleScript = document.createElement('script');
+    googleScript.src =  "https://accounts.google.com/gsi/client";
+    googleScript.defer = true;
+
+    document.head.appendChild(googleScript);
 }
 
 async function handleCredentialResponse(response) {
