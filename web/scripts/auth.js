@@ -24,6 +24,7 @@ async function checkLogin(jwt) {
     if (username) {
         localStorage.setItem(USERNAME_TOKEN_NAME, username);
         localStorage.setItem(USER_LOGO_TOKEN_NAME, img_url);
+        document.getElementById('nav-user-img').setAttribute('src', img_url);
         return true;
     } else {
         return false;
