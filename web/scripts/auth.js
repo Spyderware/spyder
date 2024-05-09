@@ -4,10 +4,10 @@ import { postData } from "./api.js";
 
 // =================== Functions ===================
 
-function isLoggedIn() {
+async function isLoggedIn() {
     var jwt = retrieveJWT();
     if (jwt) {
-        return checkLogin(jwt);
+        return await checkLogin(jwt);
     } else {
         return false;
     }
@@ -18,32 +18,38 @@ function initAuth() {
     changeRoute(Routes.Login, true);
 }
 
-function checkLogin(jwt) {
-    var {username, userLogo} = getUserDetails(jwt);
+async function checkLogin(jwt) {
+    var {username, img_url} = await getUserDetails(jwt);
 
     if (username) {
         localStorage.setItem(USERNAME_TOKEN_NAME, username);
-        localStorage.setItem(USER_LOGO_TOKEN_NAME, userLogo);
+        localStorage.setItem(USER_LOGO_TOKEN_NAME, img_url);
         return true;
     } else {
         return false;
     }
 }
 
-function login(authProviderResponse) {
+async function login(authProviderResponse) {
     localStorage.setItem(AUTH_TOKEN_NAME, authProviderResponse);
 
-    return checkLogin(authProviderResponse);
+    return await checkLogin(authProviderResponse);
 }
 
 async function getUserDetails(jwt) {
     var userDetail = decodeJWT(jwt);
 
+    const userNotFoundObj = { username: null, userLogo: null };
     if (!userDetail.sub) {
-        return { username: null, userLogo: null }
+        return userNotFoundObj;
     }
 
     var loginData = await postData('auth/login', { uid: userDetail.sub }, jwt);
+
+    if (loginData.status !== 200) {
+        return userNotFoundObj;
+    }
+
     return loginData.json();
 }
 

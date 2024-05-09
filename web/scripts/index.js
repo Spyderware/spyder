@@ -9,10 +9,9 @@ window.addEventListener('popstate', init);
 
 // =================== Functions ===================
 
-function init() {
-    console.log("checking login");
-    if (!isLoggedIn()) {
-        console.log("not login");
+async function init() {
+    var loggedIn = await isLoggedIn();
+    if (!loggedIn) {
         initAuth();
     } else if (window.location.pathname === "/") {
         initRootPathPage();
