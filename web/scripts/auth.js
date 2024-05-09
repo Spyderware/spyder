@@ -24,6 +24,7 @@ async function checkLogin(jwt) {
     if (username) {
         localStorage.setItem(USERNAME_TOKEN_NAME, username);
         localStorage.setItem(USER_LOGO_TOKEN_NAME, img_url);
+        document.getElementById('nav-user-img').setAttribute('src', img_url);
         return true;
     } else {
         return false;
@@ -95,6 +96,8 @@ async function signup(username) {
             localStorage.setItem(USER_LOGO_TOKEN_NAME, decodedJWT.picture);
     
             changeRoute(Routes.ORIGIN, false);
+        } else {
+            return await signupData.json();
         }
     } 
 }

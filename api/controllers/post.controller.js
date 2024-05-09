@@ -7,50 +7,51 @@ export const createPost = async (req, res) => {
         if (!uid || !title || !body || !category) {
             res.status(HttpStatusCodes.BadRequest).send({message: "Invalid payload"});
         } else {
-
             const account_id = await AccountController.getAccountID(uid);
             const category_id = await CategoryController.getCategoryID(category);
-            if (!accountExists) {
+            if (!account_id) {
                 res.status(HttpStatusCodes.NotFound).send({message: "Account does not exist"});
-            } else if (!categoryExists) {
+            } else if (!category_id) {
                 res.status(HttpStatusCodes.NotFound).send({message: "Category does not exist"});
             } else {
-                await DbUtils.spyderdb.none('INSERT INTO post(account_id, title, body, category_id) VALUES(${account_id}, ${title}, ${body}, ${category_id})', {
+                var record = await DbUtils.spyderdb.one('INSERT INTO post(account_id, title, body, category_id) VALUES(${account_id}, ${title}, ${body}, ${category_id}) RETURNING *;', {
                     account_id: account_id,
                     title: title,
                     body: body,
                     category_id: category_id,
                 });
-                res.status(HttpStatusCodes.OK).send({message: 'Post created successfully.'});
+                res.status(HttpStatusCodes.OK).send({message: 'Post created successfully.', post_id: record.post_id });
             }
 
         }
     } catch (err) {
+        console.log(err.message);
         res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
     }
 };
 
 export const getAllPosts = async (req, res) => {
     try {
-        const {title, category} = req.query;
+        let {title, category} = req.query;
         if (!title) {
-            const posts = await DbUtils.spyderdb.any('SELECT * FROM PostAccountView');
-            res.status(HttpStatusCodes.OK).send(posts);
+            title = "";
+        }
+            
+        if (category) {
+            console.log(title);
+            await DbUtils.spyderdb.any('SELECT * FROM PostAccountView WHERE category = $1 AND title LIKE $2', [category, '%' + title + '%'])
+                .then(data => {
+                    res.status(HttpStatusCodes.OK).send(data);
+                })
         } else {
-            if (category) {
-                await DbUtils.spyderdb.any('SELECT * FROM PostAccountView WHERE category = $1 AND title LIKE $2', [category, '%' + title + '%'])
-                    .then(data => {
-                        res.status(HttpStatusCodes.OK).send(data);
-                    })
-            } else {
-                await DbUtils.spyderdb.any('SELECT * FROM PostAccountView WHERE title LIKE $1', ['%' + title + '%'])
-                    .then(data => {
-                        res.status(HttpStatusCodes.OK).send(data);
-                    })
-            }
+            await DbUtils.spyderdb.any('SELECT * FROM PostAccountView WHERE title LIKE $1', ['%' + title + '%'])
+                .then(data => {
+                    res.status(HttpStatusCodes.OK).send(data);
+                })
         }
 
     } catch (err) {
+        console.log(err.message);
         res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
     }
 };

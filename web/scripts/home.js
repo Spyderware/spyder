@@ -1,13 +1,16 @@
 import { getData } from "./api.js";
 import { retrieveJWT } from "./auth.js";
+import { SEARCH_EVENT_NAME, getSearchPath } from "./config.js";
 import { changeRoute } from "./router.js";
 import { createPostFromTemplate } from "./template-loader.js";
 
 // =================== Init ===================
-addEventListener('home-init', initPage);
+
+addEventListener(SEARCH_EVENT_NAME, initPage);
 initPage();
 
 // =================== Constants ===================
+
 const HOMEPAGE_MAIN_VIEW_ID = 'homepage-main-view';
 const HOMEPAGE_NO_POSTS_ID = 'home-no-posts';
 
@@ -15,7 +18,8 @@ const HOMEPAGE_NO_POSTS_ID = 'home-no-posts';
 
 async function initPage() {
     const jwt = retrieveJWT();
-    const response = await getData('post', jwt);
+    const response = await getData(`post${getSearchPath()}`, jwt);
+    console.log(response);
     let posts = [];
     try {
         posts = await response.json();

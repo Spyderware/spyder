@@ -38,25 +38,65 @@ input:focus{
   margin-bottom: 2em;
 }
 
+.PostHeadder {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 1em;
+  align-items: center;
+}
+
+.PostUserdetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  gap: 0.5vh;
+}
+
+.PostUserLogo {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.CardBody {
+  display: flex;
+  align-items: center;
+  gap: 10vh;
+}
+
 .SearchBar{
   display: flex;
   border: 0.09em solid black;
-  border-radius: 0.5em;  
+  border-radius: 0.5em;
   background-color: #FFFFFF;
   padding: 0.5vh;
 }
 
 .Categories{
   border: 0.09em solid black;
-  border-radius: 0.5em;  
+  border-radius: 0.5em;
   padding: 1vh;
 }
 
-.SearchButton{
-  padding: 1vh;
-  border-radius:0.5em;
-  margin-right: 10%;
+.NavFlex button{
   cursor: pointer;
+  background-color: #203246;
+  border: 0;
+  border-radius: 6.25em;
+  color: #ffffff;
+  font-size: 1em;
+  min-height: 2.5em;
+  overflow: hidden;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+}
+
+.NavFlex button:hover,
+.NavFlex button:focus {
+  background-color: #203246;
+  color: #ffffff;
 }
 
 .PostButtonNav{
@@ -65,6 +105,7 @@ input:focus{
   border-radius:0.5em;
   margin-right: 1.5em;
   cursor: pointer;
+  text-wrap: nowrap;
 }
 
 .PostButtonMobile{
@@ -100,19 +141,21 @@ input:focus{
 
 .UserLogoIcon {
   height: 3em;
+  width: auto;
+  margin-left: auto;
   border-radius: 100%;
-  border: 2px solid black;
+  border: solid #F8F8F8 2px;
+}
+
+.UserLogoIcon.CardIcon {
+  height: 2em;
 }
 
 .PostButtonMobile.hide {
   display: none;
 }
 
-#content-container {
-  height: 100vh;
-}
-
-@container Navbar (max-width: 44em) {
+@container Navbar (max-width: 48em) {
   .PostButton {
     display: none;
   }
@@ -150,7 +193,7 @@ input:focus{
   }
 }
 
-@media (max-width: 46em) {
+@media (max-width: 50em) {
   .PostButtonMobile{
     display: block;
     background-color: #203246;
@@ -158,6 +201,6 @@ input:focus{
     color: white;
     position: fixed;
     bottom: 0;
-    right: 0; 
+    right: 0;
   }
 }

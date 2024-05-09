@@ -128,3 +128,13 @@ export const getAccountID = async (uid) => {
         })
     return account_id;
 }
+
+export const usernameExists = async (username) => {
+    return DbUtils.spyderdb.oneOrNone('SELECT EXISTS(SELECT 1 FROM account WHERE username = $1)', [username])
+        .then(data => {
+            return data.exists;
+        })
+        .catch(error => {
+            throw error;
+        });
+}
