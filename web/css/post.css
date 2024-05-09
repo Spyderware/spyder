@@ -14,8 +14,9 @@ span.material-symbols-outlined.LikeComment {
   cursor: pointer;
 }
 
-input,textarea:focus{
-    outline: none;
+input,
+textarea:focus {
+  outline: none;
 }
 
 .OverallContainer {
@@ -31,30 +32,40 @@ input,textarea:focus{
   padding: 1vh;
   border: 0.09em solid black;
   border-radius: 0.5em;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
 .CommentContainer {
   display: flex;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   margin-top: 1em;
   padding: 1em;
   border-radius: 3vh;
   flex-direction: column;
   gap: 1vh;
+  animation: fade-in 1s ease;
 }
 
-.CommentInputClass{
-    max-block-size: 85%;
-    resize: vertical;
-    min-height: 3em;
-    width:95%;
-    border-style: none;
-    max-height: 10em;
-    background-color: #F8F8F8;
-    display: flex;
-    align-items: center;
-    /* font-size: large; */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.CommentInputClass {
+  max-block-size: 85%;
+  resize: vertical;
+  min-height: 3em;
+  width: 95%;
+  border-style: none;
+  max-height: 10em;
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  /* font-size: large; */
 }
 
 .PlacedComment {
@@ -65,7 +76,7 @@ input,textarea:focus{
   border: 0.09em solid black;
   border-radius: 0.5em;
   margin-bottom: 0.35em;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
 .NoComments {

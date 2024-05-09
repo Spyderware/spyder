@@ -29,6 +29,7 @@ async function initPage() {
 
     if (posts.length > 0) {
         populatePostsList(posts);
+        document.getElementById(HOMEPAGE_NO_POSTS_ID).style.display = 'none';
     } else {
         document.getElementById(HOMEPAGE_NO_POSTS_ID).style.display = 'flex';
     }
@@ -55,10 +56,12 @@ async function populatePostsList(posts) {
             const postHtmlElement = await createPostFromTemplate(post);
             postContainer.insertAdjacentHTML('beforeend', postHtmlElement);
 
-            document.getElementById(`post-${post.post_id}`).addEventListener('click', function (event) {
-                event.preventDefault();
-                changeRoute(event.currentTarget.getAttribute('href'), false);
-            });
+            document.getElementById(`post-${post.post_id}`).addEventListener('click', handlePostClick);
         }
     }
+}
+
+function handlePostClick(event) {
+    event.preventDefault();
+    changeRoute(event.currentTarget.getAttribute('href'), false);
 }
