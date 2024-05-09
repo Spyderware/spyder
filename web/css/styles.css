@@ -93,12 +93,16 @@ input:focus{
   border-radius: 0.5em;
   background-color: #FFFFFF;
   padding: 0.5vh;
+  max-width: 20em;
+  width: 100%;
 }
 
 .Categories{
   border: 0.09em solid black;
   border-radius: 0.5em;
   padding: 1vh;
+  max-width: 20em;
+  width: 100%;
 }
 
 .NavFlex button{
@@ -128,6 +132,19 @@ input:focus{
   margin-right: 1.5em;
   cursor: pointer;
   text-wrap: nowrap;
+  cursor: pointer;
+  background-color: #203246;
+  border: 0;
+  border-radius: 6.25em;
+  color: #ffffff;
+  font-size: 1em;
+  min-height: 2.5em;
+  overflow: hidden;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .PostButtonMobile{
@@ -157,6 +174,10 @@ input:focus{
   cursor: pointer;
   height: 100%;
   align-self: flex-end;
+}
+
+.ViewProfile p {
+ text-wrap: nowrap;
 }
 
 .hide {
@@ -195,7 +216,7 @@ input:focus{
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
 
-@container Navbar (max-width: 48em) {
+@container Navbar (max-width: 62em) {
   .PostButton {
     display: none;
   }
@@ -207,7 +228,7 @@ input:focus{
   }
 }
 
-@container Navbar (max-width: 37em) {
+@container Navbar (max-width: 55em) {
   .Categories{
     display: none;
   }
@@ -221,9 +242,14 @@ input:focus{
   .SearchBar {
     margin: 1em;
     width: 100%;
+    max-width: 100%;
+    margin-left: 2em;
+    margin-right: 2em;
   }
   .ViewProfile {
-    margin-left: 0;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: center;
   }
   .PostButtonNav{
     display: none;
@@ -233,7 +259,7 @@ input:focus{
   }
 }
 
-@media (max-width: 50em) {
+@media (max-width: 64em) {
   .PostButtonMobile{
     display: flex;
   }
