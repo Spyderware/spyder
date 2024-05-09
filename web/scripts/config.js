@@ -54,6 +54,5 @@ const USER_LOGO_TOKEN_NAME = 'user-logo';
  * The name of the API Base Url
  */
 const BASE_API_URL = 'http://localhost:8080/api/v1';
-// const BASE_API_URL = 'http://api.spyder.phipson.co.za/api/v1';
 
 export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME, PLACEHOLDER_ROUTE, SEARCH_EVENT_NAME, USERNAME_TOKEN_NAME, USER_LOGO_TOKEN_NAME, BASE_API_URL }

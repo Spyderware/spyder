@@ -1,5 +1,5 @@
 import { BASE_API_URL } from "./config.js";
- 
+
 function postData(endpoint, payload, jwt) {
     return fetch(`${BASE_API_URL}/${endpoint}`, {
         method: 'POST',
@@ -7,10 +7,10 @@ function postData(endpoint, payload, jwt) {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${jwt}`
         },
-        body: payload
+        body: JSON.stringify(payload)
     });
 }
- 
+
 function getData(endpoint, jwt) {
     return fetch(`${BASE_API_URL}/${endpoint}`, {
         headers: {
@@ -19,5 +19,5 @@ function getData(endpoint, jwt) {
         }
     });
 }
- 
+
 export { getData, postData }

@@ -1,4 +1,4 @@
-import { login } from "./auth.js";
+import { login, signup } from "./auth.js";
 import { Routes } from "./config.js";
 import { changeRoute } from "./router.js";
 
@@ -35,5 +35,8 @@ function handleCredentialResponse(response) {
 
 function signupHandler(event) {
     event.preventDefault();
-    signup();
+
+    const username = document.getElementById('fUsername').value;
+
+    signup(username);
 }
