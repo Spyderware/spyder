@@ -105,13 +105,13 @@ async function fetchContent(path) {
  */
 function changePageTitle(container) {
     const titleTags = container.querySelectorAll('title');
-    
+
     var title = APP_NAME;
     if (titleTags.length > 0) {
         title = titleTags[0].innerHTML;
         titleTags[0].parentNode.removeChild(titleTags[0]);
     }
-    
+
     document.title = title;
 }
 
@@ -137,4 +137,4 @@ async function loadPage(page) {
     }
 }
 
-export { loadPage };
+export { fetchContent, loadPage };

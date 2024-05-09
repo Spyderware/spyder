@@ -12,12 +12,10 @@ const PORT = process.env.PORT | 8080;
 app.use(cors());
 app.use(bodyParser.json());
 app.get("/", (req, res) => {
-    res.send(JSON.stringify({message: "hello world 2"}));
+    res.send(JSON.stringify({message: "API is Up"}));
 });
 
-app.get("/login", AuthController.login);
-app.post("/signup", AuthController.signup);
-app.use('/api/v1', Auth.verifyUser ,router);
+app.use('/api/v1', Auth.verifyUser, router);
 
 
 app.listen(PORT, (error) => {

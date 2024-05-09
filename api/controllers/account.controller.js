@@ -112,3 +112,10 @@ export const addUser = async (uid, username, img_url) => {
     });
 }
 
+export const updateUser = async (uid, username, img_url) => {
+    await DbUtils.spyderdb.none('UPDATE account SET username = ${username}, img_url = ${img_url} WHERE uid = ${uid}', {
+        uid: uid,
+        username: username,
+        img_url: img_url
+    });
+}

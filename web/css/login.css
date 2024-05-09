@@ -135,3 +135,11 @@
   padding: 2em;
   border-radius: 2em;
 }
+
+.UserNameForm.hide {
+  display: none;
+}
+
+.login-button.hide {
+  display: none;
+}

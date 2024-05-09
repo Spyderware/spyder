@@ -1,32 +1,25 @@
 * { 
     margin:0; 
     padding:0; 
-    box-sizing:border-box;
+    box-sizing: border-box;
     font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica, sans-serif; 
 }
-html, body{
-    height: 100%;
-}
-
-.WebsiteLogo{
-    border-radius: 50%;
-    max-width: 9vh;
-    max-height: auto;
-    margin-bottom: 0.5em;
-    
+html,
+body {
+  height: 100%;
 }
 
 input:focus{
     outline: none;
-    }
-
-.UserLogo{
-    border-radius: 50%;
-    max-width: 7vh;
-    max-height: auto;
-    margin-bottom: 0.5em;
-    
 }
+
+.UserLogo {
+  border-radius: 50%;
+  max-width: 7vh;
+  max-height: auto;
+  margin-bottom: 0.5em;
+}
+
 .PostCard{
     padding: 1em 2em 2em 1em;
     display: flex;
@@ -35,24 +28,17 @@ input:focus{
     border-radius: 1vh;
     color: #FFFFFF;
 }
-.MainView{
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-    padding-left: 2% ;
-    padding-right: 2% ;
-    
+.MainView {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 1%;
 }
 .heart.Full{
     font-variation-settings: 'FILL' 1, 'wght' 100, 'GRAD' 0, 'opsz' 48;
-}
-
-.UserLogoIcon.Headder{
-    font-variation-settings: 'FILL' 1, 'wght' 1000, 'GRAD' 0, 'opsz' 48;
-}
-
-.material-symbols-outlined.UserLogoIcon.PostUser{
-    font-variation-settings: 'FILL' 1, 'wght' 200, 'GRAD' 0, 'opsz' 48;
+    margin-left: auto;
 }
 
 
@@ -62,102 +48,41 @@ input:focus{
     gap: 1vh;
 }
 
-.NavFlex{
-    container-type: inline-size;
-    container-name: Navbar;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 3vh 1vh 1vh 3vh;
-    gap: 1vh;
-    box-shadow: 0 0.063em 0.25em;
-}
-.SearchBar{
-    display: flex;
-    border: 0.09em solid black;
-    border-radius: 0.5em;  
-    background-color: #FFFFFF;
-    padding: 0.5vh;
+.PostHeadder {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 1em;
 }
 
-
-
-.ViewProfile{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.PostUserdetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin-left: auto;
+  gap: 0.5vh;
 }
 
-.PostButton{
-    margin-left: auto;
-    padding: 1vh;
-    border-radius:0.5em;
-    margin-right: 10%;
-    cursor: pointer;
-
+.PostUserLogo {
+  max-width: 2vh;
+  max-height: auto;
+  margin-bottom: 0em;
 }
 
-.SearchInputClass{
-    border-style:none;
+.CardBody {
+  display: flex;
+  align-items: center;
+  gap: 10vh;
 }
 
-
-
-.Categories{
-    border: 0.09em solid black;
-    border-radius: 0.5em;  
-    padding: 1vh;
+.NoPosts {
+  display: none;
+  gap: 1vh;
+  align-items: center;
+  justify-content: center;
 }
 
-.PostHeadder{
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 1em;
-    
-}
-
-.PostUserdetails{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row-reverse;
-    margin-left: auto;
-    gap: 0.5vh;   
-}
-
-.PostUserLogo{
-    max-width: 2vh;
-    max-height: auto;
-    margin-bottom: 0em;
-}
-
-.CardBody{
-    display: flex;
-    align-items: center;
-    gap: 10vh;
-}
-
-.NoPosts{
-    display: flex;
-    gap: 1vh;
-    align-items: center;
-    justify-content: center;
-}
-
-.material-symbols-outlined.ExpandNavButton{
-    display: none;
-    cursor: pointer;
-}
-
-@container Navbar (max-width: 31.25em) {
-    .SearchBar{
-        display: none;
-    }
-    .Categories{
-        display: none;
-    }
-    .material-symbols-outlined.ExpandNavButton{
-        display:block;
-    } 
+.material-symbols-outlined.ExpandNavButton {
+  display: none;
+  cursor: pointer;
 }

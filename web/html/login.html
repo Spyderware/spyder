@@ -1,7 +1,7 @@
 <head>
-  <link rel="stylesheet" href="../css/login.css" />
+  <link rel="stylesheet" href="/css/login.css" />
   <script src="https://accounts.google.com/gsi/client" defer async></script>
-  <script type="module" src="../scripts/login.js" defer></script>
+  <script type="module" src="/scripts/login.js" defer></script>
   <title>Spyder Login</title>
 </head>
 <body>
@@ -9,13 +9,13 @@
     <article class="login-container">
       <div class="login-image">
         <img
-          src="../resources/SpyderwareLogo.png"
+          src="/resources/SpyderwareLogo.png"
           alt="spyder logo"
           id="loginlogo"
         />
       </div>
       <h1>Welcome User</h1>
-      <div class="login-button">
+      <div class="login-button" id="LoginButton">
         <div
           id="g_id_onload"
           data-client_id="271058509023-c7uprprd3a28gpnldg42nor518g12kpu.apps.googleusercontent.com"
@@ -35,20 +35,7 @@
           data-logo_alignment="left"
         ></div>
       </div>
-    </article>
-  </section>
-
-  <section class="NewUserNameFlex">
-    <article class="NewUserCard">
-      <div class="LoginHeadder">
-        <img
-          src="../resources/SpyderwareLogo.png"
-          alt=""
-          class="WebsiteLogo"
-        />
-        <h1>Please enter a username</h1>
-      </div>
-      <form action="" method="" class="UserNameForm">
+      <form class="UserNameForm hide" id="UsernameForm">
         <span class="ErrorMessage">Username is required</span>
         <input
           type="text"
