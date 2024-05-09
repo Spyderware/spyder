@@ -1,30 +1,5 @@
 import {HttpStatusCodes, DbUtils} from '../utils/index.js';
 
-export const createAccount = async (req, res) => {
-    try {
-        const {uid, username} = req.body;
-        if (!uid || !username) {
-            res.status(HttpStatusCodes.BadRequest).send({message: "Invalid payload"});
-        } else {
-            await DbUtils.spyderdb.oneOrNone('SELECT * FROM account WHERE uid = $1 OR username = $2', [uid, username])
-                .then(async data => {
-                    if (data) {
-                        res.status(HttpStatusCodes.Conflict).send({message: "Account already exists"});
-                    } else {
-                        await DbUtils.spyderdb.none('INSERT INTO account(uid, username) VALUES(${uid}, ${username})', {
-                            uid: uid,
-                            username: username
-                        });
-                        return res.status(HttpStatusCodes.OK).send({message: 'Account created successfully.'});
-                    }
-                })
-
-        }
-    } catch (err) {
-        res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
-    }
-}
-
 export const getAllAccounts = async (req, res) => {
     try {
         await DbUtils.spyderdb.any('select * from account')
@@ -109,3 +84,31 @@ export const checkIfAccountExists = (account_id) => {
             throw error;
         });
 }
+
+export const checkIfUIDExists = async (uid) => {
+    let accountObject = {
+        username: null,
+        img_url: null,
+    };
+    await DbUtils.spyderdb.oneOrNone('SELECT * FROM account WHERE uid = $1', [uid])
+        .then(async data => {
+            if (data) {
+                accountObject = {
+                    username: data.username,
+                    img_url: data.img_url,
+                }
+            } else {
+                await addUser(uid, null, null);
+            }
+        })
+    return accountObject;
+}
+
+export const addUser = async (uid, username, img_url) => {
+    await DbUtils.spyderdb.none('INSERT INTO account(uid, username, img_url) VALUES(${uid}, ${username}, ${img_url})', {
+        uid: uid,
+        username: username,
+        img_url: img_url
+    });
+}
+
