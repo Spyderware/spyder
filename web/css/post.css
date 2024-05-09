@@ -71,11 +71,10 @@ textarea:focus {
 .PlacedComment {
   display: flex;
   flex-direction: column;
-  gap: 1vh;
   padding: 1vh;
   border: 0.09em solid black;
   border-radius: 0.5em;
-  margin-bottom: 0.35em;
+  margin-bottom: 0.5em;
   background-color: #f8f8f8;
 }
 

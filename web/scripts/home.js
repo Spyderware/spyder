@@ -27,12 +27,14 @@ async function initPage() {
         console.error('Could not fetch posts.');
     }
 
-    if (posts.length > 0) {
-        populatePostsList(posts);
-        document.getElementById(HOMEPAGE_NO_POSTS_ID).style.display = 'none';
-    } else {
-        document.getElementById(HOMEPAGE_NO_POSTS_ID).style.display = 'flex';
-    }
+    setTimeout(function() {
+        if (posts.length > 0) {
+            populatePostsList(posts);
+            document.getElementById(HOMEPAGE_NO_POSTS_ID).style.display = 'none';
+        } else {
+            document.getElementById(HOMEPAGE_NO_POSTS_ID).style.display = 'flex';
+        }
+    }, 250)
 }
 
 /**

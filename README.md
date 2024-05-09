@@ -58,3 +58,11 @@ npm install
 ```bash
 npm run start:dev
 ```
+
+#### Website
+
+**Found in `spyder/web`**
+
+1. Install a Website Hosting Server
+2. Set the Error Path as `index.html`
+3. Run the Website Hosting Server
