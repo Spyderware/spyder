@@ -1,60 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="../css/post.css" />
-    <script src="../scripts/post.js"></script>
+    <link rel="stylesheet" href="/css/post.css" />
+    <script src="/scripts/post.js"></script>
   </head>
   <body class="OverallContainer">
-    <nav class="NavFlex">
-      <div class="HomeButton">
-        <span class="material-symbols-outlined HomeButton">home</span>
-        <p>Home</p>
-      </div>
-      <button type="submit" class="PostButtonClass" id="PostButton">
-        Create Post
-      </button>
-      <div class="ViewProfile">
-        <span class="material-symbols-outlined UserLogoIcon Headder">
-          account_circle
-          </span>
-        <!-- 
-         Use for User Images from Google oAuth  
-        <img src="../resources/DefaultUserLogo.png" alt="" class="UserLogo" /> -->
-        <p>View Profile</p>
-      </div>
-    </nav>
     <main class="MainView">
-      <article class="PostCard">
-        <div class="PostHeadder">
-          <h1>Post Title</h1>
-          <div class="PostUserdetails">
-            <span class="material-symbols-outlined UserLogoIcon Headder">
-              account_circle
-              </span>
-
-            <!-- Use for User Images from Google oAuth 
-              <img 
-              src="../resources/DefaultUserLogo.png"
-              alt=""
-              class="PostUserLogo"
-            /> -->
-            <p>User Name</p>
-          </div>
-        </div>
-        <div class="CardBody">
-          <p>
-            
-          </p>
-          <span class="material-symbols-outlined LikeComment" id="favorite">favorite</span>
-        </div>
-      </article>
+      <div id="post-view-container"></div>
       <article class="NewComment">
         <textarea
           type="text"
           id="CommentInput"
           class="CommentInputClass"
           placeholder="Add Comment"
-          maxlength="50"
+          maxlength="255"
         ></textarea>
         <span class="material-symbols-outlined AddComment">send</span>
       </article>
@@ -63,25 +22,7 @@
         <p>Your comments are in another castle.</p>
         <span class="material-symbols-outlined">castle</span>
       </article>
-
-      <article class="PlacedComment">
-        <span class="material-symbols-outlined UserLogoIcon Headder">
-          account_circle
-        </span>
-        <!-- Use for User Images from Google oAuth 
-        <img src="../resources/DefaultUserLogo.png" alt="" class="UserLogo" /> -->
-        <div>
-          <h3>User Name</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Convallis tellus id interdum velit laoreet id. Blandit massa enim
-            nec dui nunc. Urna nunc id cursus metus aliquam eleifend mi in. Dui
-            id ornare arcu odio ut sem.
-          </p>
-        </div>
-      </article>
+      <div id="comment-container"></div>
     </main>
-    <script src="" async defer></script>
   </body>
 </html>

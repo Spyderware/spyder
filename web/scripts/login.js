@@ -1,4 +1,6 @@
-import { login } from "./auth.js";
+import { login, signup } from "./auth.js";
+import { Routes } from "./config.js";
+import { changeRoute } from "./router.js";
 
 // ===================== Init ======================
 
@@ -9,13 +11,32 @@ import { login } from "./auth.js";
  * @see login.html
  */
 window.handleCredentialResponse = handleCredentialResponse;
+addEventListener('login-init', initPage);
+initPage();
 
 // =================== Functions ===================
+
+function initPage() {
+    document.getElementById('UsernameForm').addEventListener('submit', signupHandler);
+}
 
 function handleCredentialResponse(response) {
     // response.credential is the JWT
     const responsePayload = response.credential;
-    login(responsePayload);
+    var loginSuccessful = login(responsePayload);
+
+    if (!loginSuccessful) {
+        document.getElementById('LoginButton').classList.add('hide')
+        document.getElementById('UsernameForm').classList.remove('hide');
+    } else {
+        changeRoute(Routes.ORIGIN, false);
+    }
 }
 
-export { handleCredentialResponse }
+function signupHandler(event) {
+    event.preventDefault();
+
+    const username = document.getElementById('fUsername').value;
+
+    signup(username);
+}
