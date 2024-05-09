@@ -1,88 +1,99 @@
-.UserLogo{
-    border-radius: 50%;
-    max-width: 7vh;
-    max-height: auto;
-    margin-bottom: 0.5em;
+.UserLogo {
+  border-radius: 50%;
+  max-width: 7vh;
+  max-height: auto;
+  margin-bottom: 0.5em;
 }
 
-.MainView{
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-    flex-grow: 5;
-    overflow: auto;
-    padding-left: 2% ;
-    padding-right: 2% ;
-    height: 100%;
+.MainView {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  flex-grow: 5;
+  overflow: auto;
+  padding-left: 2%;
+  padding-right: 2%;
+  height: 100%;
 }
 
-input,textarea:focus{
-    outline: none;
+input,
+textarea:focus {
+  outline: none;
 }
 
-.OverallContainer{
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
+.OverallContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
 }
 
 #content-container {
-    height: 100vh;
-    background-color: #203246;
+  height: 100vh;
+  background-color: #203246;
 }
 
-.CreatePostContainer{
-    container-type: inline-size;
-    container-name: Create;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80%;
-    width: 100%;
+.CreatePostContainer {
+  container-type: inline-size;
+  container-name: Create;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 100%;
 }
 
-.InputStyling{
-    padding: 1vh;
+.InputStyling {
+  padding: 1vh;
 }
 
-.CreatePostPopUp{   
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 1em 2em 1em 2em;
-    border-radius: 2em;
-    min-width: 60%;
-    min-height: 30%;
-    box-shadow: 0 0.063em 0.25em;
-    background-color: #F8F8F8;
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.NewPostFormClass{
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-    flex-wrap: wrap;
-    width: 100%;
+.CreatePostPopUp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1em 2em 1em 2em;
+  border-radius: 2em;
+  min-width: 60%;
+  min-height: 30%;
+  box-shadow: 0 0.063em 0.25em;
+  background-color: #f8f8f8;
+  animation: fade-in 0.4s ease;
 }
 
-.CreatePostHeadder{
-    margin-right: auto;
-    margin-bottom: 1rem;
-    font-size: x-large;
+.NewPostFormClass {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.CreatePostHeadder {
+  margin-right: auto;
+  margin-bottom: 1rem;
+  font-size: x-large;
 }
 
 .fPostBody {
-    max-block-size: 85%;
-    height: 18em;
-    resize: vertical;
-    min-height: 5em;
-    max-height: 20em;
+  max-block-size: 85%;
+  height: 18em;
+  resize: vertical;
+  min-height: 5em;
+  max-height: 20em;
 }
 
-.PostButtonSubmitClass{
-    cursor: pointer;
+.PostButtonSubmitClass {
+  cursor: pointer;
   background-color: #203246;
   border: 0;
   border-radius: 6.25em;
@@ -99,6 +110,6 @@ input,textarea:focus{
 
 .NewPostFormClass button:hover,
 .NewPostFormClass button:focus {
-  background-color: #16437E;
+  background-color: #16437e;
   color: #ffffff;
 }

@@ -15,7 +15,7 @@ document.getElementById('NavbarLogo').addEventListener('click', homeHandler);
 document.getElementById('CreatePost').addEventListener('click', createPost);
 document.getElementById('Search').addEventListener('click', search);
 
-document.getElementById('SearchInput').addEventListener('keyup', function(event) {
+document.getElementById('SearchInput').addEventListener('keyup', function (event) {
     if (event.code === "Enter") {
         search();
     }
@@ -82,7 +82,6 @@ function search() {
 
     if (searchVal === "" && categoryVal === "") {
         setSearchPath("");
-        return;
     }
 
     if (categoryVal === "") {
