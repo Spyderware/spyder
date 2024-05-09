@@ -46,6 +46,9 @@ input:focus{
   overflow: auto;
   padding-left: 2% ;
   padding-right: 2% ;
+  max-width: 130vh;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .PostHeadder {
@@ -174,12 +177,6 @@ input:focus{
   margin: auto;
   color: #FFFFFF;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-}
-
-#content-container {
-  height: 100%;
-  max-width: 120vh;
-  align-items: center;
 }
 
 @container Navbar (max-width: 48em) {
