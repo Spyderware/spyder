@@ -95,6 +95,8 @@ async function signup(username) {
             localStorage.setItem(USER_LOGO_TOKEN_NAME, decodedJWT.picture);
     
             changeRoute(Routes.ORIGIN, false);
+        } else {
+            return await signupData.json();
         }
     } 
 }

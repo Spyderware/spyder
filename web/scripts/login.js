@@ -44,5 +44,6 @@ async function signupHandler(event) {
 
     const username = document.getElementById('fUsername').value;
 
-    await signup(username);
+    const {message} = await signup(username);
+    document.getElementById('ErrorMessage').innerText = message;
 }
