@@ -1,5 +1,6 @@
 import { getData } from "./api.js";
 import { retrieveJWT } from "./auth.js";
+import { populateCategoryDropdown } from "./category-loader.js";
 import { changeRoute } from "./router.js";
 import { createPostFromTemplate } from "./template-loader.js";
 
@@ -10,6 +11,7 @@ initPage();
 // =================== Constants ===================
 const HOMEPAGE_MAIN_VIEW_ID = 'homepage-main-view';
 const HOMEPAGE_NO_POSTS_ID = 'home-no-posts';
+const NAVBAR_SELECT_ID = 'Categories';
 
 // =================== Functions ===================
 
@@ -28,6 +30,8 @@ async function initPage() {
     } else {
         document.getElementById(HOMEPAGE_NO_POSTS_ID).style.display = 'flex';
     }
+
+    await populateCategoryDropdown(NAVBAR_SELECT_ID);
 }
 
 /**
