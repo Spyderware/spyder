@@ -8,5 +8,4 @@ postRouter.get('/', PostController.getAllPosts);
 postRouter.get('/:post_id', PostController.getPostByPostId);
 postRouter.delete('/:post_id', PostController.deleteByPostId);
 postRouter.put('/:post_id', PostController.updatePost);
-postRouter.get('/:title/:category', PostController.searchPostByTitleAndCategory);
 
