@@ -35,5 +35,5 @@ function handleCredentialResponse(response) {
 
 function signupHandler(event) {
     event.preventDefault();
-    changeRoute(Routes.ORIGIN, false);
+    signup();
 }

@@ -52,4 +52,8 @@ function retrieveJWT() {
     return localStorage.getItem(AUTH_TOKEN_NAME);
 }
 
-export { isLoggedIn, initAuth, login, logout, retrieveUsername, retrieveUserLogo, retrieveJWT };
+function signup() {
+    changeRoute(Routes.ORIGIN, false);
+}
+
+export { isLoggedIn, initAuth, login, logout, retrieveUsername, retrieveUserLogo, retrieveJWT, signup };
