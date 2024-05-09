@@ -51,14 +51,13 @@ input:focus{
 .MainView{
   display: flex;
   flex-direction: column;
-  gap: 1vh;
+  gap: 1.5vh;
   flex-grow: 5;
   overflow: auto;
   padding-left: 2% ;
   padding-right: 2% ;
   max-width: 130vh;
-  margin-left: auto;
-  margin-right: auto;
+  min-width: 80vw;
 }
 
 .PostHeadder {

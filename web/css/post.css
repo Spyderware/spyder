@@ -31,6 +31,17 @@ input,textarea:focus{
   padding: 1vh;
   border: 0.09em solid black;
   border-radius: 0.5em;
+  background-color: #F8F8F8;
+}
+
+.CommentContainer {
+  display: flex;
+  background-color: #F8F8F8;
+  margin-top: 1em;
+  padding: 1em;
+  border-radius: 3vh;
+  flex-direction: column;
+  gap: 1vh;
 }
 
 .CommentInputClass{
@@ -40,6 +51,10 @@ input,textarea:focus{
     width:95%;
     border-style: none;
     max-height: 10em;
+    background-color: #F8F8F8;
+    display: flex;
+    align-items: center;
+    /* font-size: large; */
 }
 
 .PlacedComment {
@@ -50,6 +65,7 @@ input,textarea:focus{
   border: 0.09em solid black;
   border-radius: 0.5em;
   margin-bottom: 0.35em;
+  background-color: #F8F8F8;
 }
 
 .NoComments {
@@ -57,6 +73,7 @@ input,textarea:focus{
   gap: 1vh;
   align-items: center;
   justify-content: center;
+  color: #f8f8f8;
 }
 
 .UserLogoIcon.CardIcon {
@@ -65,6 +82,7 @@ input,textarea:focus{
 
 .UserLogoIcon.CardIcon.Comment {
   margin-left: 0;
+  margin-right: 0.5em;
 }
 
 .CommentHeader {

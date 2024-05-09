@@ -4,7 +4,7 @@ import { AccountController, PostController } from './index.js'
 export const createComment = async (req, res) => {
     try {
         const { uid, post_id, comment } = req.body;
-        if (!uid || !post_id || !comment) {
+        if (!uid || !post_id || !comment || comment !== "") {
             res.status(HttpStatusCodes.BadRequest).send({ message: "Invalid payload" });
         } else {
             const account_id = await AccountController.getAccountID(uid);

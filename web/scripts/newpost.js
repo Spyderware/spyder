@@ -25,6 +25,10 @@ async function createPost(event) {
     const titleVal = document.getElementById('fPostTitle').value;
     const bodyVal = document.getElementById('fPostBody').value;
 
+    if (categoryVal === "" || titleVal === "" || bodyVal === "") {
+        return;
+    }
+
     const jwt = retrieveJWT();
     const postPayload = {
         uid: decodeJWT(jwt).sub,
