@@ -115,6 +115,23 @@ export const updatePost = async (req, res) => {
 };
 
 
+export const searchPostByTitleAndCategory = async (req, res) => {
+    try {
+        const {title, category} = req.params;
+        if (!title || !category) {
+            res.status(HttpStatusCodes.BadRequest).send({message: "Invalid payload"});
+        } else {
+            await DbUtils.spyderdb.any('SELECT * FROM PostAccountView WHERE category = $1 AND title LIKE $2', [category, '%' + title + '%'])
+                .then(data => {
+                    res.status(HttpStatusCodes.OK).send(data);
+                })
+        }
+
+    } catch (err) {
+        res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
+    }
+}
+
 export const checkIfPostExists = (post_id) => {
     return DbUtils.spyderdb.oneOrNone('SELECT EXISTS(SELECT 1 FROM post WHERE post_id = $1)', [post_id])
         .then(data => {
