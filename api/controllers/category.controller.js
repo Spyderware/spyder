@@ -112,3 +112,12 @@ export const checkIfCategoryExists = (category_id) => {
             throw error;
         });
 }
+
+export const getCategoryID = async (category) => {
+    var category_id = null;
+    await DbUtils.spyderdb.oneOrNone('SELECT category_id FROM account WHERE category = $1', [category])
+        .then(async data => {
+            category_id = data.category_id
+        })
+    return category_id;
+}

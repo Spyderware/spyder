@@ -3,7 +3,7 @@ import { PATH_CHANGE_EVENT_NAME, PLACEHOLDER_ROUTE, Routes } from "./config.js";
 
 // ===================== Init ======================
 
-var currentPath = "";
+var currentPath = window.location.pathname;
 addEventListener(PATH_CHANGE_EVENT_NAME, handlePathChange);
 
 // @ryan - was this removed on purpose? Handles loading page content when moving back and forwards
