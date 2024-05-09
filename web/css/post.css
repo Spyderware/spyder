@@ -92,14 +92,18 @@ input,textarea:focus{
 }
 
 .UserLogoIcon.CardIcon {
-    height: 2em;
+  height: 2em;
+}
+
+.UserLogoIcon.CardIcon.Comment {
+  margin-left: 0;
 }
 
 .CommentHeader {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: right;
+  justify-content: left;
   margin-bottom: 1em;
 }
 
