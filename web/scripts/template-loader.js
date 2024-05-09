@@ -17,8 +17,8 @@ const ContentTemplates = Object.freeze({
 * @returns a post template populated with the provided data.
 */
 async function createPostFromTemplate(postData) {
-    if (!('post_id' in postData && 'username' in postData && 'title' in postData && 'body' in postData && 'img_url' in postData)) {
-        throw new Error("postData must contain 'postId', 'username', 'title', and 'body' fields.");
+    if (!('post_id' in postData && 'username' in postData && 'title' in postData && 'body' in postData && 'img_url' in postData && 'category' in postData)) {
+        throw new Error("postData must contain 'postId', 'category', 'username', 'title', and 'body' fields.");
     }
 
     const parser = new DOMParser();
@@ -33,6 +33,10 @@ async function createPostFromTemplate(postData) {
     const titleElement = postDoc.getElementById('title-id');
     titleElement.innerText = postData.title;
     titleElement.removeAttribute('id');
+
+    const categoryElement = postDoc.getElementById('category-id');
+    categoryElement.innerText = 'Category: ' + postData.category;
+    categoryElement.removeAttribute('id');
 
     const usernameElement = postDoc.getElementById('username-id');
     usernameElement.innerText = postData.username;

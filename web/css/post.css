@@ -73,7 +73,7 @@ input,textarea:focus{
   gap: 1vh;
   align-items: center;
   justify-content: center;
-  color: #f8f8f8;
+  color: black;
 }
 
 .UserLogoIcon.CardIcon {
