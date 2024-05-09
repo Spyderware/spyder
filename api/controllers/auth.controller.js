@@ -23,7 +23,7 @@ export const signup = async (req, res) => {
         if (!uid || !username || !img_url) {
             res.status(HttpStatusCodes.BadRequest).send({message: "Invalid payload"});
         } else {
-            if (AccountController.usernameExists()) {
+            if (await AccountController.usernameExists()) {
                 res.status(HttpStatusCodes.BadRequest).send({message: "Username already exists"})
             } else {
                 await AccountController.updateUser(uid, username, img_url);
