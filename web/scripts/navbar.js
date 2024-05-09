@@ -14,6 +14,13 @@ addEventListener('DOMContentLoaded', initNavbar);
 document.getElementById('NavbarLogo').addEventListener('click', homeHandler);
 document.getElementById('CreatePost').addEventListener('click', createPost);
 document.getElementById('Search').addEventListener('click', search);
+
+document.getElementById('SearchInput').addEventListener('keyup', function(event) {
+    if (event.code === "Enter") {
+        search();
+    }
+});
+
 document.getElementById('CreatePostMobile').addEventListener('click', createPost);
 
 document.getElementById('LogOut').addEventListener('click', logoutHandler);

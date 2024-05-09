@@ -1,5 +1,5 @@
 import { login, signup } from "./auth.js";
-import { Routes } from "./config.js";
+import { Routes, SEARCH_EVENT_NAME } from "./config.js";
 import { changeRoute } from "./router.js";
 
 // ===================== Init ======================
@@ -36,6 +36,7 @@ async function handleCredentialResponse(response) {
         document.getElementById('UsernameForm').classList.remove('hide');
     } else {
         changeRoute(Routes.ORIGIN, false);
+        window.dispatchEvent(new Event(SEARCH_EVENT_NAME));
     }
 }
 

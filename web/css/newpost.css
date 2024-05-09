@@ -1,14 +1,3 @@
-* { 
-    margin:0; 
-    padding:0; 
-    box-sizing:border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-
-}
-html, body{
-    height: 100%;
-}
-
 .UserLogo{
     border-radius: 50%;
     max-width: 7vh;
@@ -16,6 +5,7 @@ html, body{
     margin-bottom: 0.5em;
     
 }
+
 .MainView{
     display: flex;
     flex-direction: column;
@@ -38,7 +28,10 @@ input,textarea:focus{
     gap: 1vh;
 }
 
-
+#content-container {
+    height: 100vh;
+    background-color: #203246;
+}
 
 .CreatePostContainer{
     display: flex;
@@ -63,6 +56,7 @@ input,textarea:focus{
     min-width: 60%;
     min-height: 30%;
     box-shadow: 0 0.063em 0.25em;
+    background-color: #F8F8F8;
 }
 .NewPostFormClass{
     display: flex;
@@ -86,7 +80,7 @@ input,textarea:focus{
 
 .PostButtonSubmitClass{
     cursor: pointer;
-  background-color: #0A66C2;
+  background-color: #203246;
   border: 0;
   border-radius: 6.25em;
   color: #ffffff;
