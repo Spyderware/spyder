@@ -56,34 +56,6 @@ input,textarea:focus{
   gap: 1vh;
 }
 
-.PostHeadder {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 1em;
-}
-
-.PostUserdetails {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row-reverse;
-  margin-left: auto;
-  gap: 0.5vh;
-}
-
-.PostUserLogo {
-  max-width: 2vh;
-  max-height: auto;
-  margin-bottom: 0em;
-}
-
-.CardBody {
-  display: flex;
-  align-items: center;
-  gap: 10vh;
-}
-
 .NewComment {
   display: flex;
   align-items: center;

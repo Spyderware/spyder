@@ -54,32 +54,6 @@ input:focus {
     gap: 1vh;
 }
 
-.PostHeadder {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 1em;
-}
-
-.PostUserdetails {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    gap: 0.5vh;
-}
-
-.PostUserLogo {
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.CardBody {
-    display: flex;
-    align-items: center;
-    gap: 10vh;
-}
-
 .NoPosts {
     display: none;
     gap: 1vh;

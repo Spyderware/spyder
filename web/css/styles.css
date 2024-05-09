@@ -35,6 +35,33 @@ input:focus{
   gap: 1vh;
   box-shadow: 0 0.063em 0.25em;
   align-items: center;
+  margin-bottom: 2em;
+}
+
+.PostHeadder {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 1em;
+}
+
+.PostUserdetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  gap: 0.5vh;
+}
+
+.PostUserLogo {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.CardBody {
+  display: flex;
+  align-items: center;
+  gap: 10vh;
 }
 
 .SearchBar{
@@ -115,6 +142,7 @@ input:focus{
   height: 3em;
   margin-left: auto;
   border-radius: 100%;
+  border: solid #F8F8F8 2px;
 }
 
 .PostButtonMobile.hide {
