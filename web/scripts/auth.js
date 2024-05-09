@@ -83,7 +83,6 @@ async function signup(username) {
     var jwt = retrieveJWT();
     if (jwt) {
         const decodedJWT = decodeJWT(jwt);
-        console.log(decodedJWT);
         const signupBody = {
             uid: decodedJWT.sub,
             username: username,
