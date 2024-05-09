@@ -1,40 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica,
-    sans-serif;
-}
-
 .UserLogo {
   border-radius: 50%;
   max-width: 7vh;
   max-height: auto;
   margin-bottom: 0.5em;
-}
-
-.PostCard {
-    padding: 4vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #203246;
-    border-radius: 3vh;
-    max-width: 120vh;
-    margin: auto;
-    color: #FFFFFF;
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-}
-
-
-.MainView{
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-    flex-grow: 5;
-    overflow: auto;
-    padding-left: 2% ;
-    padding-right: 2% ;
-    
 }
 
 span.material-symbols-outlined.AddComment {
@@ -63,6 +31,17 @@ input,textarea:focus{
   padding: 1vh;
   border: 0.09em solid black;
   border-radius: 0.5em;
+  background-color: #F8F8F8;
+}
+
+.CommentContainer {
+  display: flex;
+  background-color: #F8F8F8;
+  margin-top: 1em;
+  padding: 1em;
+  border-radius: 3vh;
+  flex-direction: column;
+  gap: 1vh;
 }
 
 .CommentInputClass{
@@ -72,6 +51,10 @@ input,textarea:focus{
     width:95%;
     border-style: none;
     max-height: 10em;
+    background-color: #F8F8F8;
+    display: flex;
+    align-items: center;
+    /* font-size: large; */
 }
 
 .PlacedComment {
@@ -82,6 +65,7 @@ input,textarea:focus{
   border: 0.09em solid black;
   border-radius: 0.5em;
   margin-bottom: 0.35em;
+  background-color: #F8F8F8;
 }
 
 .NoComments {
@@ -89,6 +73,7 @@ input,textarea:focus{
   gap: 1vh;
   align-items: center;
   justify-content: center;
+  color: #f8f8f8;
 }
 
 .UserLogoIcon.CardIcon {
@@ -97,6 +82,7 @@ input,textarea:focus{
 
 .UserLogoIcon.CardIcon.Comment {
   margin-left: 0;
+  margin-right: 0.5em;
 }
 
 .CommentHeader {
