@@ -54,9 +54,10 @@ async function createPostFromTemplate(postData) {
 /**
  * This function loads a generic `comment` template and injects the comment data into its respective field.
  * @param {{
-* commentId,
+* post_id,
 * username,
-* body
+* comment,
+* img_url
 * }} commentData - the data / content for a specific comment.
 * @returns a comment template populated with the provided data.
 */
