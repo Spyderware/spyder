@@ -1,42 +1,50 @@
-import { getPostContent } from "./api.js";
+import { getData } from "./api.js";
+import { retrieveJWT } from "./auth.js";
 import { createPostFromTemplate, createCommentFromTemplate } from "./template-loader.js";
 
+// =================== Init ===================
+addEventListener('post-init', initPage);
+initPage();
 
 // =================== Constants ===================
 const POST_VIEW_CONTAINER_ID = 'post-view-container';
 const COMMENT_CONTAINER_ID = 'comment-container';
-// =================== Functions ===================
+const NO_COMMENT_ID = 'no-comments-id';
 
-async function preparePostView() {
-    const text = window.location.pathname;
-    const match = text.match(/\/post\/(\d+)/);
+// =================== Functions ===================
+async function initPage() {
+    const pathText = window.location.pathname;
+    const match = pathText.match(/\/post\/(\d+)/);
 
     if (!match) {
         throw new Error('Failed to read postId from the path.');
     }
 
     const postId = match[1];
+    await preparePostView(postId);
+}
 
-    // TODO : get post data for postId
-    // TODO : get comment data for postId
+async function preparePostView(postId) {
+    const jwt = retrieveJWT();
+    const postResponse = await getData(`post/${postId}`, jwt);
+    const commentsResponse = await getData(`comment/byPostId/${postId}`, jwt);
+    
+    let post;
+    let comments = [];
+    try {
+        post = await postResponse.json();
+        comments = await commentsResponse.json();
+    } catch (error) {
+        console.error('Could not fetch post / comments.');
+    }
 
-    const postData = await getPostContent(postId);
+    if (comments.length > 0) {
+        populateCommentsList(comments);
+    } else {
+        document.getElementById(NO_COMMENT_ID).style.display = 'flex';
+    }
 
-    const comments = [
-        {
-            commentId: 2,
-            username: 'testUsername2',
-            body: `Comment #2 on post ${postId}`
-        },
-        {
-            commentId: 1,
-            username: 'testUsername1',
-            body: `Comment #1 on post ${postId}`
-        }
-    ];
-
-    loadPostView(postData);
-    populateCommentsList(comments);
+    loadPostView(post);
 }
 
 /**
@@ -75,7 +83,3 @@ async function populateCommentsList(comments) {
         }
     }
 }
-
-// TODO : get post data
-// TODO : get comments for post
-preparePostView();
