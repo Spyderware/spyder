@@ -42,11 +42,12 @@ input:focus{
   display: flex;
   flex-direction: row;
   padding-bottom: 1em;
+  align-items: center;
 }
 
 .PostUserdetails {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-left: auto;
@@ -140,9 +141,14 @@ input:focus{
 
 .UserLogoIcon {
   height: 3em;
+  width: auto;
   margin-left: auto;
   border-radius: 100%;
   border: solid #F8F8F8 2px;
+}
+
+.UserLogoIcon.CardIcon {
+  height: 2em;
 }
 
 .PostButtonMobile.hide {

@@ -1,11 +1,11 @@
 import { logout } from "./auth.js";
-import { PATH_CHANGE_EVENT_NAME, Routes, SEARCH_EVENT_NAME } from "./config.js";
+import { populateCategoryDropdown } from "./category-loader.js";
+import { PATH_CHANGE_EVENT_NAME, Routes, SEARCH_EVENT_NAME, setSearchPath } from "./config.js";
 import { changeRoute } from "./router.js";
 
 // ===================== Init ======================
 
-var searchVal = "";
-var categoryVal = "";
+const NAVBAR_SELECT_ID = 'Categories';
 
 addEventListener(PATH_CHANGE_EVENT_NAME, handlePathChange);
 addEventListener('DOMContentLoaded', initNavbar);
@@ -16,6 +16,7 @@ document.getElementById('Search').addEventListener('click', search);
 document.getElementById('CreatePostMobile').addEventListener('click', createPost);
 
 document.getElementById('LogOut').addEventListener('click', logoutHandler);
+await populateCategoryDropdown(NAVBAR_SELECT_ID);
 
 // =================== Functions ===================
 
@@ -42,6 +43,10 @@ function initNavbar() {
         const optionToSelect = selectElement.querySelector(`option[value="${category}"]`);
         optionToSelect.selected = true;
     }
+
+    if (window.location.pathname === Routes.Homepage) {
+        search();
+    }
 }
 
 function logoutHandler() {
@@ -59,19 +64,20 @@ function createPost(event) {
 }
 
 function search() {
-    const newSearchVal = document.getElementById('SearchInput').value;
-    const newCategoryVal = document.getElementById('Categories').value;
+    const searchVal = document.getElementById('SearchInput').value;
+    const categoryVal = document.getElementById('Categories').value;
 
-    if (newCategoryVal === categoryVal && newSearchVal === searchVal) {
+    if (searchVal !== "" && categoryVal !== "") {
+        setSearchPath("");
         return;
-    } else {
-        searchVal = newSearchVal;
-        categoryVal = newCategoryVal;
     }
 
     changeRoute(`${Routes.Homepage}?search=${searchVal}&category=${categoryVal}`, false);
+    if (categoryVal === "") {
+        setSearchPath(`?title=${searchVal}`);
+    } else {
+        setSearchPath(`?title=${searchVal}&category=${categoryVal}`);
+    }
 
-    var searchEvent = new Event(SEARCH_EVENT_NAME);
-    searchEvent.payload = { search: searchVal, category: categoryVal};
-    window.dispatchEvent(searchEvent);
+    window.dispatchEvent(new Event(SEARCH_EVENT_NAME));
 }

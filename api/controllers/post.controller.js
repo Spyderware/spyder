@@ -32,25 +32,26 @@ export const createPost = async (req, res) => {
 
 export const getAllPosts = async (req, res) => {
     try {
-        const {title, category} = req.query;
+        let {title, category} = req.query;
         if (!title) {
-            const posts = await DbUtils.spyderdb.any('SELECT * FROM PostAccountView');
-            res.status(HttpStatusCodes.OK).send(posts);
+            title = "";
+        }
+            
+        if (category) {
+            console.log(title);
+            await DbUtils.spyderdb.any('SELECT * FROM PostAccountView WHERE category = $1 AND title LIKE $2', [category, '%' + title + '%'])
+                .then(data => {
+                    res.status(HttpStatusCodes.OK).send(data);
+                })
         } else {
-            if (category) {
-                await DbUtils.spyderdb.any('SELECT * FROM PostAccountView WHERE category = $1 AND title LIKE $2', [category, '%' + title + '%'])
-                    .then(data => {
-                        res.status(HttpStatusCodes.OK).send(data);
-                    })
-            } else {
-                await DbUtils.spyderdb.any('SELECT * FROM PostAccountView WHERE title LIKE $1', ['%' + title + '%'])
-                    .then(data => {
-                        res.status(HttpStatusCodes.OK).send(data);
-                    })
-            }
+            await DbUtils.spyderdb.any('SELECT * FROM PostAccountView WHERE title LIKE $1', ['%' + title + '%'])
+                .then(data => {
+                    res.status(HttpStatusCodes.OK).send(data);
+                })
         }
 
     } catch (err) {
+        console.log(err.message);
         res.status(HttpStatusCodes.InternalServerError).send({message: err.message});
     }
 };

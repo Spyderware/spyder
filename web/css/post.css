@@ -99,7 +99,7 @@ input,textarea:focus{
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: left;
+  justify-content: right;
   margin-bottom: 1em;
 }
 
