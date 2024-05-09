@@ -2,10 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica, sans-serif;
+  font-family: "Arial Narrow", Arial, "Helvetica Condensed", Helvetica,
+    sans-serif;
 }
 
-body{
+body {
   height: 100%;
 }
 
@@ -23,18 +24,18 @@ body {
   background-color: #203246;
 }
 
-input:focus{
+input:focus {
   outline: none;
 }
 
-.WebsiteLogo{
+.WebsiteLogo {
   border-radius: 50%;
   max-width: auto;
   height: 4em;
   cursor: pointer;
 }
 
-.NavFlex{
+.NavFlex {
   container-type: inline-size;
   container-name: Navbar;
   display: flex;
@@ -45,20 +46,21 @@ input:focus{
   gap: 1vh;
   box-shadow: 0 0.063em 0.25em;
   align-items: center;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
-.MainView{
+.MainView {
   display: flex;
   flex-direction: column;
   gap: 1vh;
   flex-grow: 5;
   overflow: auto;
-  padding-left: 2% ;
-  padding-right: 2% ;
+  padding-left: 2%;
+  padding-right: 2%;
   max-width: 130vh;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 2%;
 }
 
 .PostHeadder {
@@ -88,21 +90,21 @@ input:focus{
   gap: 10vh;
 }
 
-.SearchBar{
+.SearchBar {
   display: flex;
   border: 0.09em solid black;
   border-radius: 0.5em;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 0.5vh;
 }
 
-.Categories{
+.Categories {
   border: 0.09em solid black;
   border-radius: 0.5em;
   padding: 1vh;
 }
 
-.NavFlex button{
+.NavFlex button {
   cursor: pointer;
   background-color: #203246;
   border: 0;
@@ -116,25 +118,34 @@ input:focus{
   text-align: center;
 }
 
+#CreatePost:hover,
+#Search:hover {
+  background-color: #3d5570;
+}
+
+#Categories:hover {
+  background-color: #e0e0e0;
+}
+
 .NavFlex button:hover,
 .NavFlex button:focus {
   background-color: #203246;
   color: #ffffff;
 }
 
-.PostButtonNav{
+.PostButtonNav {
   margin-left: auto;
   padding: 1vh;
-  border-radius:0.5em;
+  border-radius: 0.5em;
   margin-right: 1.5em;
   cursor: pointer;
   text-wrap: nowrap;
 }
 
-.PostButtonMobile{
+.PostButtonMobile {
   display: none;
   padding: 3%;
-  border-radius:0.5em;
+  border-radius: 0.5em;
   margin-top: auto;
   margin-bottom: 3vh;
   margin-right: 3vh;
@@ -142,7 +153,7 @@ input:focus{
   cursor: pointer;
   height: 5em;
   width: 5em;
-  background-color: #F03836;
+  background-color: #f03836;
   color: white;
   position: fixed;
   bottom: 0;
@@ -151,7 +162,7 @@ input:focus{
   justify-content: center;
 }
 
-.ViewProfile{
+.ViewProfile {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -164,8 +175,8 @@ input:focus{
   display: none;
 }
 
-.SearchInputClass{
-  border-style:none;
+.SearchInputClass {
+  border-style: none;
   width: inherit;
 }
 
@@ -174,7 +185,7 @@ input:focus{
   width: auto;
   margin-left: auto;
   border-radius: 100%;
-  border: solid #F8F8F8 2px;
+  border: solid #f8f8f8 2px;
 }
 
 .UserLogoIcon.CardIcon {
@@ -189,11 +200,15 @@ input:focus{
   padding: 4vh;
   display: flex;
   flex-direction: column;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   border-radius: 3vh;
   margin: auto;
   color: #000000;
   box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+
+.PostCard:hover {
+  transform: scale(1.01);
 }
 
 @container Navbar (max-width: 48em) {
@@ -203,16 +218,16 @@ input:focus{
   .ViewProfile {
     margin-left: auto;
   }
-  .PostButtonNav{
+  .PostButtonNav {
     display: none;
   }
 }
 
 @container Navbar (max-width: 37em) {
-  .Categories{
+  .Categories {
     display: none;
   }
-  .SearchButton{
+  .SearchButton {
     display: none;
   }
   .SearchBar {
@@ -226,16 +241,20 @@ input:focus{
   .ViewProfile {
     margin-left: 0;
   }
-  .PostButtonNav{
+  .PostButtonNav {
     display: none;
   }
-  .material-symbols-outlined{
+  .material-symbols-outlined {
     cursor: pointer;
   }
 }
 
 @media (max-width: 50em) {
-  .PostButtonMobile{
+  .PostButtonMobile {
     display: flex;
   }
+}
+
+#NavbarLogo:hover {
+  transform: rotate(-0.05turn);
 }
