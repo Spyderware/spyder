@@ -23,7 +23,7 @@ export const signup = async (req, res) => {
         if (!uid || !username || !img_url) {
             res.status(HttpStatusCodes.BadRequest).send({message: "Invalid payload"});
         } else {
-            await AccountController.addUser(uid, username, img_url);
+            await AccountController.updateUser(uid, username, img_url);
         }
     } catch (err) {
         res.status(HttpStatusCodes.InternalServerError).send({message: err.message});

@@ -1,5 +1,5 @@
 import { fetchContent } from "./page-loader.js";
-import { HTML_DIR } from "./utils.js";
+import { HTML_DIR } from "./config.js";
 
 const ContentTemplates = Object.freeze({
     PostTemplate: `${HTML_DIR}postTemplate`,

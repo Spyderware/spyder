@@ -1,13 +1,13 @@
 import { changeRoute } from "./router.js";
 import { AUTH_TOKEN_NAME, Routes, USERNAME_TOKEN_NAME, USER_LOGO_TOKEN_NAME } from "./config.js";
-import { getData } from "./api.js";
+import { postData } from "./api.js";
 
 // =================== Functions ===================
 
 function isLoggedIn() {
     var jwt = retrieveJWT();
     if (jwt) {
-        return login(jwt);
+        return checkLogin(jwt);
     } else {
         return false;
     }
@@ -18,10 +18,8 @@ function initAuth() {
     changeRoute(Routes.Login, true);
 }
 
-function login(authProviderResponse) {
-    localStorage.setItem(AUTH_TOKEN_NAME, authProviderResponse);
-
-    var {username, userLogo} = getUserDetails(authProviderResponse);
+function checkLogin(jwt) {
+    var {username, userLogo} = getUserDetails(jwt);
 
     if (username) {
         localStorage.setItem(USERNAME_TOKEN_NAME, username);
@@ -32,16 +30,20 @@ function login(authProviderResponse) {
     }
 }
 
+function login(authProviderResponse) {
+    localStorage.setItem(AUTH_TOKEN_NAME, authProviderResponse);
+
+    return checkLogin(authProviderResponse);
+}
+
 async function getUserDetails(jwt) {
-    console.log(jwt);
     var userDetail = decodeJWT(jwt);
-    console.log(userDetail)
 
     if (!userDetail.sub) {
         return { username: null, userLogo: null }
     }
 
-    var loginData = await getData('/login', { uid: userDetail.sub }, jwt);
+    var loginData = await postData('auth/login', { uid: userDetail.sub }, jwt);
     return loginData.json();
 }
 
@@ -71,7 +73,22 @@ function decodeJWT(jwt) {
     }
 }
 
-function signup() {
+function signup(username) {
+    var jwt = retrieveJWT();
+    if (jwt) {
+        const decodedJWT = decodeJWT(jwt);
+        console.log(decodedJWT);
+        const signupBody = {
+            uid: decodedJWT.sub,
+            username: username,
+            img_url: decodedJWT.picture
+        }
+        console.log(signupBody)
+        postData('auth/signup', signupBody, jwt);
+        localStorage.setItem(USERNAME_TOKEN_NAME, username);
+        localStorage.setItem(USER_LOGO_TOKEN_NAME, decodedJWT.picture);
+    } 
+    
     changeRoute(Routes.ORIGIN, false);
 }
 
