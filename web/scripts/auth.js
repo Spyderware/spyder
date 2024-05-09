@@ -1,5 +1,6 @@
 import { changeRoute } from "./router.js";
 import { AUTH_TOKEN_NAME, Routes, USERNAME_TOKEN_NAME, USER_LOGO_TOKEN_NAME } from "./config.js";
+import { getData } from "./api.js";
 
 // =================== Functions ===================
 
@@ -31,8 +32,17 @@ function login(authProviderResponse) {
     }
 }
 
-function getUserDetails(jwt) {
-    return { username: 'test', userLogo: 'test' };
+async function getUserDetails(jwt) {
+    console.log(jwt);
+    var userDetail = decodeJWT(jwt);
+    console.log(userDetail)
+
+    if (!userDetail.sub) {
+        return { username: null, userLogo: null }
+    }
+
+    var loginData = await getData('/login', { uid: userDetail.sub }, jwt);
+    return loginData.json();
 }
 
 function logout() {
@@ -52,8 +62,17 @@ function retrieveJWT() {
     return localStorage.getItem(AUTH_TOKEN_NAME);
 }
 
+function decodeJWT(jwt) {
+    try {
+        let decoded = JSON.parse(atob(jwt.split('.')[1]));
+        return decoded;
+    } catch (e) {
+        return null;
+    }
+}
+
 function signup() {
     changeRoute(Routes.ORIGIN, false);
 }
 
-export { isLoggedIn, initAuth, login, logout, retrieveUsername, retrieveUserLogo, retrieveJWT, signup };
+export { isLoggedIn, initAuth, login, logout, retrieveUsername, retrieveUserLogo, retrieveJWT, signup, decodeJWT };
