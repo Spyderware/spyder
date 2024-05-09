@@ -1,4 +1,5 @@
 import {Auth} from './middleware/index.js';
+import {AuthController} from './controllers/index.js'
 import {router} from "./routes/index.js";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -14,8 +15,9 @@ app.get("/", (req, res) => {
     res.send(JSON.stringify({message: "hello world 2"}));
 });
 
-// app.use(Auth.verifyToken);
-app.use('/api/v1', router);
+app.get("/login", AuthController.login);
+app.post("/signup", AuthController.signup);
+app.use('/api/v1', Auth.verifyUser ,router);
 
 
 app.listen(PORT, (error) => {
