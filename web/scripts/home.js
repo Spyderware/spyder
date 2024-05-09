@@ -19,7 +19,7 @@ const HOMEPAGE_NO_POSTS_ID = 'home-no-posts';
 async function initPage() {
     const jwt = retrieveJWT();
     const response = await getData(`post${getSearchPath()}`, jwt);
-    console.log(response);
+
     let posts = [];
     try {
         posts = await response.json();

@@ -38,7 +38,7 @@ function initNavbar() {
     const selectElement = document.getElementById('Categories');
 
     const category = params.get('category');
-    
+
     if (category) {
         const optionToSelect = selectElement.querySelector(`option[value="${category}"]`);
         optionToSelect.selected = true;
@@ -55,7 +55,13 @@ function logoutHandler() {
 
 function homeHandler(event) {
     event.preventDefault();
+
+    setSearchPath('');
+    document.getElementById(NAVBAR_SELECT_ID).value = '';
+    document.getElementById('SearchInput').value = '';
+
     changeRoute(Routes.ORIGIN, false);
+    window.dispatchEvent(new Event(SEARCH_EVENT_NAME));
 }
 
 function createPost(event) {
@@ -67,17 +73,17 @@ function search() {
     const searchVal = document.getElementById('SearchInput').value;
     const categoryVal = document.getElementById('Categories').value;
 
-    if (searchVal !== "" && categoryVal !== "") {
+    if (searchVal === "" && categoryVal === "") {
         setSearchPath("");
         return;
     }
 
-    changeRoute(`${Routes.Homepage}?search=${searchVal}&category=${categoryVal}`, false);
     if (categoryVal === "") {
         setSearchPath(`?title=${searchVal}`);
     } else {
         setSearchPath(`?title=${searchVal}&category=${categoryVal}`);
     }
+    changeRoute(`${Routes.Homepage}?search=${searchVal}&category=${categoryVal}`, false);
 
     window.dispatchEvent(new Event(SEARCH_EVENT_NAME));
 }
