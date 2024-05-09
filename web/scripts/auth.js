@@ -32,7 +32,7 @@ function login(authProviderResponse) {
 }
 
 function getUserDetails(jwt) {
-    return { username: null, userLogo: 'test' };
+    return { username: 'test', userLogo: 'test' };
 }
 
 function logout() {

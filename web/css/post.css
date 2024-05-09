@@ -94,6 +94,7 @@ input,textarea:focus{
     min-height: 3em;
     width:95%;
     border-style: none;
+    max-height: 10em;
 }
 
 .PlacedComment{

@@ -13,6 +13,7 @@ addEventListener('DOMContentLoaded', initNavbar);
 document.getElementById('NavbarLogo').addEventListener('click', homeHandler);
 document.getElementById('CreatePost').addEventListener('click', createPost);
 document.getElementById('Search').addEventListener('click', search);
+document.getElementById('CreatePostMobile').addEventListener('click', createPost);
 
 document.getElementById('LogOut').addEventListener('click', logoutHandler);
 
@@ -22,8 +23,10 @@ function handlePathChange() {
     var path = window.location.pathname;
     if (path !== Routes.Login) {
         document.getElementById('navbar').classList.remove('hide')
+        document.getElementById('CreatePostMobile').classList.remove('hide');
     } else {
         document.getElementById('navbar').classList.add('hide')
+        document.getElementById('CreatePostMobile').classList.add('hide');
     }
 }
 
