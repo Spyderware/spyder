@@ -1,6 +1,10 @@
 import { decodeJWT, retrieveJWT } from './auth.js';
+import { populateCategoryDropdown } from './category-loader.js';
 import { Routes } from './config.js';
 import { changeRoute } from './router.js';
+
+// ===================== Constants ======================
+const NEW_POST_SELECT_ID = 'fcategories';
 
 // ===================== Init ======================
 
@@ -9,8 +13,9 @@ initPage();
 
 // =================== Functions ===================
 
-function initPage() {
+async function initPage() {
     document.getElementById('PostButton').addEventListener('submit', createPost);
+    await populateCategoryDropdown(NEW_POST_SELECT_ID);
 }
 
 async function createPost(event) {
