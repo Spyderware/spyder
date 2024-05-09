@@ -10,9 +10,9 @@ export const createPost = async (req, res) => {
 
             const account_id = await AccountController.getAccountID(uid);
             const category_id = await CategoryController.getCategoryID(category);
-            if (!accountExists) {
+            if (!account_id) {
                 res.status(HttpStatusCodes.NotFound).send({message: "Account does not exist"});
-            } else if (!categoryExists) {
+            } else if (!category_id) {
                 res.status(HttpStatusCodes.NotFound).send({message: "Category does not exist"});
             } else {
                 await DbUtils.spyderdb.none('INSERT INTO post(account_id, title, body, category_id) VALUES(${account_id}, ${title}, ${body}, ${category_id})', {
