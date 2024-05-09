@@ -3,13 +3,13 @@ import {AccountController, CategoryController} from './index.js'
 
 export const createPost = async (req, res) => {
     try {
-        const {account_id, title, body, category_id} = req.body;
-        if (!account_id || !title || !body || !category_id) {
+        const {uid, title, body, category} = req.body;
+        if (!uid || !title || !body || !category) {
             res.status(HttpStatusCodes.BadRequest).send({message: "Invalid payload"});
         } else {
 
-            const accountExists = await AccountController.checkIfAccountExists(account_id);
-            const categoryExists = await CategoryController.checkIfCategoryExists(category_id);
+            const account_id = await AccountController.getAccountID(uid);
+            const category_id = await CategoryController.getCategoryID(category);
             if (!accountExists) {
                 res.status(HttpStatusCodes.NotFound).send({message: "Account does not exist"});
             } else if (!categoryExists) {

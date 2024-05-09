@@ -119,3 +119,12 @@ export const updateUser = async (uid, username, img_url) => {
         img_url: img_url
     });
 }
+
+export const getAccountID = async (uid) => {
+    var account_id = null;
+    await DbUtils.spyderdb.oneOrNone('SELECT account_id FROM account WHERE uid = $1', [uid])
+        .then(async data => {
+            account_id = data.account_id
+        })
+    return account_id;
+}

@@ -1,6 +1,6 @@
 CREATE TABLE account (
   account_id serial PRIMARY KEY,
-  uid varchar(20) UNIQUE NOT NULL,
+  uid varchar(25) UNIQUE NOT NULL,
   username varchar(25) NULL
 );
 

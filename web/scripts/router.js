@@ -30,6 +30,7 @@ async function handlePathChange() {
         changeRoute(Routes.ORIGIN, true);
     } else {
         await loadPage(pageLoc);
+        currentPath = pageLoc;
         window.dispatchEvent(new Event(`${pageLoc}-init`));
     }
 }
@@ -53,8 +54,6 @@ function changeRoute(page, replaceState) {
 
         return;
     }
-
-    currentPath = path;
 
     if (replaceState) {
         window.history.replaceState({}, '', page);

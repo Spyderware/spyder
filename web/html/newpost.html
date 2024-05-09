@@ -3,19 +3,14 @@
   <head>
     <title>Spyder New Post</title>
     <link rel="stylesheet" href="/css/newpost.css" />
+    <script src="/scripts/newpost.js" type="module"></script>
   </head>
   <body class="OverallContainer">
     <main class="MainView">
       <section class="CreatePostContainer">
         <article class="CreatePostPopUp">
           <h1 class="CreatePostHeadder">Create Post</h1>
-          <form action="" method="" id="NewPostForm" class="NewPostFormClass">
-            <span class="ErrorMessage">Category is Required</span>
-            <select name="fcategories" id="fcategories" class="InputStyling">
-              <option value="" disabled selected>Select your Category*</option>
-              <option value="1">Programming Language</option>
-              <option value="1">Application</option>
-            </select>
+          <form id="NewPostForm" class="NewPostFormClass">
             <span class="ErrorMessage">Title is Required</span>
             <input
               type="text"
@@ -24,6 +19,12 @@
               class="InputStyling"
               maxlength="35"
             />
+            <span class="ErrorMessage">Category is Required</span>
+            <select name="fcategories" id="fcategories" class="InputStyling">
+              <option value="" disabled selected>Select your Category*</option>
+              <option value="1">Programming Language</option>
+              <option value="1">Application</option>
+            </select>
             <span class="ErrorMessage">Body is Required</span>
             <textarea
               type="text"
