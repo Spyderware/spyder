@@ -9,7 +9,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket        = "574836245203-state"
+  bucket        = "${local.accountId}-state"
   force_destroy = true
 }
 
@@ -22,7 +22,7 @@ resource "aws_s3_bucket_versioning" "terraform_state" {
 }
 
 resource "aws_dynamodb_table" "terraform_state_lock" {
-  name           = "574836245203-state"
+  name           = "${local.accountId}-state"
   read_capacity  = 1
   write_capacity = 1
   hash_key       = "LockID"
@@ -62,7 +62,7 @@ locals {
         {
           "Effect" : "Allow",
           "Principal" : {
-            "Federated" : "arn:aws:iam::574836245203:oidc-provider/token.actions.githubusercontent.com"
+            "Federated" : "arn:aws:iam::${local.accountId}:oidc-provider/token.actions.githubusercontent.com"
           },
           "Action" : "sts:AssumeRoleWithWebIdentity",
           "Condition" : {

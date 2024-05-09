@@ -1,3 +1,9 @@
+resource "aws_secretsmanager_secret" "web-config" {
+  name                    = "web-config"
+  description             = "Configuration for Prod Website"
+  recovery_window_in_days = 7
+}
+
 resource "aws_s3_bucket" "website" {
   bucket        = "spyder-frontend"
   force_destroy = true
@@ -49,6 +55,8 @@ resource "aws_cloudfront_distribution" "frontend" {
     origin_access_control_id = aws_cloudfront_origin_access_control.frontend.id
   }
 
+  aliases = ["spyder.phipson.co.za"]
+
   enabled             = true
   is_ipv6_enabled     = true
   default_root_object = "index.html"
@@ -78,6 +86,8 @@ resource "aws_cloudfront_distribution" "frontend" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn      = local.webCertArn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 }

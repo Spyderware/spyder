@@ -10,5 +10,149 @@ a {
 }
 
 body {
-  background-color: #646464;
+  background-color: #F8F8F8;
+}
+
+input:focus{
+  outline: none;
+}
+
+.WebsiteLogo{
+  border-radius: 50%;
+  max-width: auto;
+  height: 4em;
+  cursor: pointer;
+}
+
+.NavFlex{
+  container-type: inline-size;
+  container-name: Navbar;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 1em 1em 1em 1em;
+  gap: 1vh;
+  box-shadow: 0 0.063em 0.25em;
+  align-items: center;
+}
+
+.SearchBar{
+  display: flex;
+  border: 0.09em solid black;
+  border-radius: 0.5em;  
+  background-color: #FFFFFF;
+  padding: 0.5vh;
+}
+
+.Categories{
+  border: 0.09em solid black;
+  border-radius: 0.5em;  
+  padding: 1vh;
+}
+
+.SearchButton{
+  padding: 1vh;
+  border-radius:0.5em;
+  margin-right: 10%;
+  cursor: pointer;
+}
+
+.PostButtonNav{
+  margin-left: auto;
+  padding: 1vh;
+  border-radius:0.5em;
+  margin-right: 1.5em;
+  cursor: pointer;
+}
+
+.PostButtonMobile{
+  display: none;
+  margin-left: auto;
+  padding: 3%;
+  border-radius:0.5em;
+  margin-right: 1.5em;
+  margin-top: auto;
+  margin-bottom: 5vh;
+  margin-right: 10vw;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.ViewProfile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  height: 100%;
+  align-self: flex-end;
+}
+
+.hide {
+  display: none;
+}
+
+.SearchInputClass{
+  border-style:none;
+  width: inherit;
+}
+
+.UserLogoIcon {
+  height: 3em;
+  border-radius: 100%;
+  border: 2px solid black;
+}
+
+.PostButtonMobile.hide {
+  display: none;
+}
+
+@container Navbar (max-width: 44em) {
+  .PostButton {
+    display: none;
+  }
+  .ViewProfile {
+    margin-left: auto;
+  }
+  .PostButtonNav{
+    display: none;
+  }
+}
+
+@container Navbar (max-width: 37em) {
+  .Categories{
+    display: none;
+  }
+  .SearchButton{
+    display: none;
+  }
+  .SearchBar {
+    margin: 1em;
+    width: 100%;
+  }
+  .SearchBar {
+    margin: 1em;
+    width: 100%;
+  }
+  .ViewProfile {
+    margin-left: 0;
+  }
+  .PostButtonNav{
+    display: none;
+  }
+  .material-symbols-outlined{
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 46em) {
+  .PostButtonMobile{
+    display: block;
+    background-color: #203246;
+    bottom: 1vh;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    right: 0; 
+  }
 }

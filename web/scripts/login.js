@@ -1,4 +1,6 @@
 import { login } from "./auth.js";
+import { Routes } from "./config.js";
+import { changeRoute } from "./router.js";
 
 // ===================== Init ======================
 
@@ -9,30 +11,29 @@ import { login } from "./auth.js";
  * @see login.html
  */
 window.handleCredentialResponse = handleCredentialResponse;
+addEventListener('login-init', initPage);
+initPage();
 
 // =================== Functions ===================
 
-function handleCredentialResponse(response) {
-    // response.credential is the JWT
-    const responsePayload = decodeJwtResponse(response.credential);
-
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Given Name: ' + responsePayload.given_name);
-    console.log('Family Name: ' + responsePayload.family_name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);
-
-    login(responsePayload);
+function initPage() {
+    document.getElementById('UsernameForm').addEventListener('submit', signupHandler);
 }
 
-function decodeJwtResponse(token) {
-    try {
-        let decoded = JSON.parse(atob(token.split('.')[1]));
-        return decoded;
-    } catch (e) {
-        return null;
+function handleCredentialResponse(response) {
+    // response.credential is the JWT
+    const responsePayload = response.credential;
+    var loginSuccessful = login(responsePayload);
+
+    if (!loginSuccessful) {
+        document.getElementById('LoginButton').classList.add('hide')
+        document.getElementById('UsernameForm').classList.remove('hide');
+    } else {
+        changeRoute(Routes.ORIGIN, false);
     }
 }
 
-export { handleCredentialResponse }
+function signupHandler(event) {
+    event.preventDefault();
+    signup();
+}

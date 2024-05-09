@@ -1,4 +1,4 @@
-import { APP_NAME, HTML_DIR } from './utils.js'
+import { APP_NAME, HTML_DIR } from './config.js'
 
 // =================== Constants ===================
 
@@ -55,10 +55,12 @@ function hoistScripts(container) {
 function hoistCss(container) {
     const linkTags = container.querySelectorAll('link');
     linkTags.forEach(linkTag => {
-        if (linkTag.getAttribute('rel') === 'stylesheet') {
+        const href = linkTag.getAttribute('href');
+        if (href && linkTag.getAttribute('rel') === 'stylesheet') {
+
             const cssElement = document.createElement('link');
             cssElement.rel = 'stylesheet';
-            cssElement.href = linkTag.getAttribute('href');
+            cssElement.href = href;
             document.head.appendChild(cssElement);
 
             hoistedElements.push(cssElement);
@@ -122,10 +124,7 @@ async function loadPage(page) {
     const contentContainer = document.getElementById(CONTENT_CONTAINER_ID);
 
     try {
-        // console.log(`${HTML_DIR}${page}`)
-
         const htmlText = await fetchContent(`${HTML_DIR}${page}`);
-        // console.log(htmlText)
         contentContainer.innerHTML = htmlText;
 
         removeHoistedElements(hoistedElements);
