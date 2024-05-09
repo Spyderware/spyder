@@ -50,7 +50,7 @@ async function getUserDetails(jwt) {
         return userNotFoundObj;
     }
 
-    return loginData.json();
+    return await loginData.json();
 }
 
 function logout() {
@@ -79,7 +79,7 @@ function decodeJWT(jwt) {
     }
 }
 
-function signup(username) {
+async function signup(username) {
     var jwt = retrieveJWT();
     if (jwt) {
         const decodedJWT = decodeJWT(jwt);
@@ -89,13 +89,15 @@ function signup(username) {
             username: username,
             img_url: decodedJWT.picture
         }
-        console.log(signupBody)
-        postData('auth/signup', signupBody, jwt);
-        localStorage.setItem(USERNAME_TOKEN_NAME, username);
-        localStorage.setItem(USER_LOGO_TOKEN_NAME, decodedJWT.picture);
-    } 
+        var signupData = await postData('auth/signup', signupBody, jwt);
+
+        if (signupData.ok) {
+            localStorage.setItem(USERNAME_TOKEN_NAME, username);
+            localStorage.setItem(USER_LOGO_TOKEN_NAME, decodedJWT.picture);
     
-    changeRoute(Routes.ORIGIN, false);
+            changeRoute(Routes.ORIGIN, false);
+        }
+    } 
 }
 
 export { isLoggedIn, initAuth, login, logout, retrieveUsername, retrieveUserLogo, retrieveJWT, signup, decodeJWT };

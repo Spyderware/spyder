@@ -3,7 +3,7 @@ import { PATH_CHANGE_EVENT_NAME, PLACEHOLDER_ROUTE, Routes } from "./config.js";
 
 // ===================== Init ======================
 
-var currentPath = window.location.pathname;
+var currentPath = "";
 addEventListener(PATH_CHANGE_EVENT_NAME, handlePathChange);
 
 // @ryan - was this removed on purpose? Handles loading page content when moving back and forwards
@@ -30,6 +30,7 @@ async function handlePathChange() {
         changeRoute(Routes.ORIGIN, true);
     } else {
         await loadPage(pageLoc);
+        currentPath = pageLoc;
         window.dispatchEvent(new Event(`${pageLoc}-init`));
     }
 }
@@ -53,8 +54,6 @@ function changeRoute(page, replaceState) {
 
         return;
     }
-
-    currentPath = path;
 
     if (replaceState) {
         window.history.replaceState({}, '', page);

@@ -20,10 +20,10 @@ function initPage() {
     document.getElementById('UsernameForm').addEventListener('submit', signupHandler);
 }
 
-function handleCredentialResponse(response) {
+async function handleCredentialResponse(response) {
     // response.credential is the JWT
     const responsePayload = response.credential;
-    var loginSuccessful = login(responsePayload);
+    var loginSuccessful = await login(responsePayload);
 
     if (!loginSuccessful) {
         document.getElementById('LoginButton').classList.add('hide')
@@ -33,10 +33,10 @@ function handleCredentialResponse(response) {
     }
 }
 
-function signupHandler(event) {
+async function signupHandler(event) {
     event.preventDefault();
 
     const username = document.getElementById('fUsername').value;
 
-    signup(username);
+    await signup(username);
 }
