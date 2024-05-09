@@ -55,8 +55,9 @@ async function verifyGoogleToken(token, clientId) {
 
 export async function verifyUser(req, res, next) {
     // Extract token from the request (assuming it's in the Authorization header)
-    if(req.headers.authorization) {
-        const token = req.headers.authorization.split(' ')[1]; // Assuming Bearer token
+    const token = req.headers.authorization.split(' ')[1]; // Assuming Bearer token
+        
+    if(token && token != "null") {
         const decodedToken = jwt.decode(token, {complete: true});
         const {header, payload, signature} = decodedToken;
         const verificationResponse = await verifyGoogleToken(token, GOOGLE_CLIENT_ID);

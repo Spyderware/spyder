@@ -1,5 +1,5 @@
 import { changeRoute } from "./router.js";
-import { AUTH_TOKEN_NAME, Routes, USERNAME_TOKEN_NAME, USER_LOGO_TOKEN_NAME } from "./config.js";
+import { AUTH_TOKEN_NAME, LOGGEDIN_EVENT_NAME, Routes, USERNAME_TOKEN_NAME, USER_LOGO_TOKEN_NAME } from "./config.js";
 import { postData } from "./api.js";
 
 // =================== Functions ===================
@@ -25,6 +25,7 @@ async function checkLogin(jwt) {
         localStorage.setItem(USERNAME_TOKEN_NAME, username);
         localStorage.setItem(USER_LOGO_TOKEN_NAME, img_url);
         document.getElementById('nav-user-img').setAttribute('src', img_url);
+        window.dispatchEvent(new Event(LOGGEDIN_EVENT_NAME));
         return true;
     } else {
         return false;

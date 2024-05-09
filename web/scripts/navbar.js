@@ -1,6 +1,6 @@
 import { logout } from "./auth.js";
 import { populateCategoryDropdown } from "./category-loader.js";
-import { PATH_CHANGE_EVENT_NAME, Routes, SEARCH_EVENT_NAME, setSearchPath } from "./config.js";
+import { LOGGEDIN_EVENT_NAME, PATH_CHANGE_EVENT_NAME, Routes, SEARCH_EVENT_NAME, setSearchPath } from "./config.js";
 import { changeRoute } from "./router.js";
 
 // ===================== Init ======================
@@ -8,6 +8,7 @@ import { changeRoute } from "./router.js";
 const NAVBAR_SELECT_ID = 'Categories';
 
 addEventListener(PATH_CHANGE_EVENT_NAME, handlePathChange);
+addEventListener(LOGGEDIN_EVENT_NAME, loginInit);
 addEventListener('DOMContentLoaded', initNavbar);
 
 document.getElementById('NavbarLogo').addEventListener('click', homeHandler);
@@ -16,7 +17,6 @@ document.getElementById('Search').addEventListener('click', search);
 document.getElementById('CreatePostMobile').addEventListener('click', createPost);
 
 document.getElementById('LogOut').addEventListener('click', logoutHandler);
-await populateCategoryDropdown(NAVBAR_SELECT_ID);
 
 // =================== Functions ===================
 
@@ -80,4 +80,8 @@ function search() {
     }
 
     window.dispatchEvent(new Event(SEARCH_EVENT_NAME));
+}
+
+async function loginInit() {
+    await populateCategoryDropdown(NAVBAR_SELECT_ID);
 }

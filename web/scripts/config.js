@@ -31,6 +31,11 @@ const PATH_CHANGE_EVENT_NAME = 'pathchanged';
 const SEARCH_EVENT_NAME = 'searched';
 
 /**
+ * The name of the successful login invocation event
+ */
+const LOGGEDIN_EVENT_NAME = 'loggedin';
+
+/**
  * The name of the website application
  */
 const APP_NAME = 'Spyder';
@@ -68,4 +73,4 @@ function getSearchPath() {
     return SEARCH_PATH;
 }
 
-export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME, PLACEHOLDER_ROUTE, SEARCH_EVENT_NAME, USERNAME_TOKEN_NAME, USER_LOGO_TOKEN_NAME, BASE_API_URL, setSearchPath, getSearchPath }
+export { Routes, PATH_CHANGE_EVENT_NAME, HTML_DIR, APP_NAME, AUTH_TOKEN_NAME, PLACEHOLDER_ROUTE, SEARCH_EVENT_NAME, USERNAME_TOKEN_NAME, USER_LOGO_TOKEN_NAME, BASE_API_URL, setSearchPath, getSearchPath, LOGGEDIN_EVENT_NAME }
