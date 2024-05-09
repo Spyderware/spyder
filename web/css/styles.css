@@ -249,7 +249,7 @@ input:focus {
 }
 
 @container Navbar (max-width: 55em) {
-  .Categories{
+  .Categories {
     display: none;
   }
   .SearchButton {
@@ -279,10 +279,8 @@ input:focus {
   }
 }
 
-@media (max-width: 50em) {
-  .PostButtonMobile {
 @media (max-width: 64em) {
-  .PostButtonMobile{
+  .PostButtonMobile {
     display: flex;
   }
 }
