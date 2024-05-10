@@ -37,13 +37,12 @@ export const getAllPosts = async (req, res) => {
         }
             
         if (category) {
-            console.log(title);
-            await DbUtils.spyderdb.any('SELECT * FROM PostAccountView WHERE category = $1 AND title LIKE $2', [category, '%' + title + '%'])
+            await DbUtils.spyderdb.any('SELECT * FROM PostAccountView WHERE category = $1 AND title LIKE $2 ORDER BY post_id DESC LIMIT 30', [category, '%' + title + '%'])
                 .then(data => {
                     res.status(HttpStatusCodes.OK).send(data);
                 })
         } else {
-            await DbUtils.spyderdb.any('SELECT * FROM PostAccountView WHERE title LIKE $1', ['%' + title + '%'])
+            await DbUtils.spyderdb.any('SELECT * FROM PostAccountView WHERE title LIKE $1 ORDER BY post_id DESC LIMIT 30', ['%' + title + '%'])
                 .then(data => {
                     res.status(HttpStatusCodes.OK).send(data);
                 })

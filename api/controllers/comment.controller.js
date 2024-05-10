@@ -29,7 +29,7 @@ export const createComment = async (req, res) => {
 
 export const getAllComments = async (req, res) => {
     try {
-        await DbUtils.spyderdb.any('select * from CommentAccountView')
+        await DbUtils.spyderdb.any('select * from CommentAccountView LIMIT 30')
             .then(data => {
                 res.status(HttpStatusCodes.OK).send(data);
             });
@@ -44,7 +44,7 @@ export const getCommentsByPostId = async (req, res) => {
         if (!post_id) {
             res.status(HttpStatusCodes.NotFound).send({ message: "Invalid payload" });
         } else {
-            await DbUtils.spyderdb.any('SELECT * FROM CommentAccountView WHERE post_id = $1', [post_id])
+            await DbUtils.spyderdb.any('SELECT * FROM CommentAccountView WHERE post_id = $1 LIMIT 30', [post_id])
                 .then(data => {
                     res.status(HttpStatusCodes.OK).send(data);
                 })
